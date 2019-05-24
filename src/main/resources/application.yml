@@ -14,7 +14,11 @@ spring:
 
 mybatis:
   mapper-locations: classpath*:mapper/**/*.xml
-#  扫描pojo类的位置,在此处指明扫描实体类的包，在mapper中就可以不用写pojo类的全路径名了
+# 扫描 pojo 类的位置,在此处指明扫描实体类的包，在 mapper 中就可以不用写 pojo 类的全路径名了
   type-aliases-package: com.pph.demo.model
-
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 打印执行 SQL (方法一)
+#logging:
+#  level:
+#    com.pph.demo.mapper: debug # 打印执行 SQL (方法二)
 jdbc.type: mysql

@@ -1,25 +1,34 @@
-package com.pph.demo.service;
+package com.pph.demo.mapper;
 
 import com.pph.demo.model.User;
 import com.pph.demo.vo.request.user.CreateUserVo;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 import java.util.Map;
 
-/**
- * @Author: PPH
- * @Date: 2019-05-24 11:15
- * @Description:
- */
-public interface UserService {
+@Mapper
+public interface UserMapper {
+
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(User record);
+
+    int insertSelective(User record);
+
+    User selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(User record);
+
+    int updateByPrimaryKey(User record);
 
     /**
      * 新增用户
      *
-     * @param createUserVo
+     * @param user
      * @return
      */
-    Object createUser(CreateUserVo createUserVo);
+    Integer createUser(CreateUserVo user);
 
     /**
      * 根据条件过滤查询

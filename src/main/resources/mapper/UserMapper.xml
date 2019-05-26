@@ -123,7 +123,7 @@
             <if test="age != null">
                 `age`,
             </if>
-            `gmt_creater`
+            `gmt_create`
         </trim>
         <trim prefix="VALUES(" suffix=")" suffixOverrides=",">
             <if test="name != null">

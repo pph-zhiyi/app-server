@@ -5,15 +5,13 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class User {
+public class Login {
 
     private Integer id;
 
-    private String name;
+    private String user;
 
-    private String sex;
-
-    private Integer age;
+    private String password;
 
     private Date gmtCreate;
 

@@ -1,4 +1,4 @@
-package com.pph.demo.effective.builder;
+package com.pph.demo.effective.builder.user;
 
 /**
  * @Author: PPH

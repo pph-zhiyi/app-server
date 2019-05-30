@@ -1,6 +1,4 @@
-package com.pph.demo.effective.builder;
-
-import com.pph.demo.effective.builder.User;
+package com.pph.demo.effective.builder.user;
 
 /**
  * @Author: PPH

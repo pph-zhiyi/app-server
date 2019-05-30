@@ -11,7 +11,7 @@
         </constructor>
     </resultMap>
     <sql id="base_all">
-        `id`, `user`, `password`, `gmt_creater`, `gmt_modify`
+        `id`, `user`, `password`, `gmt_create`, `gmt_modify`
     </sql>
 
     <select id="queryLoginByUserAndPwd" parameterType="java.util.Map" resultType="com.pph.demo.model.Login">

@@ -7,105 +7,10 @@
             <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String"/>
             <arg column="sex" jdbcType="VARCHAR" javaType="java.lang.String"/>
             <arg column="age" jdbcType="INTEGER" javaType="java.lang.Integer"/>
-            <arg column="gmt_creater" jdbcType="DATE" javaType="java.util.Date"/>
+            <arg column="gmt_create" jdbcType="DATE" javaType="java.util.Date"/>
             <arg column="gmt_modify" jdbcType="DATE" javaType="java.util.Date"/>
         </constructor>
     </resultMap>
-    <sql id="Base_Column_List">
-        `id`, `name`, `sex`, `age`, `gmt_creater`, `gmt_modify`
-    </sql>
-    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
-        select
-        <include refid="Base_Column_List"/>
-        from user
-        where id = #{id,jdbcType=INTEGER}
-    </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from user
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-    <insert id="insert" parameterType="com.pph.demo.model.User">
-    insert into user (id, name, sex,
-      age, gmt_creater, gmt_modify
-      )
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR},
-      #{age,jdbcType=INTEGER}, #{gmtCreater,jdbcType=DATE}, #{gmtModify,jdbcType=DATE}
-      )
-  </insert>
-    <insert id="insertSelective" parameterType="com.pph.demo.model.User">
-        insert into user
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="id != null">
-                id,
-            </if>
-            <if test="name != null">
-                name,
-            </if>
-            <if test="sex != null">
-                sex,
-            </if>
-            <if test="age != null">
-                age,
-            </if>
-            <if test="gmtCreater != null">
-                gmt_creater,
-            </if>
-            <if test="gmtModify != null">
-                gmt_modify,
-            </if>
-        </trim>
-        <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="id != null">
-                #{id,jdbcType=INTEGER},
-            </if>
-            <if test="name != null">
-                #{name,jdbcType=VARCHAR},
-            </if>
-            <if test="sex != null">
-                #{sex,jdbcType=VARCHAR},
-            </if>
-            <if test="age != null">
-                #{age,jdbcType=INTEGER},
-            </if>
-            <if test="gmtCreater != null">
-                #{gmtCreater,jdbcType=DATE},
-            </if>
-            <if test="gmtModify != null">
-                #{gmtModify,jdbcType=DATE},
-            </if>
-        </trim>
-    </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.pph.demo.model.User">
-        update user
-        <set>
-            <if test="name != null">
-                name = #{name,jdbcType=VARCHAR},
-            </if>
-            <if test="sex != null">
-                sex = #{sex,jdbcType=VARCHAR},
-            </if>
-            <if test="age != null">
-                age = #{age,jdbcType=INTEGER},
-            </if>
-            <if test="gmtCreater != null">
-                gmt_creater = #{gmtCreater,jdbcType=DATE},
-            </if>
-            <if test="gmtModify != null">
-                gmt_modify = #{gmtModify,jdbcType=DATE},
-            </if>
-        </set>
-        where id = #{id,jdbcType=INTEGER}
-    </update>
-    <update id="updateByPrimaryKey" parameterType="com.pph.demo.model.User">
-    update user
-    set name = #{name,jdbcType=VARCHAR},
-      sex = #{sex,jdbcType=VARCHAR},
-      age = #{age,jdbcType=INTEGER},
-      gmt_creater = #{gmtCreater,jdbcType=DATE},
-      gmt_modify = #{gmtModify,jdbcType=DATE}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-
 
     <insert id="createUser" useGeneratedKeys="true" keyProperty="id"
             parameterType="com.pph.demo.vo.request.user.CreateUserVo">
@@ -141,7 +46,7 @@
 
 
     <sql id="base_query_user_by_terms">
-        `id`, `name`, `sex`, `age`, `gmt_creater`, `gmt_modify`
+        `id`, `name`, `sex`, `age`, `gmt_create`, `gmt_modify`
     </sql>
     <select id="queryUserByTerms" resultType="com.pph.demo.model.User" parameterType="java.util.Map">
         SELECT

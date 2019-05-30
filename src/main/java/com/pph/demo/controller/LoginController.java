@@ -1,10 +1,12 @@
 package com.pph.demo.controller;
 
 import com.pph.demo.service.LoginService;
+import com.pph.demo.utils.oval.OvalVerifyUtil;
 import com.pph.demo.vo.request.login.LoginVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +26,12 @@ public class LoginController {
     private Logger logger = LoggerFactory.getLogger(LoginController.class);
 
     /**
+     * 参数校验
+     */
+    @Autowired
+    private OvalVerifyUtil ovalVerifyUtil;
+
+    /**
      * login
      */
     @Autowired
@@ -35,9 +43,10 @@ public class LoginController {
      * @param request
      * @return
      */
-    @RequestMapping(value = "/exists", method = RequestMethod.GET)
-    public Boolean isExists(LoginVo request) {
+    @RequestMapping(value = "/exists", method = RequestMethod.POST)
+    public Boolean isExists(@RequestBody LoginVo request) {
         logger.info("isExists request: {}", request);
+        ovalVerifyUtil.verifyObj(request);
         return loginService.isExists(request);
     }
 
@@ -47,9 +56,10 @@ public class LoginController {
      * @param request
      * @return
      */
-    @RequestMapping(value = "/exists", method = RequestMethod.POST)
-    public Integer register(LoginVo request) {
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public Integer register(@RequestBody LoginVo request) {
         logger.info("register request: {}", request);
+        ovalVerifyUtil.verifyObj(request);
         return loginService.register(request);
     }
 }

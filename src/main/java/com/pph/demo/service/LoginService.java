@@ -1,6 +1,9 @@
 package com.pph.demo.service;
 
+import com.pph.demo.model.Login;
 import com.pph.demo.vo.request.login.LoginVo;
+
+import java.util.List;
 
 /**
  * @Author: PPH
@@ -24,4 +27,19 @@ public interface LoginService {
      * @return
      */
     Integer register(LoginVo r);
+
+    /**
+     * 查询所有用户名
+     *
+     * @return
+     */
+    List<String> queryUserNameAll();
+
+    /**
+     * 测试 redis
+     *
+     * @param request
+     * @return
+     */
+    Login redisTest(LoginVo request);
 }

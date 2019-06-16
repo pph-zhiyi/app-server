@@ -10,7 +10,7 @@ import java.util.Map;
  * @Description:
  */
 @Component
-public class ParamsDisposeUtil {
+public final class ParamsDisposeUtil {
 
     /**
      * 分页参数初始化

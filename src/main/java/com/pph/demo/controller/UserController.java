@@ -24,11 +24,10 @@ import java.util.Map;
 @RestController
 @RequestMapping("/user")
 public class UserController {
-
     /**
      * 日志
      */
-    private Logger logger = LoggerFactory.getLogger(UserController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
     /**
      * 参数校验
@@ -50,7 +49,7 @@ public class UserController {
      */
     @RequestMapping(value = "/query", method = RequestMethod.POST)
     public PageResult queryUser(@RequestBody Map<String, Object> filter) {
-        logger.info("^^^queryUser filter: {}", filter);
+        LOGGER.info("^^^queryUser filter: {}", filter);
         List<User> users = userService.queryUserByTerms(filter);
         Integer total = userService.queryCountByTerms(filter);
         return new PageResult(users, total, filter);
@@ -64,7 +63,7 @@ public class UserController {
      */
     @RequestMapping(value = "create/user", method = RequestMethod.POST)
     public Object createUser(@RequestBody CreateUserVo req) {
-        logger.info("^^^createUser request: {}", req.toString());
+        LOGGER.info("^^^createUser request: {}", req.toString());
         ovalVerifyUtil.verifyObj(req);
         return userService.createUser(req);
     }

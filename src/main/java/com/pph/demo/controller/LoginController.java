@@ -1,5 +1,6 @@
 package com.pph.demo.controller;
 
+import com.pph.demo.model.Login;
 import com.pph.demo.service.LoginService;
 import com.pph.demo.utils.oval.OvalVerifyUtil;
 import com.pph.demo.vo.request.login.LoginVo;
@@ -19,11 +20,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/login")
 public class LoginController {
-
     /**
      * 日志
      */
-    private Logger logger = LoggerFactory.getLogger(LoginController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
 
     /**
      * 参数校验
@@ -45,7 +45,7 @@ public class LoginController {
      */
     @RequestMapping(value = "/exists", method = RequestMethod.POST)
     public Boolean isExists(@RequestBody LoginVo request) {
-        logger.info("isExists request: {}", request);
+        LOGGER.info("isExists request: {}", request);
         ovalVerifyUtil.verifyObj(request);
         return loginService.isExists(request);
     }
@@ -58,8 +58,14 @@ public class LoginController {
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public Integer register(@RequestBody LoginVo request) {
-        logger.info("register request: {}", request);
+        LOGGER.info("register request: {}", request);
         ovalVerifyUtil.verifyObj(request);
         return loginService.register(request);
+    }
+
+    @RequestMapping(value = "/redis/test", method = RequestMethod.POST)
+    public Login redisTest(@RequestBody LoginVo request) {
+        LOGGER.info("redisTest request: {}", request);
+        return loginService.redisTest(request);
     }
 }

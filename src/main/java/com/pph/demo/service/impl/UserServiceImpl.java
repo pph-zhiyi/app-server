@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
     /**
      * 日志
      */
-    private Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
 
     /**
      * 参数相关操作
@@ -39,20 +39,20 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Object createUser(CreateUserVo user) {
-        logger.info("^^^createUser user: {}", user.toString());
+        LOGGER.info("^^^createUser user: {}", user.toString());
         return userMapper.createUser(user);
     }
 
     @Override
     public List<User> queryUserByTerms(Map<String, Object> filter) {
         paramsDisposeUtil.addFilterPageInfo(filter);
-        logger.info("^^^queryUserByTerms filter: {}", filter.toString());
+        LOGGER.info("^^^queryUserByTerms filter: {}", filter.toString());
         return userMapper.queryUserByTerms(filter);
     }
 
     @Override
     public Integer queryCountByTerms(Map<String, Object> filter) {
-        logger.info("^^^queryCountByTerms filter: {}", filter.toString());
+        LOGGER.info("^^^queryCountByTerms filter: {}", filter.toString());
         return userMapper.queryCountByTerms(filter);
     }
 }

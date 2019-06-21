@@ -36,10 +36,18 @@ public interface LoginService {
     List<String> queryUserNameAll();
 
     /**
-     * 测试 redis
+     * 通过 key 获取 redis 一条 String 类型的缓存数据
      *
-     * @param request
+     * @param key
      * @return
      */
-    Login redisTest(LoginVo request);
+    String getRedisString(String key);
+
+    /**
+     * 往 redis 插入一条 String 类型的数据
+     *
+     * @param key
+     * @param val
+     */
+    void setRedisString(String key, String val);
 }

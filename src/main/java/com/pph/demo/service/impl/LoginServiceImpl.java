@@ -30,12 +30,6 @@ public class LoginServiceImpl implements LoginService {
      */
     private static final Logger LOGGER = LoggerFactory.getLogger(LoginServiceImpl.class);
 
-    /**
-     * redis 缓存相关操作
-     */
-    @Autowired
-    private RedisTemplate redisTemplate;
-
     @Autowired
     private LoginMapper loginMapper;
 
@@ -44,6 +38,9 @@ public class LoginServiceImpl implements LoginService {
 
     @Autowired
     private RedisKeyUtil redisKeyUtil;
+
+    @Autowired
+    private ValueOperations<String, Object> valueOperations;
 
     @Override
     public Boolean isExists(LoginVo r) {
@@ -63,27 +60,22 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public Login redisTest(LoginVo request) {
-        Login login = new Login();
-        login.setUser(request.getUser());
-        login.setPassword(request.getPassword());
-        login.setGmtCreate(new Date());
+    public String getRedisString(String key) {
+        LOGGER.info("getRedisString key: {}", key);
+        Object o = valueOperations.get(key);
+        return String.valueOf(o);
+    }
 
-        ValueOperations<String, Object> operations = redisTemplate.opsForValue();
-        redisService.expireKey("user", 20, TimeUnit.SECONDS);
-        String key = redisKeyUtil.getKey("t_login", "user", login.getUser());
-        Login result = (Login) operations.get(key);
-        LOGGER.info("***RedisTest result: {}", result);
-
-        if (Objects.isNull(result)) {
-            result = new Login();
-//            TODO: 异常待解决
-//            Object a = operations.get("a");
-//            result.setUser(String.valueOf(a));
-            Object b = operations.get("b");
-            result.setPassword(String.valueOf(b));
-        }
-
-        return result;
+    @Override
+    public void setRedisString(String key, String val) {
+        LOGGER.info("setRedisString key: {}, val: {}", key, val);
+        /*
+         * 将字符串插入到 redis
+         */
+        valueOperations.set(key, val);
+        /*
+         * 设置过期时间 30 分钟
+         */
+        redisService.expireKey(key, 30, TimeUnit.MINUTES);
     }
 }

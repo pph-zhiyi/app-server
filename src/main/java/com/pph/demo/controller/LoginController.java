@@ -4,6 +4,7 @@ import com.pph.demo.model.Login;
 import com.pph.demo.service.LoginService;
 import com.pph.demo.utils.oval.OvalVerifyUtil;
 import com.pph.demo.vo.request.login.LoginVo;
+import com.pph.demo.vo.request.login.RedisStringVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,9 +64,23 @@ public class LoginController {
         return loginService.register(request);
     }
 
-    @RequestMapping(value = "/redis/test", method = RequestMethod.POST)
-    public Login redisTest(@RequestBody LoginVo request) {
-        LOGGER.info("redisTest request: {}", request);
-        return loginService.redisTest(request);
+    /**
+     * 测试 redis
+     * @param request
+     * @return
+     */
+    @RequestMapping("/redis/string")
+    public String redisString(@RequestBody RedisStringVo request) {
+        LOGGER.info("redisString request: {}", request);
+        ovalVerifyUtil.verifyObj(request);
+        switch (request.getType()) {
+            case "get":
+                return loginService.getRedisString(request.getKey());
+            case "set":
+                loginService.setRedisString(request.getKey(), request.getVal());
+                return "OK";
+            default:
+                throw new IllegalArgumentException("type is must [get or set]");
+        }
     }
 }

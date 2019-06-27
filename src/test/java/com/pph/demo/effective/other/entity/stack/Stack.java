@@ -1,4 +1,4 @@
-package com.pph.demo.effective.other.entity;
+package com.pph.demo.effective.other.entity.stack;
 
 import java.util.Arrays;
 import java.util.Collections;

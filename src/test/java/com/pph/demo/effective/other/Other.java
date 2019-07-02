@@ -3,10 +3,9 @@ package com.pph.demo.effective.other;
 import com.pph.demo.effective.other.entity.stack.Stack;
 import com.pph.demo.utils.JSONUtils;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.io.Serializable;
+import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -29,7 +28,12 @@ public class Other {
         Set<String> union = union(s1, s2);
         System.out.println(JSONUtils.toJSONString(union));
 
-        Collections.reverseOrder();
+//        Collections.reverseOrder();
+
+        List<String> p1 = pickTwo("a", "b", "c");
+        List<? extends Serializable> p2 = pickTwo("a", "b", 1);
+        System.out.println(p1.toString());
+        System.out.println(p2.toString());
     }
 
     /**
@@ -44,5 +48,41 @@ public class Other {
         HashSet<E> result = new HashSet<>(s1);
         result.addAll(s2);
         return result;
+    }
+
+    /**
+     * 合并 list
+     *
+     * @param lists
+     * @param <T>
+     * @return
+     */
+    @SafeVarargs
+    public static <T> List<T> flatten(List<? extends T>... lists) {
+        List<T> result = new ArrayList<>();
+        for (List<? extends T> list : lists)
+            result.addAll(list);
+        return result;
+    }
+
+    /**
+     * 三个入参中随机取两个入参生成 list
+     *
+     * @param a
+     * @param b
+     * @param c
+     * @param <T>
+     * @return
+     */
+    public static <T> List<T> pickTwo(T a, T b, T c) {
+        switch (ThreadLocalRandom.current().nextInt(3)) {
+            case 0:
+                return Stream.of(a, b).collect(Collectors.toList());
+            case 1:
+                return Stream.of(a, c).collect(Collectors.toList());
+            case 2:
+                return Stream.of(b, c).collect(Collectors.toList());
+        }
+        throw new AssertionError();
     }
 }

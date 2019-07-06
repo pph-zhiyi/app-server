@@ -13,7 +13,7 @@ import java.util.List;
 public class Stack {
 
     //    public static final String[] STRINGS_ARR = {};
-    private static final String[] STRING_DEF = {"a", "b", "c"};
+    private static final String[] STRING_DEF = {"Demo", "b", "c"};
     //    不可改变 List 的值，否则抛出异常：java.lang.UnsupportedOperationException
     public static final List<String> STRING_LIST = Collections.unmodifiableList(Arrays.asList(STRING_DEF));
 

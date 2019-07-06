@@ -1,4 +1,4 @@
-package com.pph.demo.effective.lambda;
+package com.pph.demo.effective.jdk8.lambda;
 
 import java.util.function.Supplier;
 

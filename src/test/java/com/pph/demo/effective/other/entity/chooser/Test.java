@@ -13,13 +13,13 @@ public class Test {
 
     public static void main(String[] args) {
 
-        Chooser1 c1 = new Chooser1(Stream.of("a", "b", "c").collect(Collectors.toList()));
+        Chooser1 c1 = new Chooser1(Stream.of("Demo", "b", "c").collect(Collectors.toList()));
         System.out.println(c1.choose());
 
-        Chooser2<String> c2 = new Chooser2<>(Stream.of("a", "b", "c").collect(Collectors.toList()));
+        Chooser2<String> c2 = new Chooser2<>(Stream.of("Demo", "b", "c").collect(Collectors.toList()));
         System.out.println(c2.choose());
 
-        Chooser3<String> c3 = new Chooser3<>(Stream.of("a", "b", "c").collect(Collectors.toList()));
+        Chooser3<String> c3 = new Chooser3<>(Stream.of("Demo", "b", "c").collect(Collectors.toList()));
         System.out.println(c3.choose());
     }
 }

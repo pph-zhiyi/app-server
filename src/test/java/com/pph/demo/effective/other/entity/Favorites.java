@@ -41,7 +41,7 @@ public class Favorites {
     public static void main(String[] args) {
         Favorites f = new Favorites();
         f.putFavorites(String.class, "锤子🔨");
-        f.putFavorites(List.class, Stream.of("a", "b", "c").collect(Collectors.toList()));
+        f.putFavorites(List.class, Stream.of("Demo", "b", "c").collect(Collectors.toList()));
         String string = f.getFavorites(String.class);
         List<String> list = f.getFavorites(List.class);
         System.out.println(string);

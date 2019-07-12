@@ -30,7 +30,7 @@ public class PageResult {
     public PageResult(Object data, Integer total, Map<String, Object> filter) {
         this.data = data;
         this.total = total;
-        this.pageNo = Integer.valueOf(filter.get("pageNo").toString());
-        this.pageSize = Integer.valueOf(filter.get("pageSize").toString());
+        this.pageNo = Integer.valueOf(filter.get("PAGE_NO").toString());
+        this.pageSize = Integer.valueOf(filter.get("PAGE_SIZE").toString());
     }
 }

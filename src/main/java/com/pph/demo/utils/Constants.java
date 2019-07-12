@@ -15,5 +15,22 @@ public final class Constants {
     /**
      * 通用空格占位符
      */
-    public static final String A = " ";
+    public static final String S_1 = " ";
+
+    public enum Page {
+        PAGE_NO("pageNo"),
+        PAGE_SIZE("pageSize"),
+        OFF_SET("offSet"),
+        IS_PAGE("isPage");
+
+        private final String val;
+
+        Page(String val) {
+            this.val = val;
+        }
+
+        public String val() {
+            return val;
+        }
+    }
 }

@@ -1,6 +1,4 @@
-package com.pph.demo.effective.jdk8.lambda;
-
-import com.pph.demo.effective.builder.user.User;
+package com.pph.demo.effective.jdk8.lambda.la;
 
 import java.util.HashMap;
 import java.util.Map;

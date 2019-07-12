@@ -3,6 +3,8 @@ package com.pph.demo.utils;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * @Author: PPH
@@ -10,24 +12,62 @@ import java.util.Map;
  * @Description:
  */
 @Component
-public final class ParamsDisposeUtil {
+public final class ParamUtil {
+    /**
+     * 私有无参构造
+     */
+    private ParamUtil() {
+    }
+
+    /**
+     * 对象非空校验：
+     * <p>
+     * 1、非空：返回原对象
+     * 2、空：抛出 IllegalArgumentException 异常（无异常描述）
+     *
+     * @param obj
+     * @param <E>
+     * @return
+     */
+    public <E> E notNull(E obj) {
+        return Optional.ofNullable(obj).orElseThrow(IllegalArgumentException::new);
+    }
+
+    /**
+     * 对象非空校验：
+     * <p>
+     * 1、非空：返回原对象
+     * 2、空：抛出 IllegalArgumentException 异常（自定义异常描述）
+     *
+     * @param obj
+     * @param msg
+     * @param <E>
+     * @return
+     */
+    public <E> E notNull(E obj, String msg) {
+        return Optional.ofNullable(obj).<IllegalArgumentException>orElseThrow(() -> {
+            throw new IllegalArgumentException(notNull(msg));
+        });
+    }
 
     /**
      * 分页参数初始化
      *
-     * @param filter
+     * @param obj
      */
-    public static void addFilterPageInfo(Map<String, Object> filter) {
-        if (!filter.containsKey("pageNo") || filter.get("pageNo") == null) {
-            filter.put("pageNo", 1);
+    public static void makePageInfo(Map<String, Object> obj) {
+        String pageNo = Constants.Page.PAGE_NO.val(), pageSize = Constants.Page.PAGE_SIZE.val();
+        String offSet = Constants.Page.OFF_SET.val(), isPage = Constants.Page.IS_PAGE.val();
+        if (!obj.containsKey(pageNo) || Objects.isNull(obj.get(pageNo))) {
+            obj.put(pageNo, 1);
         }
-        if (!filter.containsKey("pageSize") || filter.get("pageSize") == null) {
-            filter.put("pageSize", 20);
+        if (!obj.containsKey(pageSize) || Objects.isNull(obj.get(pageSize))) {
+            obj.put(pageSize, 20);
         }
-        if (!filter.containsKey("isPage") || filter.get("isPage") == null) {
-            filter.put("isPage", true);
+        if (!obj.containsKey(isPage) || Objects.isNull(obj.get(isPage))) {
+            obj.put(isPage, true);
         }
-        filter.put("offSet", (Integer.parseInt(filter.get("pageNo").toString()) - 1)
-                * Integer.parseInt(filter.get("pageSize").toString()));
+        obj.put(offSet, (Integer.parseInt(String.valueOf(obj.get(pageNo))) - 1)
+                * Integer.parseInt(String.valueOf(obj.get(pageSize))));
     }
 }

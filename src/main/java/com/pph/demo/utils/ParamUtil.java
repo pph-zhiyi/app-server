@@ -3,9 +3,13 @@ package com.pph.demo.utils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Component;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 /**
  * @Author: PPH
@@ -85,7 +89,7 @@ public final class ParamUtil {
      *
      * @param map
      */
-    public static void makePageInfo(Map<String, Object> map) {
+    public void makePageInfo(Map<String, Object> map) {
         String pageNo = Constants.Page.PAGE_NO.val(), pageSize = Constants.Page.PAGE_SIZE.val();
         String offSet = Constants.Page.OFF_SET.val(), isPage = Constants.Page.IS_PAGE.val();
 
@@ -100,5 +104,70 @@ public final class ParamUtil {
 
         map.put(offSet, (Integer.parseInt(String.valueOf(map.get(pageNo))) - 1)
                 * Integer.parseInt(String.valueOf(map.get(pageSize))));
+    }
+
+    /**
+     * Adapter from  Stream<E> to Iterable<E>
+     *
+     * @param stream
+     * @param <E>
+     * @return
+     */
+    public <E> Iterable<E> iterableOf(Stream<E> stream) {
+        return stream::iterator;
+    }
+
+    /**
+     * Adapter from Iterable<E> to Stream<E>
+     *
+     * @param iterable
+     * @param <E>
+     * @return
+     */
+    public <E> Stream<E> streamOf(Iterable<E> iterable) {
+        return StreamSupport.stream(iterable.spliterator(), false);
+    }
+
+    /**
+     * 将 Date 格式化为字符串类型（默认：yyyy-MM-dd HH:mm:ss）
+     *
+     * @param date
+     * @return
+     */
+    public String dateToStr(Date date) {
+        return dateToStr(date, "yyyy-MM-dd HH:mm:ss");
+    }
+
+    /**
+     * 将 Date 格式化为自定义字符串类型
+     *
+     * @param date
+     * @param format
+     * @return
+     */
+    public String dateToStr(Date date, String format) {
+        return new SimpleDateFormat(notBlank(format, "format can not be blank!"))
+                .format(notNull(date, "date can not be null!"));
+    }
+
+    /**
+     * 将 13位时间戳 格式化为自定义字符串类型
+     *
+     * @param date
+     * @param format
+     * @return
+     */
+    public String dateToStr(long date, String format) {
+        return dateToStr(new Date(date), format);
+    }
+
+    /**
+     * 将 13位时间戳 格式化为字符串类型（默认：yyyy-MM-dd HH:mm:ss）
+     *
+     * @param date
+     * @return
+     */
+    public String dateToStr(long date) {
+        return dateToStr(new Date(date));
     }
 }

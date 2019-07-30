@@ -81,7 +81,6 @@ public final class ParamUtil {
         if (StringUtils.isEmpty(str))
             throw new IllegalArgumentException(msg);
         return str;
-
     }
 
     /**

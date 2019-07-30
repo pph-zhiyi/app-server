@@ -6,26 +6,30 @@ package com.pph.demo.utils;
  * @Description:
  */
 public final class Constants {
-    /**
-     * 私有构造
-     */
     private Constants() {
+
     }
 
+    /**
+     * 默认时间字符串格式
+     */
+    public static final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
     /**
      * 空字符串
      */
     public static final String EMPTY = "";
-
     /**
      * 通用空格占位符
      */
     public static final String SIGN_1 = " ";
-
     /**
      * 下划线符号
      */
     public static final String SIGN_2 = "_";
+    /**
+     * 逗号
+     */
+    public static final String SIGN_3 = ",";
 
     public enum Page {
         PAGE_NO("pageNo"),

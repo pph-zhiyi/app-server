@@ -34,6 +34,8 @@ public class Other {
         List<? extends Serializable> p2 = pickTwo("a", "b", 1);
         System.out.println(p1.toString());
         System.out.println(p2.toString());
+
+        List<String> emptyList = getEmptyList();
     }
 
     /**
@@ -84,5 +86,9 @@ public class Other {
                 return Stream.of(b, c).collect(Collectors.toList());
         }
         throw new AssertionError();
+    }
+
+    public static List<String> getEmptyList() {
+        return Collections.emptyList();
     }
 }

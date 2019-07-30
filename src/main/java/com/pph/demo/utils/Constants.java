@@ -13,9 +13,19 @@ public final class Constants {
     }
 
     /**
+     * 空字符串
+     */
+    public static final String EMPTY = "";
+
+    /**
      * 通用空格占位符
      */
-    public static final String S_1 = " ";
+    public static final String SIGN_1 = " ";
+
+    /**
+     * 下划线符号
+     */
+    public static final String SIGN_2 = "_";
 
     public enum Page {
         PAGE_NO("pageNo"),

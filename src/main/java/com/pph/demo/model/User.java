@@ -15,7 +15,7 @@ public class User {
 
     private Integer age;
 
-    private Date gmt_create;
+    private Date gmtCreate;
 
-    private Date gmt_modify;
+    private Date gmtModify;
 }

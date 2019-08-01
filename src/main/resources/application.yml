@@ -34,3 +34,5 @@ mybatis:
 #  level:
 #    com.pph.demo.mapper: debug # 打印执行 SQL (方法二)
 jdbc.type: mysql
+
+test: TEST

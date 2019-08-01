@@ -83,23 +83,23 @@ public class ParamUtil {
     /**
      * 分页参数初始化
      *
-     * @param map
+     * @param filter
      */
-    public void makePageInfo(Map<String, Object> map) {
+    public void makePageInfo(Map<String, Object> filter) {
         String pageNo = Constants.Page.PAGE_NO.val(), pageSize = Constants.Page.PAGE_SIZE.val();
         String offSet = Constants.Page.OFF_SET.val(), isPage = Constants.Page.IS_PAGE.val();
 
-        if (!map.containsKey(pageNo) || Objects.isNull(map.get(pageNo)))
-            map.put(pageNo, 1);
+        if (!filter.containsKey(pageNo) || Objects.isNull(filter.get(pageNo)))
+            filter.put(pageNo, 1);
 
-        if (!map.containsKey(pageSize) || Objects.isNull(map.get(pageSize)))
-            map.put(pageSize, 20);
+        if (!filter.containsKey(pageSize) || Objects.isNull(filter.get(pageSize)))
+            filter.put(pageSize, 20);
 
-        if (!map.containsKey(isPage) || Objects.isNull(map.get(isPage)))
-            map.put(isPage, true);
+        if (!filter.containsKey(isPage) || Objects.isNull(filter.get(isPage)))
+            filter.put(isPage, true);
 
-        map.put(offSet, (Integer.parseInt(String.valueOf(map.get(pageNo))) - 1)
-                * Integer.parseInt(String.valueOf(map.get(pageSize))));
+        filter.put(offSet, (Integer.parseInt(String.valueOf(filter.get(pageNo))) - 1)
+                * Integer.parseInt(String.valueOf(filter.get(pageSize))));
     }
 
     /**

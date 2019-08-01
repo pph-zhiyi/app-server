@@ -164,9 +164,9 @@ public final class Params {
     /**
      * 分页参数初始化
      *
-     * @param map
+     * @param filter
      */
-    public static void makePageInfo(Map<String, Object> map) {
-        new ParamUtil().makePageInfo(map);
+    public static void makePageInfo(Map<String, Object> filter) {
+        new ParamUtil().makePageInfo(notNull(filter, "filter can not be null!"));
     }
 }

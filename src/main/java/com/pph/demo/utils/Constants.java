@@ -1,5 +1,14 @@
 package com.pph.demo.utils;
 
+import com.pph.demo.utils.common.Params;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Objects;
+import java.util.Properties;
+
 /**
  * @Author: PPH
  * @Date: 2019-07-02 15:42
@@ -10,6 +19,12 @@ public final class Constants {
 
     }
 
+    /**
+     * 日志
+     */
+    private static final Logger LOGGER = LoggerFactory.getLogger(Constants.class);
+
+    private static final String CONFIG_FILE = "/application.yml";
     /**
      * 默认时间字符串格式
      */
@@ -35,6 +50,13 @@ public final class Constants {
      */
     public static final String SIGN_4 = "&";
 
+    public static final String YML_TEST;
+
+    static {
+        Properties properties = loadProperties(CONFIG_FILE);
+        YML_TEST = properties.getProperty("test");
+    }
+
     /**
      * 分页属性 KEY
      */
@@ -53,5 +75,25 @@ public final class Constants {
         public String val() {
             return val;
         }
+    }
+
+    private static Properties loadProperties(String path) {
+        InputStream is = Constants.class.getResourceAsStream(Params.notBlank(path, "path can not be blank!"));
+        Properties properties = new Properties();
+
+        try {
+            properties.load(is);
+        } catch (IOException e) {
+            LOGGER.error(e.getMessage(), e);
+        } finally {
+            try {
+                if (Objects.nonNull(is))
+                    is.close();
+            } catch (IOException e) {
+                LOGGER.error(e.getMessage(), e);
+            }
+        }
+
+        return properties;
     }
 }

@@ -4,7 +4,7 @@ import com.pph.demo.model.User;
 import com.pph.demo.service.UserService;
 import com.pph.demo.utils.oval.OvalVerifyUtil;
 import com.pph.demo.vo.request.user.CreateUserVo;
-import com.pph.demo.vo.response.PageResult;
+import com.pph.demo.utils.PageResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +52,7 @@ public class UserController {
         LOGGER.info("^^^queryUser filter: {}", filter);
         List<User> users = userService.queryUserByTerms(filter);
         Integer total = userService.queryCountByTerms(filter);
-        return new PageResult(users, total, filter);
+        return new PageResult<>(users, total, filter);
     }
 
     /**

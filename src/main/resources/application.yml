@@ -29,10 +29,15 @@ mybatis:
   # 扫描 pojo 类的位置,在此处指明扫描实体类的包，在 mapper 中就可以不用写 pojo 类的全路径名了
   type-aliases-package: com.pph.demo.model
   configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 打印执行 SQL (方法一)
+    # 打印执行 SQL (方法一)
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    #开启驼峰命名转换
+    map-underscore-to-camel-case: true
 #logging:
 #  level:
-#    com.pph.demo.mapper: debug # 打印执行 SQL (方法二)
+#    # 打印执行 SQL (方法二)
+#    com.pph.demo.mapper: debug
+
 jdbc.type: mysql
 
 test: TEST

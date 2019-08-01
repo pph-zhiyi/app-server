@@ -17,10 +17,7 @@ import java.util.stream.StreamSupport;
  * @Description:
  */
 @Component
-public final class ParamUtil {
-    private ParamUtil() {
-    }
-
+public class ParamUtil {
     /**
      * 对象非空校验：
      * <p>

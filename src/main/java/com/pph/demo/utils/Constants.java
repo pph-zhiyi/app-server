@@ -23,14 +23,21 @@ public final class Constants {
      */
     public static final String SIGN_1 = " ";
     /**
-     * 下划线符号
+     * 下划线符号拼接符
      */
     public static final String SIGN_2 = "_";
     /**
      * 逗号
      */
     public static final String SIGN_3 = ",";
+    /**
+     * URL 参数拼接 与字符
+     */
+    public static final String SIGN_4 = "&";
 
+    /**
+     * 分页属性 KEY
+     */
     public enum Page {
         PAGE_NO("pageNo"),
         PAGE_SIZE("pageSize"),

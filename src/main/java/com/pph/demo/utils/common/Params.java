@@ -1,10 +1,12 @@
 package com.pph.demo.utils.common;
 
 import com.pph.demo.utils.Constants;
+import com.pph.demo.utils.ParamUtil;
 import org.apache.commons.lang.StringUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -157,5 +159,14 @@ public final class Params {
      */
     public static String dateToStr(long date, String format) {
         return dateToStr(new Date(date), format);
+    }
+
+    /**
+     * 分页参数初始化
+     *
+     * @param map
+     */
+    public static void makePageInfo(Map<String, Object> map) {
+        new ParamUtil().makePageInfo(map);
     }
 }

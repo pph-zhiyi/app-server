@@ -1,7 +1,6 @@
 package com.pph.demo.utils.common;
 
 import com.pph.demo.utils.Constants;
-import com.pph.demo.utils.ParamUtil;
 import org.apache.commons.lang.StringUtils;
 
 import java.text.SimpleDateFormat;
@@ -167,6 +166,21 @@ public final class Params {
      * @param filter
      */
     public static void makePageInfo(Map<String, Object> filter) {
-        new ParamUtil().makePageInfo(notNull(filter, "filter can not be null!"));
+        Objects.requireNonNull(filter, "filter can not be null!");
+
+        String pageNo = Constants.Page.PAGE_NO.val(), pageSize = Constants.Page.PAGE_SIZE.val();
+        String offSet = Constants.Page.OFF_SET.val(), isPage = Constants.Page.IS_PAGE.val();
+
+        if (!filter.containsKey(pageNo) || Objects.isNull(filter.get(pageNo)))
+            filter.put(pageNo, 1);
+
+        if (!filter.containsKey(pageSize) || Objects.isNull(filter.get(pageSize)))
+            filter.put(pageSize, 20);
+
+        if (!filter.containsKey(isPage) || Objects.isNull(filter.get(isPage)))
+            filter.put(isPage, true);
+
+        filter.put(offSet, (Integer.parseInt(String.valueOf(filter.get(pageNo))) - 1)
+                * Integer.parseInt(String.valueOf(filter.get(pageSize))));
     }
 }

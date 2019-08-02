@@ -2,9 +2,11 @@ package com.pph.demo.controller;
 
 import com.pph.demo.model.User;
 import com.pph.demo.service.UserService;
-import com.pph.demo.utils.oval.OvalVerifyUtil;
+import com.pph.demo.utils.oval.OvalVerify;
 import com.pph.demo.vo.request.user.CreateUserVo;
 import com.pph.demo.utils.PageResult;
+import com.pph.demo.vo.request.user.DeleteUserVo;
+import com.pph.demo.vo.request.user.UpdateUserVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,13 +30,6 @@ public class UserController {
      * 日志
      */
     private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
-
-    /**
-     * 参数校验
-     */
-    @Autowired
-    private OvalVerifyUtil ovalVerifyUtil;
-
     /**
      * 用户相关操作
      */
@@ -48,7 +43,7 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/query", method = RequestMethod.POST)
-    public PageResult queryUser(@RequestBody Map<String, Object> filter) {
+    public PageResult<User> queryUser(@RequestBody Map<String, Object> filter) {
         LOGGER.info("^^^queryUser filter: {}", filter);
         List<User> users = userService.queryUserByTerms(filter);
         Integer total = userService.queryCountByTerms(filter);
@@ -58,13 +53,39 @@ public class UserController {
     /**
      * 新增用户
      *
-     * @param req
+     * @param request
      * @return
      */
-    @RequestMapping(value = "create/user", method = RequestMethod.POST)
-    public Object createUser(@RequestBody CreateUserVo req) {
-        LOGGER.info("^^^createUser request: {}", req.toString());
-        ovalVerifyUtil.verifyObj(req);
-        return userService.createUser(req);
+    @RequestMapping(value = "/create/user", method = RequestMethod.POST)
+    public Integer createUser(@RequestBody CreateUserVo request) {
+        LOGGER.info("^^^createUser request: {}", request);
+        OvalVerify.verifyObj(request);
+        return userService.createUser(request);
+    }
+
+    /**
+     * 根据 id 修改用户
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/update/user", method = RequestMethod.POST)
+    public Integer updateUserById(@RequestBody UpdateUserVo request) {
+        LOGGER.info("^^^updateUserById request: {}", request);
+        OvalVerify.verifyObj(request);
+        return userService.updateUserById(request);
+    }
+
+    /**
+     * 根据 id 删除用户
+     *
+     * @param user
+     * @return
+     */
+    @RequestMapping(value = "/delete/user", method = RequestMethod.POST)
+    public Integer deleteUserById(@RequestBody DeleteUserVo user) {
+        LOGGER.info("^^^deleteUserById user: {}", user);
+        OvalVerify.verifyObj(user);
+        return userService.deleteUserById(user);
     }
 }

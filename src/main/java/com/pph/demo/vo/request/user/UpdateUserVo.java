@@ -11,12 +11,12 @@ import java.util.Date;
 
 /**
  * @Author: PPH
- * @Date: 2019-05-24 10:10
+ * @Date: 2019-08-02 10:31
  * @Description:
  */
 @Data
-public class CreateUserVo {
-
+public class UpdateUserVo {
+    @NotNull(message = "id can not be null!")
     private Integer id;
 
     @NotNull(message = "name can not be null!")

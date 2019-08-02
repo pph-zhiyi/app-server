@@ -13,7 +13,13 @@ public class User {
 
     private String sex;
 
+    private Date birthday;
+
     private Integer age;
+
+    private String address;
+
+    private String description;
 
     private Date gmtCreate;
 

@@ -12,6 +12,57 @@
         </constructor>
     </resultMap>
 
+    <sql id="base_query_user_by_terms">
+        `id`,
+        `name`,
+        `sex`,
+        `birthday`,
+        `age`,
+        `address`,
+        `description`,
+        `gmt_create`,
+        `gmt_modify`
+    </sql>
+    <select id="queryUserByTerms" resultType="com.pph.demo.model.User" parameterType="java.util.Map">
+        SELECT
+        <include refid="base_query_user_by_terms"/>
+        FROM
+        `user`
+        <where>
+            <if test="id != null">
+                `id` = #{id}
+            </if>
+            <if test="name != null">
+                AND `name` LIKE CONCAT('%', #{name}, '%')
+            </if>
+            <if test="sex != null">
+                AND `sex` = #{sex}
+            </if>
+        </where>
+        ORDER BY `gmt_modify` DESC
+        <if test="isPage != null and isPage == true">
+            LIMIT #{offSet}, #{pageSize}
+        </if>
+    </select>
+
+    <select id="queryCountByTerms" resultType="java.lang.Integer" parameterType="java.util.Map">
+        SELECT
+        COUNT(*)
+        FROM
+        `user`
+        <where>
+            <if test="id != null">
+                `id` = #{id}
+            </if>
+            <if test="name != null">
+                AND `name` LIKE CONCAT('%', #{name}, '%')
+            </if>
+            <if test="sex != null">
+                AND `sex` = #{sex}
+            </if>
+        </where>
+    </select>
+
     <insert id="createUser" useGeneratedKeys="true" keyProperty="id"
             parameterType="com.pph.demo.vo.request.user.CreateUserVo">
         <selectKey>
@@ -44,47 +95,34 @@
         </trim>
     </insert>
 
-
-    <sql id="base_query_user_by_terms">
-        `id`, `name`, `sex`, `age`, `gmt_create`, `gmt_modify`
-    </sql>
-    <select id="queryUserByTerms" resultType="com.pph.demo.model.User" parameterType="java.util.Map">
-        SELECT
-            <include refid="base_query_user_by_terms" />
-        FROM
-            `user`
-        <where>
-            <if test="id != null">
-                `id` = #{id}
-            </if>
+    <update id="updateUserById" parameterType="com.pph.demo.vo.request.user.UpdateUserVo">
+        UPDATE `user`
+        <set>
             <if test="name != null">
-                AND `name` LIKE CONCAT('%', #{name}, '%')
+                `name` = #{name},
             </if>
             <if test="sex != null">
-                AND `sex` = #{sex}
+                `sex` = #{sex},
             </if>
-        </where>
-        ORDER BY `gmt_modify` DESC
-        <if test="isPage != null and isPage == true">
-            LIMIT #{offSet}, #{pageSize}
-        </if>
-    </select>
-
-    <select id="queryCountByTerms" resultType="java.lang.Integer" parameterType="java.util.Map">
-        SELECT
-            COUNT(*)
-        FROM
-            `user`
+            <if test="birthday != null">
+                `birthday` = #{birthday},
+            </if>
+            <if test="age != null">
+                `age` = #{age},
+            </if>
+            <if test="address != null">
+                `address` = #{address},
+            </if>
+            <if test="description != null">
+                `description` = #{description},
+            </if>
+        </set>
         <where>
-            <if test="id != null">
-                `id` = #{id}
-            </if>
-            <if test="name != null">
-                AND `name` LIKE CONCAT('%', #{name}, '%')
-            </if>
-            <if test="sex != null">
-                AND `sex` = #{sex}
-            </if>
+            `id` = #{id}
         </where>
-    </select>
+    </update>
+
+    <delete id="deleteUserById" parameterType="com.pph.demo.vo.request.user.DeleteUserVo">
+        DELETE FROM `user` WHERE `id` = #{id}
+    </delete>
 </mapper>

@@ -2,13 +2,13 @@ package com.pph.demo.controller;
 
 import com.pph.demo.model.User;
 import com.pph.demo.service.UserService;
+import com.pph.demo.utils.common.ApiResult;
+import com.pph.demo.utils.common.Result;
 import com.pph.demo.utils.oval.OvalVerify;
 import com.pph.demo.vo.request.user.CreateUserVo;
 import com.pph.demo.utils.PageResult;
 import com.pph.demo.vo.request.user.DeleteUserVo;
 import com.pph.demo.vo.request.user.UpdateUserVo;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,10 +27,6 @@ import java.util.Map;
 @RequestMapping("/user")
 public class UserController {
     /**
-     * 日志
-     */
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
-    /**
      * 用户相关操作
      */
     @Autowired
@@ -43,8 +39,7 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/query", method = RequestMethod.POST)
-    public PageResult<User> queryUser(@RequestBody Map<String, Object> filter) {
-        LOGGER.info("^^^queryUser filter: {}", filter);
+    public Object queryUser(@RequestBody Map<String, Object> filter) {
         List<User> users = userService.queryUserByTerms(filter);
         Integer total = userService.queryCountByTerms(filter);
         return new PageResult<>(users, total, filter);
@@ -56,11 +51,10 @@ public class UserController {
      * @param request
      * @return
      */
-    @RequestMapping(value = "/create/user", method = RequestMethod.POST)
-    public Integer createUser(@RequestBody CreateUserVo request) {
-        LOGGER.info("^^^createUser request: {}", request);
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public Result<Integer> createUser(@RequestBody CreateUserVo request) {
         OvalVerify.verifyObj(request);
-        return userService.createUser(request);
+        return ApiResult.success(userService.createUser(request));
     }
 
     /**
@@ -69,9 +63,8 @@ public class UserController {
      * @param request
      * @return
      */
-    @RequestMapping(value = "/update/user", method = RequestMethod.POST)
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     public Integer updateUserById(@RequestBody UpdateUserVo request) {
-        LOGGER.info("^^^updateUserById request: {}", request);
         OvalVerify.verifyObj(request);
         return userService.updateUserById(request);
     }
@@ -82,10 +75,15 @@ public class UserController {
      * @param user
      * @return
      */
-    @RequestMapping(value = "/delete/user", method = RequestMethod.POST)
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public Integer deleteUserById(@RequestBody DeleteUserVo user) {
-        LOGGER.info("^^^deleteUserById user: {}", user);
         OvalVerify.verifyObj(user);
         return userService.deleteUserById(user);
+    }
+
+    @RequestMapping(value = "/test", method = RequestMethod.POST)
+    public Object test(@RequestBody CreateUserVo request) {
+        int i = 1 / 0;
+        return "hello";
     }
 }

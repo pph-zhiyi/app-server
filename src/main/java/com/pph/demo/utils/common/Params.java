@@ -89,7 +89,7 @@ public final class Params {
      */
     public static String captureName(String name) {
         if (StringUtils.isEmpty(name))
-            return Constants.EMPTY;
+            return Constants.BLANK;
 
         char[] cs = name.toCharArray();
         if (cs[0] >= 97 && cs[0] <= 122)
@@ -106,7 +106,7 @@ public final class Params {
      */
     public static String makeColumnName(String columnName) {
         if (StringUtils.isEmpty(columnName))
-            return Constants.EMPTY;
+            return Constants.BLANK;
 
         StringBuilder result = new StringBuilder();
         String[] split = columnName.split(Constants.SIGN_2);
@@ -166,7 +166,7 @@ public final class Params {
      * @param filter
      */
     public static void makePageInfo(Map<String, Object> filter) {
-        Objects.requireNonNull(filter, "filter can not be null!");
+        Objects.requireNonNull(filter, "aspect can not be null!");
 
         String pageNo = Constants.Page.PAGE_NO.val(), pageSize = Constants.Page.PAGE_SIZE.val();
         String offSet = Constants.Page.OFF_SET.val(), isPage = Constants.Page.IS_PAGE.val();

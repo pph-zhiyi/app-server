@@ -21,10 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/login")
 public class LoginController {
     /**
-     * 日志
-     */
-    private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
-    /**
      * login
      */
     @Autowired
@@ -38,7 +34,6 @@ public class LoginController {
      */
     @RequestMapping(value = "/exists", method = RequestMethod.POST)
     public Boolean isExists(@RequestBody LoginVo request) {
-        LOGGER.info("isExists request: {}", request);
         OvalVerify.verifyObj(request);
         return loginService.isExists(request);
     }
@@ -51,7 +46,6 @@ public class LoginController {
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public Integer register(@RequestBody LoginVo request) {
-        LOGGER.info("register request: {}", request);
         OvalVerify.verifyObj(request);
         return loginService.register(request);
     }
@@ -64,7 +58,6 @@ public class LoginController {
      */
     @RequestMapping("/redis/string")
     public String redisString(@RequestBody RedisStringVo request) {
-        LOGGER.info("redisString request: {}", request);
         OvalVerify.verifyObj(request);
         switch (request.getType()) {
             case "get":

@@ -35,13 +35,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> queryUserByTerms(Map<String, Object> filter) {
         Params.makePageInfo(filter);
-        LOGGER.info("^^^queryUserByTerms filter: {}", filter);
+        LOGGER.info("^^^queryUserByTerms aspect: {}", filter);
         return userMapper.queryUserByTerms(filter);
     }
 
     @Override
     public Integer queryCountByTerms(Map<String, Object> filter) {
-        LOGGER.info("^^^queryCountByTerms filter: {}", filter);
+        LOGGER.info("^^^queryCountByTerms aspect: {}", filter);
         return userMapper.queryCountByTerms(filter);
     }
 

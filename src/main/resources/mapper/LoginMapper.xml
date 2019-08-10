@@ -37,7 +37,6 @@
             <if test="password != null">
                 `password`,
             </if>
-            `gmt_create`
         </trim>
         <trim prefix="VALUES(" suffix=")" suffixOverrides=",">
             <if test="user != null">
@@ -46,7 +45,6 @@
             <if test="password != null">
                 #{password},
             </if>
-            NOW()
         </trim>
     </insert>
 </mapper>

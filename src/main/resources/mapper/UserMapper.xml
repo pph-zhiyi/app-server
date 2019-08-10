@@ -76,10 +76,18 @@
             <if test="sex != null">
                 `sex`,
             </if>
+            <if test="birthday != null">
+                `birthday`,
+            </if>
             <if test="age != null">
                 `age`,
             </if>
-            `gmt_create`
+            <if test="address != null">
+                `address`,
+            </if>
+            <if test="description != null">
+                `description`,
+            </if>
         </trim>
         <trim prefix="VALUES(" suffix=")" suffixOverrides=",">
             <if test="name != null">
@@ -88,10 +96,18 @@
             <if test="sex != null">
                 #{sex},
             </if>
+            <if test="birthday != null">
+                #{birthday},
+            </if>
             <if test="age != null">
                 #{age},
             </if>
-            NOW()
+            <if test="address != null">
+                #{address},
+            </if>
+            <if test="description != null">
+                #{description},
+            </if>
         </trim>
     </insert>
 

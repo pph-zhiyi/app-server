@@ -32,7 +32,7 @@ public final class Constants {
     /**
      * 空字符串
      */
-    public static final String EMPTY = "";
+    public static final String BLANK = "";
     /**
      * 通用空格占位符
      */
@@ -49,6 +49,10 @@ public final class Constants {
      * URL 参数拼接 与字符
      */
     public static final String SIGN_4 = "&";
+    /**
+     * 英文点符号
+     */
+    public static final String SIGN_5 = ".";
 
     public static final String YML_TEST;
 

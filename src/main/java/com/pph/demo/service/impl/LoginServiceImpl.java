@@ -45,7 +45,7 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public Boolean isExists(LoginVo r) {
         LOGGER.info("isExists params: {}", r);
-        return loginMapper.queryLoginByUserAndPwd(r.getUser(), r.getPassword()) == null ? false : true;
+        return Objects.nonNull(loginMapper.queryLoginByUserAndPwd(r.getUser(), r.getPassword()));
     }
 
     @Override

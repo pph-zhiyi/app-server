@@ -38,6 +38,6 @@ mybatis:
 #    # 打印执行 SQL (方法二)
 #    com.pph.demo.mapper: debug
 
-jdbc.type: mysql
+#jdbc.type: mysql
 
 test: TEST

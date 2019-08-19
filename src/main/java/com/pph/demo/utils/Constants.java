@@ -53,7 +53,9 @@ public final class Constants {
      * 英文点符号
      */
     public static final String SIGN_5 = ".";
-
+    /**
+     * 测试读取文件初始化
+     */
     public static final String YML_TEST;
 
     static {
@@ -81,6 +83,12 @@ public final class Constants {
         }
     }
 
+    /**
+     * 读文件值
+     *
+     * @param path
+     * @return
+     */
     private static Properties loadProperties(String path) {
         InputStream is = Constants.class.getResourceAsStream(Params.notBlank(path, "path can not be blank!"));
         Properties properties = new Properties();

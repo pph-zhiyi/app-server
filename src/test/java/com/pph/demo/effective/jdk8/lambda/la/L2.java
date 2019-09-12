@@ -15,7 +15,7 @@ import java.util.stream.Stream;
 public class L2 {
 
     public static void main(String[] args) {
-        List<String> words = Stream.of("aa", "a", "aaa").collect(Collectors.toList());
+        List<String> words = Stream.of("aa", "a", "banner.txt").collect(Collectors.toList());
         System.out.println(words.toString());
         Collections.sort(words, new Comparator<String>() {
             public int compare(String s1, String s2) {
@@ -24,12 +24,12 @@ public class L2 {
         });
         System.out.println(words.toString());
 
-        List<String> words2 = Stream.of("aa", "a", "aaa").collect(Collectors.toList());
+        List<String> words2 = Stream.of("aa", "a", "banner.txt").collect(Collectors.toList());
         System.out.println(words2.toString());
         Collections.sort(words2, Comparator.comparingInt(String::length));
         System.out.println(words2.toString());
 
-        List<String> words3 = Stream.of("aa", "a", "aaa").collect(Collectors.toList());
+        List<String> words3 = Stream.of("aa", "a", "banner.txt").collect(Collectors.toList());
         System.out.println(words3.toString());
         words3.sort(Comparator.comparingInt(String::length));
         System.out.println(words3.toString());

@@ -9,7 +9,7 @@ public class Sample {
 
     @Test
     public static void m1() {
-        System.out.println("aaa");
+        System.out.println("banner.txt");
     }
 
     public static void m2() {

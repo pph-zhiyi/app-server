@@ -4,8 +4,6 @@ import com.pph.demo.service.LoginService;
 import com.pph.demo.utils.oval.OvalVerify;
 import com.pph.demo.vo.request.login.LoginVo;
 import com.pph.demo.vo.request.login.RedisStringVo;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,13 +27,13 @@ public class LoginController {
     /**
      * 登陆
      *
-     * @param request
+     * @param req
      * @return
      */
     @RequestMapping(value = "/exists", method = RequestMethod.POST)
-    public Boolean isExists(@RequestBody LoginVo request) {
-        OvalVerify.verifyObj(request);
-        return loginService.isExists(request);
+    public Boolean isExists(@RequestBody LoginVo req) {
+        OvalVerify.verifyObj(req);
+        return loginService.isExists(req.getUser(), req.getPassword());
     }
 
     /**

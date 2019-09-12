@@ -1,31 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.pph.demo.mapper.UserMapper">
-    <resultMap id="BaseResultMap" type="com.pph.demo.model.User">
-        <constructor>
-            <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer"/>
-            <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="sex" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="age" jdbcType="INTEGER" javaType="java.lang.Integer"/>
-            <arg column="gmt_create" jdbcType="DATE" javaType="java.util.Date"/>
-            <arg column="gmt_modify" jdbcType="DATE" javaType="java.util.Date"/>
-        </constructor>
+    <resultMap id="BaseRM" type="com.pph.demo.model.User">
+        <!--        <constructor>-->
+        <!--            <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer"/>-->
+        <!--            <arg column="user" jdbcType="VARCHAR" javaType="java.lang.String"/>-->
+        <!--        </constructor>-->
+        <id column="id" jdbcType="INTEGER" javaType="java.lang.Integer" property="id"/>
+        <result column="user" jdbcType="VARCHAR" javaType="java.lang.String" property="user"/>
+        <result column="password" jdbcType="VARCHAR" javaType="java.lang.String" property="password"/>
+        <result column="name" jdbcType="VARCHAR" javaType="java.lang.String" property="name"/>
+        <result column="sex" jdbcType="VARCHAR" javaType="java.lang.String" property="sex"/>
+        <result column="birthday" jdbcType="DATE" javaType="java.util.Date" property="birthday"/>
+        <result column="address" jdbcType="VARCHAR" javaType="java.lang.String" property="address"/>
+        <result column="description" jdbcType="VARCHAR" javaType="java.lang.String" property="description"/>
+        <result column="gmt_create" jdbcType="TIMESTAMP" javaType="java.util.Date" property="gmtCreate"/>
+        <result column="gmt_modify" jdbcType="TIMESTAMP" javaType="java.util.Date" property="gmtModify"/>
     </resultMap>
 
-    <sql id="base_query_user_by_terms">
-        `id`,
-        `name`,
-        `sex`,
-        `birthday`,
-        `age`,
-        `address`,
-        `description`,
-        `gmt_create`,
-        `gmt_modify`
+    <sql id="queryUserByTermsColumn">
+        `id`, `user`, `password`, `name`, `sex`, `birthday`,
+        `address`, `description`, `gmt_create`, `gmt_modify`
     </sql>
-    <select id="queryUserByTerms" resultType="com.pph.demo.model.User" parameterType="java.util.Map">
+    <select id="queryUserByTerms" resultMap="BaseRM" parameterType="java.util.Map">
         SELECT
-        <include refid="base_query_user_by_terms"/>
+        <include refid="queryUserByTermsColumn"/>
         FROM
         `user`
         <where>
@@ -70,6 +69,12 @@
         </selectKey>
         INSERT INTO `user`
         <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="user != null">
+                `user`,
+            </if>
+            <if test="password != null">
+                `password`,
+            </if>
             <if test="name != null">
                 `name`,
             </if>
@@ -79,9 +84,6 @@
             <if test="birthday != null">
                 `birthday`,
             </if>
-            <if test="age != null">
-                `age`,
-            </if>
             <if test="address != null">
                 `address`,
             </if>
@@ -90,6 +92,12 @@
             </if>
         </trim>
         <trim prefix="VALUES(" suffix=")" suffixOverrides=",">
+            <if test="user != null">
+                #{user},
+            </if>
+            <if test="password != null">
+                #{password},
+            </if>
             <if test="name != null">
                 #{name},
             </if>
@@ -98,9 +106,6 @@
             </if>
             <if test="birthday != null">
                 #{birthday},
-            </if>
-            <if test="age != null">
-                #{age},
             </if>
             <if test="address != null">
                 #{address},
@@ -114,6 +119,12 @@
     <update id="updateUserById" parameterType="com.pph.demo.vo.request.user.UpdateUserVo">
         UPDATE `user`
         <set>
+            <if test="user != null">
+                `user` = #{user},
+            </if>
+            <if test="password != null">
+                `password` = #{password},
+            </if>
             <if test="name != null">
                 `name` = #{name},
             </if>
@@ -122,9 +133,6 @@
             </if>
             <if test="birthday != null">
                 `birthday` = #{birthday},
-            </if>
-            <if test="age != null">
-                `age` = #{age},
             </if>
             <if test="address != null">
                 `address` = #{address},

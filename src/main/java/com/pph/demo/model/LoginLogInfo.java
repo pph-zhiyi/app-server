@@ -4,8 +4,13 @@ import lombok.Data;
 
 import java.util.Date;
 
+/**
+ * @Author: pph
+ * @Date: 2019/9/6 17:50
+ * @Description:
+ */
 @Data
-public class User {
+public class LoginLogInfo {
     /**
      * 主键-ID
      */
@@ -19,25 +24,17 @@ public class User {
      */
     private String password;
     /**
-     * 姓名
+     * 用户详细信息
      */
-    private String name;
+    private String userInfo;
     /**
-     * 性别
+     * 登录时间
      */
-    private String sex;
+    private Date entryTime;
     /**
-     * 生日
+     * 是否登录成功
      */
-    private Date birthday;
-    /**
-     * 住址
-     */
-    private String address;
-    /**
-     * 描述
-     */
-    private String description;
+    private Boolean isLogin;
     /**
      * 记录创建时间
      */

@@ -39,10 +39,10 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/query", method = RequestMethod.POST)
-    public Object queryUser(@RequestBody Map<String, Object> filter) {
+    public PageResult<User> queryUser(@RequestBody Map<String, Object> filter) {
         List<User> users = userService.queryUserByTerms(filter);
         Integer total = userService.queryCountByTerms(filter);
-        return new PageResult<>(users, total, filter);
+        return PageResult.make(users, total, filter);
     }
 
     /**
@@ -79,11 +79,5 @@ public class UserController {
     public Integer deleteUserById(@RequestBody DeleteUserVo user) {
         OvalVerify.verifyObj(user);
         return userService.deleteUserById(user);
-    }
-
-    @RequestMapping(value = "/test", method = RequestMethod.POST)
-    public Object test(@RequestBody CreateUserVo request) {
-        int i = 1 / 0;
-        return "hello";
     }
 }

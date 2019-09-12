@@ -11,14 +11,14 @@ import java.util.List;
  * @Description:
  */
 public interface LoginService {
-
     /**
      * 登陆查询
      *
-     * @param r
+     * @param user
+     * @param password
      * @return
      */
-    Boolean isExists(LoginVo r);
+    Boolean isExists(String user, String password);
 
     /**
      * 注册

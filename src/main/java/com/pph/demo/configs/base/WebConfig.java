@@ -16,7 +16,7 @@
  *     默认静态资源处理器
  *     void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer);
  */
-package com.pph.demo.configs;
+package com.pph.demo.configs.base;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;

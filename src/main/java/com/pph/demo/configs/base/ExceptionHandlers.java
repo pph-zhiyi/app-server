@@ -1,6 +1,5 @@
-package com.pph.demo.configs;
+package com.pph.demo.configs.base;
 
-import com.alibaba.fastjson.JSON;
 import com.pph.demo.utils.common.ApiResult;
 import com.pph.demo.utils.common.Result;
 import org.slf4j.Logger;

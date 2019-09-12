@@ -1,4 +1,4 @@
-package com.pph.demo.configs;
+package com.pph.demo.configs.base;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

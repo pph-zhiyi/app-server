@@ -30,10 +30,10 @@ public class LoginController {
      * @param req
      * @return
      */
-    @RequestMapping(value = "/exists", method = RequestMethod.POST)
-    public Boolean isExists(@RequestBody LoginVo req) {
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public Boolean login(@RequestBody LoginVo req) {
         OvalVerify.verifyObj(req);
-        return loginService.isExists(req.getUser(), req.getPassword());
+        return loginService.login(req.getUser(), req.getPassword());
     }
 
     /**

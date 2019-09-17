@@ -3,6 +3,7 @@ package com.pph.demo.service.impl;
 import com.pph.demo.mapper.UserMapper;
 import com.pph.demo.model.User;
 import com.pph.demo.service.UserService;
+import com.pph.demo.utils.Constants;
 import com.pph.demo.utils.common.Params;
 import com.pph.demo.vo.request.user.CreateUserVo;
 import com.pph.demo.vo.request.user.DeleteUserVo;
@@ -12,8 +13,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * @Author: PPH
@@ -64,5 +67,26 @@ public class UserServiceImpl implements UserService {
         LOGGER.info("^^^deleteUserById user: {}", user);
         userMapper.deleteUserById(user);
         return user.getId();
+    }
+
+    @Override
+    public User queryUserByUserPwd(String user, String password) {
+        LOGGER.info("^^^queryUserByUserPwd user: {}，password: {}", user, password);
+        return userMapper.queryUserByUserPwd(user, password);
+    }
+
+    @Override
+    public Integer register(String user, String password) {
+        LOGGER.info("^^^register user: {}，password: {}", user, password);
+        List<User> users = queryUserByTerms(new HashMap<String, Object>(2) {
+            {
+                put("user", user);
+                put(Constants.Page.IS_PAGE.val(), false);
+            }
+        });
+        if (!users.isEmpty()) {
+            throw new RuntimeException("当前用户名已被注册！");
+        }
+        return userMapper.register(user, password);
     }
 }

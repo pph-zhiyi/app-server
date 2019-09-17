@@ -53,4 +53,22 @@ public interface UserService {
      * @return
      */
     Integer deleteUserById(DeleteUserVo user);
+
+    /**
+     * 根据用户名与密码查询用户
+     *
+     * @param user
+     * @param password
+     * @return
+     */
+    User queryUserByUserPwd(String user, String password);
+
+    /**
+     * 注册
+     *
+     * @param user
+     * @param password
+     * @return
+     */
+    Integer register(String user, String password);
 }

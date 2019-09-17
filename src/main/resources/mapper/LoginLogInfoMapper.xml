@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pph.demo.mapper.LoginLogInfoMapper">
+    <resultMap id="BaseResultMap" type="com.pph.demo.model.LoginLogInfo">
+        <constructor>
+            <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+            <arg column="user" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="password" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="user_info" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="entry_time" jdbcType="DATE" javaType="java.util.Date"/>
+            <arg column="is_login" jdbcType="TINYINT" javaType="java.lang.Byte"/>
+            <arg column="gmt_create" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+            <arg column="gmt_modify" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, user, password, user_info, entry_time, is_login, gmt_create, gmt_modify
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from login_log_info
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from login_log_info
+    where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.pph.demo.model.LoginLogInfo">
+    insert into login_log_info (id, user, password, 
+      user_info, entry_time, is_login, 
+      gmt_create, gmt_modify)
+    values (#{id,jdbcType=INTEGER}, #{user,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{userInfo,jdbcType=VARCHAR}, #{entryTime,jdbcType=DATE}, #{isLogin,jdbcType=TINYINT}, 
+      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModify,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.pph.demo.model.LoginLogInfo">
+        insert into login_log_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="user != null">
+                user,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="userInfo != null">
+                user_info,
+            </if>
+            <if test="entryTime != null">
+                entry_time,
+            </if>
+            <if test="isLogin != null">
+                is_login,
+            </if>
+            <if test="gmtCreate != null">
+                gmt_create,
+            </if>
+            <if test="gmtModify != null">
+                gmt_modify,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="user != null">
+                #{user,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="userInfo != null">
+                #{userInfo,jdbcType=VARCHAR},
+            </if>
+            <if test="entryTime != null">
+                #{entryTime,jdbcType=DATE},
+            </if>
+            <if test="isLogin != null">
+                #{isLogin,jdbcType=TINYINT},
+            </if>
+            <if test="gmtCreate != null">
+                #{gmtCreate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="gmtModify != null">
+                #{gmtModify,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.pph.demo.model.LoginLogInfo">
+        update login_log_info
+        <set>
+            <if test="user != null">
+                user = #{user,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="userInfo != null">
+                user_info = #{userInfo,jdbcType=VARCHAR},
+            </if>
+            <if test="entryTime != null">
+                entry_time = #{entryTime,jdbcType=DATE},
+            </if>
+            <if test="isLogin != null">
+                is_login = #{isLogin,jdbcType=TINYINT},
+            </if>
+            <if test="gmtCreate != null">
+                gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="gmtModify != null">
+                gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.pph.demo.model.LoginLogInfo">
+    update login_log_info
+    set user = #{user,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      user_info = #{userInfo,jdbcType=VARCHAR},
+      entry_time = #{entryTime,jdbcType=DATE},
+      is_login = #{isLogin,jdbcType=TINYINT},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modify = #{gmtModify,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+    <insert id="save" parameterType="com.pph.demo.model.LoginLogInfo">
+        <selectKey>
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO `login_log_info`
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="user != null">
+                `user`,
+            </if>
+            <if test="password != null">
+                `password`,
+            </if>
+            <if test="userInfo != null">
+                `user_info`,
+            </if>
+            <if test="entryTime != null">
+                `entry_time`,
+            </if>
+            <if test="isLogin != null">
+                `is_login`,
+            </if>
+        </trim>
+        <trim prefix="VALUES(" suffix=")" suffixOverrides=",">
+            <if test="user != null">
+                #{user},
+            </if>
+            <if test="password != null">
+                #{password},
+            </if>
+            <if test="userInfo != null">
+                #{userInfo},
+            </if>
+            <if test="entryTime != null">
+                #{entryTime},
+            </if>
+            <if test="isLogin != null">
+                #{isLogin},
+            </if>
+        </trim>
+    </insert>
+</mapper>

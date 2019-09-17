@@ -1,6 +1,5 @@
 package com.pph.demo.service;
 
-import com.pph.demo.model.Login;
 import com.pph.demo.vo.request.login.LoginVo;
 
 import java.util.List;
@@ -12,13 +11,13 @@ import java.util.List;
  */
 public interface LoginService {
     /**
-     * 登陆查询
+     * 登陆
      *
      * @param user
      * @param password
      * @return
      */
-    Boolean isExists(String user, String password);
+    Boolean login(String user, String password);
 
     /**
      * 注册

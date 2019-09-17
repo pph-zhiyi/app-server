@@ -31,6 +31,9 @@
             <if test="id != null">
                 `id` = #{id}
             </if>
+            <if test="user != null">
+                AND `user` = #{user}
+            </if>
             <if test="name != null">
                 AND `name` LIKE CONCAT('%', #{name}, '%')
             </if>
@@ -52,6 +55,9 @@
         <where>
             <if test="id != null">
                 `id` = #{id}
+            </if>
+            <if test="user != null">
+                AND `user` = #{user}
             </if>
             <if test="name != null">
                 AND `name` LIKE CONCAT('%', #{name}, '%')
@@ -149,4 +155,16 @@
     <delete id="deleteUserById" parameterType="com.pph.demo.vo.request.user.DeleteUserVo">
         DELETE FROM `user` WHERE `id` = #{id}
     </delete>
+
+    <select id="queryUserByUserPwd" resultMap="BaseRM" parameterType="java.util.Map">
+        SELECT
+        <include refid="queryUserByTermsColumn"/>
+        FROM `user`
+        WHERE
+        `user` = #{user} AND `password` = #{password}
+    </select>
+
+    <insert id="register" parameterType="java.util.Map">
+
+    </insert>
 </mapper>

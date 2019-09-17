@@ -5,6 +5,7 @@ import com.pph.demo.vo.request.user.CreateUserVo;
 import com.pph.demo.vo.request.user.DeleteUserVo;
 import com.pph.demo.vo.request.user.UpdateUserVo;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -50,4 +51,24 @@ public interface UserMapper {
      * @return
      */
     Integer deleteUserById(DeleteUserVo user);
+
+    /**
+     * 根据用户名与密码查询用户
+     *
+     * @param user
+     * @param password
+     * @return
+     */
+    User queryUserByUserPwd(@Param(value = "user") String user,
+                            @Param(value = "password") String password);
+
+    /**
+     * 简单注册
+     *
+     * @param user
+     * @param password
+     * @return
+     */
+    Integer register(@Param(value = "user") String user,
+                     @Param(value = "password") String password);
 }

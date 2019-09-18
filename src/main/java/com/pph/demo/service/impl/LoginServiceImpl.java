@@ -3,7 +3,6 @@ package com.pph.demo.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pph.demo.configs.redis.RedisService;
-import com.pph.demo.mapper.LoginLogInfoMapper;
 import com.pph.demo.model.LoginLogInfo;
 import com.pph.demo.model.User;
 import com.pph.demo.service.LoginService;
@@ -24,7 +23,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.Date;
+import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -41,9 +42,6 @@ public class LoginServiceImpl implements LoginService {
 
     @Autowired
     private UserService userService;
-
-    @Autowired
-    private LoginLogInfoMapper loginLogInfoMapper;
 
     @Autowired
     private RedisService redisService;
@@ -68,7 +66,8 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public Boolean login(String user, String password) {
-        LOGGER.info("^^^isExists user: {}, password: {}", user, password);
+        LOGGER.info("^^^login user: {}, password: {}", user, password);
+        boolean isExists;
 
         User userInfo = userService.queryUserByUserPwd(user, password);
         LoginLogInfo login = new LoginLogInfo();
@@ -76,31 +75,31 @@ public class LoginServiceImpl implements LoginService {
         login.setPassword(password);
         login.setEntryTime(new Date(System.currentTimeMillis()));
 
-        if (Objects.nonNull(userInfo)) {
-            login.setUserInfo(JSON.toJSONString(user));
+        if (isExists = Objects.nonNull(userInfo)) {
+            login.setUserInfo(JSON.toJSONString(userInfo));
             login.setIsLogin(1);
-            try {
-                objectMapper.writeValueAsString(login);
-                rabbitTemplate.setMessageConverter(new Jackson2JsonMessageConverter());
-                rabbitTemplate.setExchange(exchangeName);
-                rabbitTemplate.setRoutingKey(routingName);
-
-                Message message = MessageBuilder.withBody(objectMapper.writeValueAsBytes(login))
-                        .setDeliveryMode(MessageDeliveryMode.PERSISTENT)
-                        .build();
-                message.getMessageProperties().setHeader(AbstractJavaTypeMapper.DEFAULT_CONTENT_CLASSID_FIELD_NAME,
-                        MessageProperties.CONTENT_TYPE_JSON);
-
-                rabbitTemplate.convertAndSend(message);
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
         } else {
             login.setIsLogin(0);
         }
-        LOGGER.info("^^^login loginLogInfoMapper.save: {}", loginLogInfoMapper.save(login));
 
-        return Objects.nonNull(userInfo);
+        try {
+            objectMapper.writeValueAsString(login);
+            rabbitTemplate.setMessageConverter(new Jackson2JsonMessageConverter());
+            rabbitTemplate.setExchange(exchangeName);
+            rabbitTemplate.setRoutingKey(routingName);
+
+            Message message = MessageBuilder.withBody(objectMapper.writeValueAsBytes(login))
+                    .setDeliveryMode(MessageDeliveryMode.PERSISTENT)
+                    .build();
+            message.getMessageProperties().setHeader(AbstractJavaTypeMapper.DEFAULT_CONTENT_CLASSID_FIELD_NAME,
+                    MessageProperties.CONTENT_TYPE_JSON);
+
+            rabbitTemplate.convertAndSend(message);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return isExists;
     }
 
     @Override

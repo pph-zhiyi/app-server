@@ -2,10 +2,11 @@ package com.pph.demo.model;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
-public class LoginLogInfo {
+public class LoginLogInfo implements Serializable {
     private Integer id;
 
     private String user;

@@ -1,0 +1,8 @@
+# 配置的 URI 将不走统一的后置结果处理
+skip:
+  uniform:
+    result:
+      processing:
+        uri:
+          list:
+            - /test/test

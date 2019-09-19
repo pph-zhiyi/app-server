@@ -2,6 +2,7 @@ package com.pph.demo.configs.base;
 
 import com.pph.demo.utils.common.ApiResult;
 import com.pph.demo.utils.common.Result;
+import com.pph.demo.utils.yml.SkipUniformResultProcessingUri;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
@@ -22,9 +23,6 @@ public class ResponseAdvisor implements ResponseBodyAdvice<Object> {
     @Autowired
     private SkipUniformResultProcessingUri uriList;
 
-    @Autowired
-    private DemoYml demoYml;
-
     @Override
     public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
         return true;
@@ -35,7 +33,7 @@ public class ResponseAdvisor implements ResponseBodyAdvice<Object> {
                                   Class<? extends HttpMessageConverter<?>> selectedConverterType,
                                   ServerHttpRequest request, ServerHttpResponse response) {
         /*
-         * 如果该 URI 在 yml 中配置统一不走后置处理，直接返回原始值
+         * 如果该 URI 在 application-skip-result-processing-uri.yml 中配置统一不走后置处理，直接返回原始值
          */
         if (body instanceof Result
                 || uriList.getList().stream().anyMatch(request.getURI().getPath()::equals)) {

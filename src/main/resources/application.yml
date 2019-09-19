@@ -6,7 +6,7 @@ server:
 spring:
   profiles:
     include:
-      - demo
+      - skip-result-processing-uri
   application:
     name: app-server
   datasource:
@@ -52,15 +52,6 @@ mybatis:
 #    com.pph.demo.mapper: debug
 
 #jdbc.type: mysql
-
-# 配置的 URI 将不走统一的后置结果处理
-skip:
-  uniform:
-    result:
-      processing:
-        uri:
-          list:
-            - /test/test
 
 test: TEST
 

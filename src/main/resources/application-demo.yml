@@ -1,9 +1,0 @@
-demo:
-  d1:
-    - aaa
-    - bbb
-  d2: str
-  d3: 123
-  d4:
-    k1: v1
-    k2: v2

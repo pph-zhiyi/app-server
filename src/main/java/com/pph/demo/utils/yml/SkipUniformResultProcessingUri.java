@@ -1,4 +1,4 @@
-package com.pph.demo.configs.base;
+package com.pph.demo.utils.yml;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -6,24 +6,19 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * @Author: pph
- * @Date: 2019/9/19 16:53
+ * @Date: 2019/9/12 17:38
  * @Description:
  */
 @Data
 @Component
 @PropertySource("classpath:application.yml")
-@ConfigurationProperties(prefix = "demo")
-public class DemoYml {
-
-    private List<String> d1;
-
-    private String d2;
-
-    private Integer d3;
-
-    private Map<String, String> d4;
+@ConfigurationProperties(prefix = "skip.uniform.result.processing.uri")
+public class SkipUniformResultProcessingUri {
+    /**
+     * 跳过后置结果处理列表
+     */
+    private List<String> list;
 }

@@ -13,6 +13,10 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface SkipToken {
-
+    /**
+     * 是否跳过 token 验证
+     *
+     * @return
+     */
     boolean required() default true;
 }

@@ -22,6 +22,9 @@ public class ResponseAdvisor implements ResponseBodyAdvice<Object> {
     @Autowired
     private SkipUniformResultProcessingUri uriList;
 
+    @Autowired
+    private DemoYml demoYml;
+
     @Override
     public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
         return true;

@@ -6,19 +6,24 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author: pph
- * @Date: 2019/9/12 17:38
+ * @Date: 2019/9/19 16:53
  * @Description:
  */
 @Data
 @Component
 @PropertySource("classpath:application.yml")
-@ConfigurationProperties(prefix = "skip.uniform.result.processing.uri")
-public class SkipUniformResultProcessingUri {
-    /**
-     * 跳过后置结果处理列表
-     */
-    private List<String> list;
+@ConfigurationProperties(prefix = "demo")
+public class DemoYml {
+
+    private List<String> d1;
+
+    private String d2;
+
+    private Integer d3;
+
+    private Map<String, String> d4;
 }

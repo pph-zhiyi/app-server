@@ -4,6 +4,9 @@ server:
     context-path: /
 
 spring:
+  profiles:
+    include:
+      - demo
   application:
     name: app-server
   datasource:
@@ -57,7 +60,7 @@ skip:
       processing:
         uri:
           list:
-#            - /user/query
+            - /test/test
 
 test: TEST
 

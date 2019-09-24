@@ -18,7 +18,8 @@
  */
 package com.pph.demo.configs.base;
 
-import com.pph.demo.configs.jwt.Interceptor;
+import com.pph.demo.configs.jwt.JwtInterceptor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -40,6 +41,11 @@ public class WebConfig extends WebMvcConfigurationSupport {
      * 请求方式
      */
     private static final String[] ORIGINS = new String[]{"GET", "POST", "PUT", "DELETE"};
+    /**
+     * 登录 API URI 默认不走 JWT Token 校验
+     */
+    @Value("${def.login.uri}")
+    private String DefLoginUri;
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
@@ -57,12 +63,14 @@ public class WebConfig extends WebMvcConfigurationSupport {
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(getInterceptor())
-                .addPathPatterns("/**")             //配置拦截所有请求
-                .excludePathPatterns("/login");    // 不拦截登录请求。
+//                配置拦截所有请求　
+                .addPathPatterns("/**")
+//                不拦截登录请求
+                .excludePathPatterns(DefLoginUri);
     }
 
     @Bean
-    public Interceptor getInterceptor() {
-        return new Interceptor();
+    public JwtInterceptor getInterceptor() {
+        return new JwtInterceptor();
     }
 }

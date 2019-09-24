@@ -19,13 +19,13 @@ import java.util.Objects;
  * @Description:
  */
 @RestController
-//@RequestMapping("/jwt")
+@RequestMapping("/jwt")
 public class JwtController {
 
     @Autowired
     private UserService userService;
 
-    @SkipToken
+    @SkipToken(required = false)
     @RequestMapping("/test")
     public String test() {
         return "jwt";

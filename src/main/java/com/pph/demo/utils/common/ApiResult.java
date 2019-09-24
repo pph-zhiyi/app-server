@@ -58,13 +58,26 @@ public final class ApiResult {
     /**
      * error
      *
+     * @param code
+     * @param data
+     * @param message
+     * @param <T>
+     * @return
+     */
+    public static <T> Result<T> error(Integer code, T data, String message) {
+        return new Result<>(code, data, message, DEFAULT_ERROR);
+    }
+
+    /**
+     * error
+     *
      * @param message
      * @param data
      * @param <T>
      * @return
      */
     public static <T> Result<T> error(String message, T data) {
-        return new Result<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), data, message, DEFAULT_ERROR);
+        return error(HttpStatus.INTERNAL_SERVER_ERROR.value(), data, message);
     }
 
     /**
@@ -96,5 +109,10 @@ public final class ApiResult {
      */
     public static Result<Object> error() {
         return error(DEFAULT_ERROR_MSG);
+    }
+
+    public static <E extends Exception> Result<Object> error(Integer code, E e) {
+        return error(code, DEFAULT_DATA,
+                String.format("请求异常: Error type: %s; Error message: %s", e.getClass().getName(), e.getMessage()));
     }
 }

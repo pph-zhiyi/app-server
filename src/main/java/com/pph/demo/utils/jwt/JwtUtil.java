@@ -49,7 +49,7 @@ public class JwtUtil {
      */
     public static String decode(String token) {
         if (token == null || token.length() == 0) {
-            throw new RuntimeException("token为空:" + token);
+            throw new IllegalArgumentException("token为空:" + token);
         }
         Algorithm algorithm = Algorithm.HMAC256(SECRET);
         JWTVerifier jwtVerifier = JWT.require(algorithm).build();

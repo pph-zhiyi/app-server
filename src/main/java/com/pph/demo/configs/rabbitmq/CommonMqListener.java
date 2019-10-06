@@ -35,7 +35,7 @@ public class CommonMqListener {
      *
      * @param message
      */
-    @RabbitListener(queues = "${log.user.queue.name}", containerFactory = "singleListenerContainer")
+//    @RabbitListener(queues = "${log.user.queue.name}", containerFactory = "singleListenerContainer")
     public void consumeUserLogQueue(@Payload byte[] message) {
         try {
             LoginLogInfo loginLogInfo = objectMapper.readValue(message, LoginLogInfo.class);

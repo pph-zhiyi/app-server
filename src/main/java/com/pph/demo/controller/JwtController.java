@@ -21,14 +21,17 @@ import java.util.Objects;
 @RestController
 @RequestMapping("/jwt")
 public class JwtController {
-
     @Autowired
-    private UserService userService;
+    public JwtController(UserService userService) {
+        this.userService = userService;
+    }
+
+    private final UserService userService;
 
     @SkipToken(required = false)
     @RequestMapping("/test")
     public String test() {
-        return "jwt";
+        return "hello jwt";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)

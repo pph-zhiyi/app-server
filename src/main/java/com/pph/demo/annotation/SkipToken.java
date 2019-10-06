@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 /**
  * @Author: pph
  * @Date: 2019/9/19 19:58
- * @Description:
+ * @Description: 作用在 Controller 的 API 上，默认跳过 Token 校验
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
@@ -16,7 +16,7 @@ public @interface SkipToken {
     /**
      * 是否跳过 token 验证
      *
-     * @return
+     * @return true 跳过，false 不跳过
      */
     boolean required() default true;
 }

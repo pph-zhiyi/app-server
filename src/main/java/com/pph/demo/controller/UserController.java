@@ -26,17 +26,21 @@ import java.util.Map;
 @RestController
 @RequestMapping("/user")
 public class UserController {
+    @Autowired
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
     /**
      * 用户相关操作
      */
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
     /**
      * 根据条件过滤用户
      *
-     * @param filter
-     * @return
+     * @param filter 入参
+     * @return 结果
      */
     @RequestMapping(value = "/query", method = RequestMethod.POST)
     public PageResult<User> queryUser(@RequestBody Map<String, Object> filter) {
@@ -48,36 +52,36 @@ public class UserController {
     /**
      * 新增用户
      *
-     * @param request
-     * @return
+     * @param req 入参
+     * @return 结果
      */
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public Result<Integer> createUser(@RequestBody CreateUserVo request) {
-        OvalVerify.verifyObj(request);
-        return ApiResult.success(userService.createUser(request));
+    public Result<Integer> createUser(@RequestBody CreateUserVo req) {
+        OvalVerify.verifyObj(req);
+        return ApiResult.success(userService.createUser(req));
     }
 
     /**
      * 根据 id 修改用户
      *
-     * @param request
-     * @return
+     * @param req 入参
+     * @return 结果
      */
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public Integer updateUserById(@RequestBody UpdateUserVo request) {
-        OvalVerify.verifyObj(request);
-        return userService.updateUserById(request);
+    public Integer updateUserById(@RequestBody UpdateUserVo req) {
+        OvalVerify.verifyObj(req);
+        return userService.updateUserById(req);
     }
 
     /**
      * 根据 id 删除用户
      *
-     * @param user
-     * @return
+     * @param req 入参
+     * @return 结果
      */
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public Integer deleteUserById(@RequestBody DeleteUserVo user) {
-        OvalVerify.verifyObj(user);
-        return userService.deleteUserById(user);
+    public Integer deleteUserById(@RequestBody DeleteUserVo req) {
+        OvalVerify.verifyObj(req);
+        return userService.deleteUserById(req);
     }
 }

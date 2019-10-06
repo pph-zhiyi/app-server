@@ -29,19 +29,21 @@ import java.util.Map;
 @RestController
 @RequestMapping("/rabbitmq/test")
 public class RabbitmqTestController {
-
     @Autowired
+    public RabbitmqTestController(RabbitTemplate rabbitTemplate, Environment environment, UserService userService,
+                                  ObjectMapper objectMapper) {
+        this.rabbitTemplate = rabbitTemplate;
+        this.environment = environment;
+        this.userService = userService;
+        this.objectMapper = objectMapper;
+    }
+
     private RabbitTemplate rabbitTemplate;
 
-    @Autowired
     private Environment environment;
-    /**
-     * login
-     */
-    @Autowired
+
     private UserService userService;
 
-    @Autowired
     private ObjectMapper objectMapper;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)

@@ -18,17 +18,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/login")
 public class LoginController {
-    /**
-     * login
-     */
     @Autowired
-    private LoginService loginService;
+    public LoginController(LoginService loginService) {
+        this.loginService = loginService;
+    }
+
+    private final LoginService loginService;
 
     /**
      * 登陆
      *
-     * @param req
-     * @return
+     * @param req 入参
+     * @return 结果
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public Boolean login(@RequestBody LoginVo req) {
@@ -39,29 +40,29 @@ public class LoginController {
     /**
      * 注册
      *
-     * @param request
-     * @return
+     * @param req 入参
+     * @return 结果
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public Integer register(@RequestBody LoginVo request) {
-        OvalVerify.verifyObj(request);
-        return loginService.register(request);
+    public Integer register(@RequestBody LoginVo req) {
+        OvalVerify.verifyObj(req);
+        return loginService.register(req);
     }
 
     /**
      * 测试 redis
      *
-     * @param request
-     * @return
+     * @param req 入参
+     * @return 结果
      */
     @RequestMapping("/redis/string")
-    public String redisString(@RequestBody RedisStringVo request) {
-        OvalVerify.verifyObj(request);
-        switch (request.getType()) {
+    public String redisString(@RequestBody RedisStringVo req) {
+        OvalVerify.verifyObj(req);
+        switch (req.getType()) {
             case "get":
-                return loginService.getRedisString(request.getKey());
+                return loginService.getRedisString(req.getKey());
             case "set":
-                loginService.setRedisString(request.getKey(), request.getVal());
+                loginService.setRedisString(req.getKey(), req.getVal());
                 return "OK";
             default:
                 throw new IllegalArgumentException("type is must [get or set]");

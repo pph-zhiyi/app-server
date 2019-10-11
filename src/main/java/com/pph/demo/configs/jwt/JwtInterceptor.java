@@ -36,17 +36,27 @@ public class JwtInterceptor implements HandlerInterceptor {
         }
 
 //        检查是否有 [ @SkipToken && required = true ]，则跳过认证
-        Method method = ((HandlerMethod) handler).getMethod();
-        if (method.isAnnotationPresent(SkipToken.class) && method.getAnnotation(SkipToken.class).required()) {
+        if (isSkipToken((HandlerMethod) handler)) {
             return true;
         }
 
-        final String[] keys = new String[]{"token", "user", "password"};
-//        JSONObject body = getBody(request);
-
+        final String[] keys = new String[]{"token"};
         checkUser(request.getHeader(keys[0]));
 
         return true;
+    }
+
+    /**
+     * 检查是否有 [ @SkipToken && required = true ]，则跳过认证
+     *
+     * @param handler
+     * @return
+     */
+    private boolean isSkipToken(HandlerMethod handler) {
+        Method method = handler.getMethod();
+        return method.isAnnotationPresent(SkipToken.class)
+                && method.getAnnotation(SkipToken.class)
+                .required();
     }
 
     /**

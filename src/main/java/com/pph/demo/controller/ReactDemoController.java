@@ -33,4 +33,16 @@ public class ReactDemoController {
             }
         };
     }
+
+    @SkipToken
+    @RequestMapping(value = "/todo/list", method = RequestMethod.GET)
+    public List<String> todoList() {
+        return new ArrayList<String>(){
+            {
+                add("第一件事情");
+                add("第二件事情");
+                add("第三件事情");
+            }
+        };
+    }
 }

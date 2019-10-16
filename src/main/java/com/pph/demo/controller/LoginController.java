@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 /**
  * @Author: PPH
  * @Date: 2019-05-26 18:55
@@ -32,7 +34,7 @@ public class LoginController {
      * @return 结果
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public Boolean login(@RequestBody LoginVo req) {
+    public Map<String, Object> login(@RequestBody LoginVo req) {
         OvalVerify.verifyObj(req);
         return loginService.login(req.getUser(), req.getPassword());
     }

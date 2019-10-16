@@ -28,19 +28,19 @@ public class JwtController {
 
     private final UserService userService;
 
-    @SkipToken(required = false)
     @RequestMapping("/test")
     public String test() {
         return "hello jwt";
     }
 
+    @SkipToken
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public Object login(@RequestBody User user) {
         String name = user.getUser();
         String password = user.getPassword();
         User userInfo = userService.queryUserByUserPwd(name, password);
         if (Objects.isNull(userInfo)) {
-            throw new IllegalArgumentException("账户密码错误");
+            throw new IllegalArgumentException("账户密码不匹配");
         }
         //登录成功获得token
         String token = JwtUtil.encode(userInfo.getUser());
@@ -49,5 +49,4 @@ public class JwtController {
 
         return result;
     }
-
 }

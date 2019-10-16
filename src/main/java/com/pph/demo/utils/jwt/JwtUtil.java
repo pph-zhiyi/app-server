@@ -4,6 +4,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import org.apache.commons.lang.StringUtils;
 
 import java.util.Date;
 
@@ -47,9 +48,9 @@ public class JwtUtil {
      * @param token
      * @return
      */
-    public static String decode(String token) {
-        if (token == null || token.length() == 0) {
-            throw new IllegalArgumentException("token为空:" + token);
+    public static String decode(String token) throws UnauthorizedException {
+        if (StringUtils.isEmpty(token) || StringUtils.equalsIgnoreCase("undefined", token)) {
+            throw new UnauthorizedException("token异常:" + token);
         }
         Algorithm algorithm = Algorithm.HMAC256(SECRET);
         JWTVerifier jwtVerifier = JWT.require(algorithm).build();

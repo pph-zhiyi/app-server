@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.pph.demo.annotation.SkipToken;
 import com.pph.demo.service.UserService;
-import com.pph.demo.utils.common.Params;
 import com.pph.demo.utils.jwt.JwtUtil;
 import com.pph.demo.utils.jwt.UnauthorizedException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,10 +82,9 @@ public class JwtInterceptor implements HandlerInterceptor {
      * @throws UnauthorizedException
      */
     private void checkUser(String token) throws UnauthorizedException {
-        String decode = JwtUtil.decode(Params.notBlank(token, "token can not be blank!"));
         if (userService.queryUserByTerms(new HashMap<String, Object>() {
             {
-                put("user", decode);
+                put("user", JwtUtil.decode(token));
             }
         }).isEmpty()) {
             throw new UnauthorizedException("token error!");

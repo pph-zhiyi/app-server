@@ -8,7 +8,9 @@ import com.pph.demo.model.User;
 import com.pph.demo.service.LoginService;
 import com.pph.demo.service.UserService;
 import com.pph.demo.utils.RedisKeyUtil;
+import com.pph.demo.utils.jwt.JwtUtil;
 import com.pph.demo.vo.request.login.LoginVo;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.Message;
@@ -23,9 +25,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -41,22 +41,28 @@ public class LoginServiceImpl implements LoginService {
     private static final Logger LOGGER = LoggerFactory.getLogger(LoginServiceImpl.class);
 
     @Autowired
-    private UserService userService;
+    public LoginServiceImpl(RedisService redisService, UserService userService, RedisKeyUtil redisKeyUtil,
+                            ValueOperations<String, Object> valueOperations, ObjectMapper objectMapper,
+                            RabbitTemplate rabbitTemplate) {
+        this.redisService = redisService;
+        this.userService = userService;
+        this.redisKeyUtil = redisKeyUtil;
+        this.valueOperations = valueOperations;
+        this.objectMapper = objectMapper;
+        this.rabbitTemplate = rabbitTemplate;
+    }
 
-    @Autowired
-    private RedisService redisService;
+    private final UserService userService;
 
-    @Autowired
-    private RedisKeyUtil redisKeyUtil;
+    private final RedisService redisService;
 
-    @Autowired
-    private ValueOperations<String, Object> valueOperations;
+    private final RedisKeyUtil redisKeyUtil;
 
-    @Autowired
-    private RabbitTemplate rabbitTemplate;
+    private final ValueOperations<String, Object> valueOperations;
 
-    @Autowired
-    private ObjectMapper objectMapper;
+    private final RabbitTemplate rabbitTemplate;
+
+    private final ObjectMapper objectMapper;
 
     @Value("${log.user.exchange.name}")
     private String exchangeName;
@@ -65,7 +71,7 @@ public class LoginServiceImpl implements LoginService {
     private String routingName;
 
     @Override
-    public Boolean login(String user, String password) {
+    public Map<String, Object> login(String user, String password) {
         LOGGER.info("^^^login user: {}, password: {}", user, password);
         boolean isExists;
 
@@ -99,7 +105,13 @@ public class LoginServiceImpl implements LoginService {
             throw new RuntimeException(e);
         }
 
-        return isExists;
+        return new HashMap<String, Object>(4) {
+            {
+                put("isExists", isExists);
+                put("token", isExists ? JwtUtil.encode(userInfo.getUser()) : StringUtils.EMPTY);
+                put("msg", isExists ? "登录成功" : "用户名与密码不匹配");
+            }
+        };
     }
 
     @Override

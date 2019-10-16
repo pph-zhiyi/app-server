@@ -69,4 +69,4 @@ log:
 #登录 API URI 默认不走 JWT Token 校验
 def:
   login:
-    uri: /jwt/login
+    uri: /login/login

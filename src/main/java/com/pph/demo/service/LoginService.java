@@ -3,6 +3,7 @@ package com.pph.demo.service;
 import com.pph.demo.vo.request.login.LoginVo;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author: PPH
@@ -17,7 +18,7 @@ public interface LoginService {
      * @param password
      * @return
      */
-    Boolean login(String user, String password);
+    Map<String, Object> login(String user, String password);
 
     /**
      * 注册

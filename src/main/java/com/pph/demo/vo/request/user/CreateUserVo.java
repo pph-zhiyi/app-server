@@ -19,18 +19,21 @@ public class CreateUserVo {
 
     private Integer id;
 
-    @NotNull(message = "name can not be null!")
-    @NotBlank(message = "name can not be blank!")
-    @Length(min = 2, max = 15, message = "name length must in (2 ~ 15)")
+    @NotNull(message = "user can not be null!")
+    @NotBlank(message = "user can not be blank!")
+    @Length(min = 2, max = 15, message = "user length must in (2 ~ 15)")
+    private String user;
+
+    @NotNull(message = "password can not be null!")
+    @NotBlank(message = "password can not be blank!")
+    private String password;
+
     private String name;
 
     @CheckWith(value = CheckBeanUtil.CheckSex.class, message = "sex must be (男 | 女)")
     private String sex;
 
     private Date birthday;
-
-    @CheckWith(value = CheckBeanUtil.CheckAge.class, message = "age must in (18 ~ 85)")
-    private Integer age;
 
     private String address;
 

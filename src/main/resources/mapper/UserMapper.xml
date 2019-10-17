@@ -125,9 +125,9 @@
     <update id="updateUserById" parameterType="com.pph.demo.vo.request.user.UpdateUserVo">
         UPDATE `user`
         <set>
-            <if test="user != null">
-                `user` = #{user},
-            </if>
+            <!-- <if test="user != null">-->
+            <!--    `user` = #{user},-->
+            <!-- </if>-->
             <if test="password != null">
                 `password` = #{password},
             </if>

@@ -7,8 +7,8 @@
             <arg column="user" jdbcType="VARCHAR" javaType="java.lang.String"/>
             <arg column="password" jdbcType="VARCHAR" javaType="java.lang.String"/>
             <arg column="user_info" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="entry_time" jdbcType="DATE" javaType="java.util.Date"/>
-            <arg column="is_login" jdbcType="TINYINT" javaType="java.lang.Byte"/>
+            <arg column="entry_time" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+            <arg column="is_login" jdbcType="TINYINT" javaType="java.lang.Integer"/>
             <arg column="gmt_create" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
             <arg column="gmt_modify" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
         </constructor>
@@ -168,4 +168,12 @@
             </if>
         </trim>
     </insert>
+
+    <select id="queryLoginLogByUser" parameterType="java.util.Map" resultType="com.pph.demo.model.LoginLogInfo">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM `login_log_info`
+        WHERE `user` = #{user, jdbcType=VARCHAR}
+        ORDER BY `entry_time` DESC
+    </select>
 </mapper>

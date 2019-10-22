@@ -1,7 +1,10 @@
 package com.pph.demo.controller;
 
+import com.pph.demo.annotation.SkipToken;
+import com.pph.demo.model.LoginLogInfo;
 import com.pph.demo.service.LoginService;
 import com.pph.demo.utils.oval.OvalVerify;
+import com.pph.demo.vo.request.login.LoginLogQueryVo;
 import com.pph.demo.vo.request.login.LoginVo;
 import com.pph.demo.vo.request.login.RedisStringVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -49,6 +53,19 @@ public class LoginController {
     public Integer register(@RequestBody LoginVo req) {
         OvalVerify.verifyObj(req);
         return loginService.register(req);
+    }
+
+    /**
+     * 注册
+     *
+     * @param req 入参
+     * @return 结果
+     */
+    @SkipToken
+    @RequestMapping(value = "/query/login/log/by/user", method = RequestMethod.POST)
+    public List<LoginLogInfo> queryLoginLog(@RequestBody LoginLogQueryVo req) {
+        OvalVerify.verifyObj(req);
+        return loginService.queryLoginLogByUser(req.getUser());
     }
 
     /**

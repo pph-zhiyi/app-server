@@ -3,6 +3,7 @@ package com.pph.demo.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pph.demo.configs.redis.RedisService;
+import com.pph.demo.mapper.LoginLogInfoMapper;
 import com.pph.demo.model.LoginLogInfo;
 import com.pph.demo.model.User;
 import com.pph.demo.service.LoginService;
@@ -43,13 +44,14 @@ public class LoginServiceImpl implements LoginService {
     @Autowired
     public LoginServiceImpl(RedisService redisService, UserService userService, RedisKeyUtil redisKeyUtil,
                             ValueOperations<String, Object> valueOperations, ObjectMapper objectMapper,
-                            RabbitTemplate rabbitTemplate) {
+                            RabbitTemplate rabbitTemplate, LoginLogInfoMapper loginLogInfoMapper) {
         this.redisService = redisService;
         this.userService = userService;
         this.redisKeyUtil = redisKeyUtil;
         this.valueOperations = valueOperations;
         this.objectMapper = objectMapper;
         this.rabbitTemplate = rabbitTemplate;
+        this.loginLogInfoMapper = loginLogInfoMapper;
     }
 
     private final UserService userService;
@@ -63,6 +65,8 @@ public class LoginServiceImpl implements LoginService {
     private final RabbitTemplate rabbitTemplate;
 
     private final ObjectMapper objectMapper;
+
+    private final LoginLogInfoMapper loginLogInfoMapper;
 
     @Value("${log.user.exchange.name}")
     private String exchangeName;
@@ -143,5 +147,11 @@ public class LoginServiceImpl implements LoginService {
          * 设置过期时间 30 分钟
          */
         redisService.expireKey(key, 30, TimeUnit.MINUTES);
+    }
+
+    @Override
+    public List<LoginLogInfo> queryLoginLogByUser(String user) {
+        LOGGER.info("^^^queryLoginLogByUser user: {}", user);
+        return loginLogInfoMapper.queryLoginLogByUser(user);
     }
 }

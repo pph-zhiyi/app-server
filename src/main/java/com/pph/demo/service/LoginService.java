@@ -1,5 +1,7 @@
 package com.pph.demo.service;
 
+import com.pph.demo.model.LoginLogInfo;
+import com.pph.demo.vo.request.login.LoginLogQueryVo;
 import com.pph.demo.vo.request.login.LoginVo;
 
 import java.util.List;
@@ -50,4 +52,12 @@ public interface LoginService {
      * @param val
      */
     void setRedisString(String key, String val);
+
+    /**
+     * 查询登录记录
+     *
+     * @param user
+     * @return
+     */
+    List<LoginLogInfo> queryLoginLogByUser(String user);
 }

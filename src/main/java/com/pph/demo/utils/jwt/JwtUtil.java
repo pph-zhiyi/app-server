@@ -7,13 +7,16 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Author: pph
  * @Date: 2019/9/19 18:59
  * @Description:
  */
-public class JwtUtil {
+public final class JwtUtil {
+    private JwtUtil() {
+    }
 
     public static final String TOKEN_HEADER = "Authorization";
     public static final String TOKEN_PREFIX = "Bearer ";
@@ -22,9 +25,9 @@ public class JwtUtil {
     private static final String ISS = "echisan";
 
     /**
-     * 过期时间
+     * 过期时间：1 HOURS
      */
-    private static final long EXPIRATION = 360000L;
+    private static final long EXPIRATION = TimeUnit.MILLISECONDS.convert(1, TimeUnit.HOURS);
 
     /**
      * 加密 jwt token
@@ -57,5 +60,4 @@ public class JwtUtil {
         DecodedJWT decodedJWT = jwtVerifier.verify(token);
         return decodedJWT.getId();
     }
-
 }

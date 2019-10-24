@@ -7,6 +7,8 @@ import com.pph.demo.utils.oval.OvalVerify;
 import com.pph.demo.vo.request.login.LoginLogQueryVo;
 import com.pph.demo.vo.request.login.LoginVo;
 import com.pph.demo.vo.request.login.RedisStringVo;
+import com.pph.demo.vo.request.login.queryUserLoginCountReq;
+import com.pph.demo.vo.response.login.queryUserLoginCountRes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -86,5 +88,17 @@ public class LoginController {
             default:
                 throw new IllegalArgumentException("type is must [get or set]");
         }
+    }
+
+    /**
+     * 用户登录次数
+     *
+     * @param req 入参
+     * @return 结果
+     */
+    @RequestMapping(value = "/query/user/login/count", method = RequestMethod.POST)
+    public List<queryUserLoginCountRes> queryUserLoginCount(@RequestBody queryUserLoginCountReq req) {
+        OvalVerify.verifyObj(req);
+        return loginService.queryUserLoginCount(req);
     }
 }

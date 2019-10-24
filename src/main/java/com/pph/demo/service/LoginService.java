@@ -1,8 +1,9 @@
 package com.pph.demo.service;
 
 import com.pph.demo.model.LoginLogInfo;
-import com.pph.demo.vo.request.login.LoginLogQueryVo;
 import com.pph.demo.vo.request.login.LoginVo;
+import com.pph.demo.vo.request.login.queryUserLoginCountReq;
+import com.pph.demo.vo.response.login.queryUserLoginCountRes;
 
 import java.util.List;
 import java.util.Map;
@@ -60,4 +61,12 @@ public interface LoginService {
      * @return
      */
     List<LoginLogInfo> queryLoginLogByUser(String user);
+
+    /**
+     * 查询用户登录次数
+     *
+     * @param req
+     * @return
+     */
+    List<queryUserLoginCountRes> queryUserLoginCount(queryUserLoginCountReq req);
 }

@@ -176,4 +176,18 @@
         WHERE `user` = #{user, jdbcType=VARCHAR}
         ORDER BY `entry_time` DESC
     </select>
+
+    <select id="queryUserLoginCount" parameterType="java.util.Map"
+            resultType="com.pph.demo.vo.response.login.queryUserLoginCountRes">
+        SELECT
+        `user`,
+        COUNT( * ) AS `login_count`
+        FROM `login_log_info`
+        <where>
+            `is_login` = 1
+            AND `entry_time` BETWEEN #{startTime} AND #{endTime}
+        </where>
+        GROUP BY
+        `user`;
+    </select>
 </mapper>

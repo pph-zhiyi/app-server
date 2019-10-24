@@ -11,6 +11,8 @@ import com.pph.demo.service.UserService;
 import com.pph.demo.utils.RedisKeyUtil;
 import com.pph.demo.utils.jwt.JwtUtil;
 import com.pph.demo.vo.request.login.LoginVo;
+import com.pph.demo.vo.request.login.queryUserLoginCountReq;
+import com.pph.demo.vo.response.login.queryUserLoginCountRes;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -153,5 +155,11 @@ public class LoginServiceImpl implements LoginService {
     public List<LoginLogInfo> queryLoginLogByUser(String user) {
         LOGGER.info("^^^queryLoginLogByUser user: {}", user);
         return loginLogInfoMapper.queryLoginLogByUser(user);
+    }
+
+    @Override
+    public List<queryUserLoginCountRes> queryUserLoginCount(queryUserLoginCountReq req) {
+        LOGGER.info("^^^queryLoginLogByUser req: {}", req);
+        return loginLogInfoMapper.queryUserLoginCount(new Date(req.getStartTime()), new Date(req.getEndTime()));
     }
 }

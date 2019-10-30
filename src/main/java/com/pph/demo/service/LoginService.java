@@ -2,8 +2,10 @@ package com.pph.demo.service;
 
 import com.pph.demo.model.LoginLogInfo;
 import com.pph.demo.vo.request.login.LoginVo;
-import com.pph.demo.vo.request.login.queryUserLoginCountReq;
-import com.pph.demo.vo.response.login.queryUserLoginCountRes;
+import com.pph.demo.vo.request.login.QueryLatelyLoginReq;
+import com.pph.demo.vo.request.login.QueryUserLoginCountReq;
+import com.pph.demo.vo.response.login.QueryLatelyLoginRes;
+import com.pph.demo.vo.response.login.QueryUserLoginCountRes;
 
 import java.util.List;
 import java.util.Map;
@@ -68,5 +70,13 @@ public interface LoginService {
      * @param req
      * @return
      */
-    List<queryUserLoginCountRes> queryUserLoginCount(queryUserLoginCountReq req);
+    List<QueryUserLoginCountRes> queryUserLoginCount(QueryUserLoginCountReq req);
+
+    /**
+     * 查询用户最近一次登录记录
+     *
+     * @param req
+     * @return
+     */
+    QueryLatelyLoginRes queryLatelyLogin(QueryLatelyLoginReq req);
 }

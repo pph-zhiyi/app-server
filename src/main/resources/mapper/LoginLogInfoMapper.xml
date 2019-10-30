@@ -178,7 +178,7 @@
     </select>
 
     <select id="queryUserLoginCount" parameterType="java.util.Map"
-            resultType="com.pph.demo.vo.response.login.queryUserLoginCountRes">
+            resultType="com.pph.demo.vo.response.login.QueryUserLoginCountRes">
         SELECT
         `user`,
         COUNT( * ) AS `login_count`
@@ -189,5 +189,18 @@
         </where>
         GROUP BY
         `user`;
+    </select>
+
+    <select id="queryLatelyLogin" parameterType="com.pph.demo.vo.request.login.QueryLatelyLoginReq"
+            resultType="com.pph.demo.vo.response.login.QueryLatelyLoginRes">
+        SELECT
+            `user`,`password`,`user_info`,`entry_time`,`is_login`
+        FROM
+            `login_log_info`
+        WHERE
+            `user` = #{user}
+        ORDER BY
+            `entry_time` DESC
+        LIMIT 1
     </select>
 </mapper>

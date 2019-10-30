@@ -8,7 +8,7 @@ import lombok.Data;
  * @Description:
  */
 @Data
-public class queryUserLoginCountRes {
+public class QueryUserLoginCountRes {
 
     private String user;
 

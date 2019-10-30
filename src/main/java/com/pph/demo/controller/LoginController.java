@@ -4,11 +4,9 @@ import com.pph.demo.annotation.SkipToken;
 import com.pph.demo.model.LoginLogInfo;
 import com.pph.demo.service.LoginService;
 import com.pph.demo.utils.oval.OvalVerify;
-import com.pph.demo.vo.request.login.LoginLogQueryVo;
-import com.pph.demo.vo.request.login.LoginVo;
-import com.pph.demo.vo.request.login.RedisStringVo;
-import com.pph.demo.vo.request.login.queryUserLoginCountReq;
-import com.pph.demo.vo.response.login.queryUserLoginCountRes;
+import com.pph.demo.vo.request.login.*;
+import com.pph.demo.vo.response.login.QueryLatelyLoginRes;
+import com.pph.demo.vo.response.login.QueryUserLoginCountRes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -58,7 +56,7 @@ public class LoginController {
     }
 
     /**
-     * 注册
+     * 列表
      *
      * @param req 入参
      * @return 结果
@@ -97,8 +95,20 @@ public class LoginController {
      * @return 结果
      */
     @RequestMapping(value = "/query/user/login/count", method = RequestMethod.POST)
-    public List<queryUserLoginCountRes> queryUserLoginCount(@RequestBody queryUserLoginCountReq req) {
+    public List<QueryUserLoginCountRes> queryUserLoginCount(@RequestBody QueryUserLoginCountReq req) {
         OvalVerify.verifyObj(req);
         return loginService.queryUserLoginCount(req);
+    }
+
+    /**
+     * 查询用户最近一次登录记录
+     *
+     * @param req 入参
+     * @return 几个
+     */
+    @RequestMapping(value = "/query/lately/login", method = RequestMethod.POST)
+    public QueryLatelyLoginRes queryLatelyLogin(@RequestBody QueryLatelyLoginReq req) {
+        OvalVerify.verifyObj(req);
+        return loginService.queryLatelyLogin(req);
     }
 }

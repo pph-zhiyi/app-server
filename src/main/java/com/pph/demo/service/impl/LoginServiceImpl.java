@@ -11,8 +11,10 @@ import com.pph.demo.service.UserService;
 import com.pph.demo.utils.RedisKeyUtil;
 import com.pph.demo.utils.jwt.JwtUtil;
 import com.pph.demo.vo.request.login.LoginVo;
-import com.pph.demo.vo.request.login.queryUserLoginCountReq;
-import com.pph.demo.vo.response.login.queryUserLoginCountRes;
+import com.pph.demo.vo.request.login.QueryLatelyLoginReq;
+import com.pph.demo.vo.request.login.QueryUserLoginCountReq;
+import com.pph.demo.vo.response.login.QueryLatelyLoginRes;
+import com.pph.demo.vo.response.login.QueryUserLoginCountRes;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -158,8 +160,14 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public List<queryUserLoginCountRes> queryUserLoginCount(queryUserLoginCountReq req) {
-        LOGGER.info("^^^queryLoginLogByUser req: {}", req);
+    public List<QueryUserLoginCountRes> queryUserLoginCount(QueryUserLoginCountReq req) {
+        LOGGER.info("^^^queryUserLoginCount req: {}", req);
         return loginLogInfoMapper.queryUserLoginCount(new Date(req.getStartTime()), new Date(req.getEndTime()));
+    }
+
+    @Override
+    public QueryLatelyLoginRes queryLatelyLogin(QueryLatelyLoginReq req) {
+        LOGGER.info("^^^queryLatelyLogin req: {}", req);
+        return loginLogInfoMapper.queryLatelyLogin(req);
     }
 }

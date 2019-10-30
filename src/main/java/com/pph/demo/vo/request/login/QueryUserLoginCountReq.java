@@ -9,7 +9,7 @@ import net.sf.oval.constraint.NotNull;
  * @Description:
  */
 @Data
-public class queryUserLoginCountReq {
+public class QueryUserLoginCountReq {
 
     @NotNull(message = "startTime can not be null!")
     private Long startTime;

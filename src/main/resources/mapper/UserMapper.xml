@@ -35,7 +35,7 @@
                 AND `user` = #{user}
             </if>
             <if test="name != null">
-                AND `name` LIKE CONCAT('%', #{name}, '%')
+                AND ( `name` LIKE CONCAT('%', #{name}, '%') OR `user` LIKE CONCAT('%', #{name}, '%'))
             </if>
             <if test="sex != null">
                 AND `sex` = #{sex}
@@ -60,7 +60,7 @@
                 AND `user` = #{user}
             </if>
             <if test="name != null">
-                AND `name` LIKE CONCAT('%', #{name}, '%')
+                AND ( `name` LIKE CONCAT('%', #{name}, '%') OR `user` LIKE CONCAT('%', #{name}, '%'))
             </if>
             <if test="sex != null">
                 AND `sex` = #{sex}

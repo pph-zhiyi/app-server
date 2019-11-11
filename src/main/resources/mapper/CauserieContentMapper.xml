@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pph.demo.mapper.CauserieContentMapper">
+    <resultMap id="BaseResultMap" type="com.pph.demo.model.CauserieContent">
+        <constructor>
+            <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long"/>
+            <arg column="user" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="gmt_create" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+            <arg column="gmt_modify" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        </constructor>
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.pph.demo.model.CauserieContent">
+        <constructor>
+            <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long"/>
+            <arg column="user" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="gmt_create" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+            <arg column="gmt_modify" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+            <arg column="content" jdbcType="LONGVARCHAR" javaType="java.lang.String"/>
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, user, name, gmt_create, gmt_modify
+    </sql>
+    <sql id="Blob_Column_List">
+      content
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from causerie_content
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+      delete from causerie_content
+      where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="com.pph.demo.model.CauserieContent">
+      insert into causerie_content (id, user, name,
+        gmt_create, gmt_modify, content
+        )
+      values (#{id,jdbcType=BIGINT}, #{user,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
+        #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModify,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR}
+        )
+    </insert>
+    <insert id="insertSelective" parameterType="com.pph.demo.model.CauserieContent">
+        insert into causerie_content
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="user != null">
+                user,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="gmtCreate != null">
+                gmt_create,
+            </if>
+            <if test="gmtModify != null">
+                gmt_modify,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="user != null">
+                #{user,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="gmtCreate != null">
+                #{gmtCreate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="gmtModify != null">
+                #{gmtModify,jdbcType=TIMESTAMP},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.pph.demo.model.CauserieContent">
+        update causerie_content
+        <set>
+            <if test="user != null">
+                user = #{user,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="gmtCreate != null">
+                gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="gmtModify != null">
+                gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+            </if>
+            <if test="content != null">
+                content = #{content,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.pph.demo.model.CauserieContent">
+      update causerie_content
+      set user = #{user,jdbcType=VARCHAR},
+        name = #{name,jdbcType=VARCHAR},
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+        gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+        content = #{content,jdbcType=LONGVARCHAR}
+      where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.pph.demo.model.CauserieContent">
+      update causerie_content
+      set user = #{user,jdbcType=VARCHAR},
+        name = #{name,jdbcType=VARCHAR},
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+        gmt_modify = #{gmtModify,jdbcType=TIMESTAMP}
+      where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <resultMap id="queryCauserieByTermsRM" type="com.pph.demo.vo.response.causerie.QueryCauserieRes">
+        <id column="id" jdbcType="BIGINT" javaType="java.lang.Long" property="id"/>
+        <result column="user" jdbcType="VARCHAR" javaType="java.lang.String" property="authorUser"/>
+        <result column="name" jdbcType="VARCHAR" javaType="java.lang.String" property="authorName"/>
+        <result column="content" jdbcType="VARCHAR" javaType="java.lang.String" property="content"/>
+        <result column="commit_time" jdbcType="TIMESTAMP" javaType="java.util.Date" property="commitTime"/>
+        <collection property="likes" ofType="com.pph.demo.model.CauserieContentLike">
+            <id column="like_id" jdbcType="BIGINT" javaType="java.lang.Long" property="id"/>
+            <result column="content_id" jdbcType="BIGINT" javaType="java.lang.Long" property="contentId"/>
+            <result column="like_user" jdbcType="VARCHAR" javaType="java.lang.String" property="likeUser"/>
+            <result column="like_name" jdbcType="VARCHAR" javaType="java.lang.String" property="likeName"/>
+            <result column="is_like" jdbcType="INTEGER" javaType="java.lang.Integer" property="isLike"/>
+            <result column="gmt_create" jdbcType="TIMESTAMP" javaType="java.util.Date" property="gmtCreate"/>
+            <result column="gmt_modify" jdbcType="TIMESTAMP" javaType="java.util.Date" property="gmtModify"/>
+        </collection>
+    </resultMap>
+    <sql id="queryCauserieByTermsColumn">
+        a.`id`,
+        a.`user`,
+        a.`name`,
+        a.`content`,
+        a.`gmt_create` AS `commit_time`,
+        b.`id` AS `like_id`,
+        b.`content_id`,
+        b.`like_user`,
+        b.`like_name`,
+        b.`is_like`,
+        b.`gmt_create`,
+        b.`gmt_modify`
+    </sql>
+    <select id="queryCauserieByTerms" parameterType="java.util.Map" resultMap="queryCauserieByTermsRM">
+        SELECT
+        <include refid="queryCauserieByTermsColumn"/>
+        FROM
+        `causerie_content` AS a
+        LEFT JOIN `causerie_content_like` AS b ON a.`id` = b.`content_id`
+        <where>
+            <if test="user != null">
+                a.`user` = #{user}
+            </if>
+            <if test="name != null">
+                AND a.`name` = #{name}
+            </if>
+        </where>
+        <if test="isPage != null and isPage == true">
+            LIMIT #{offSet}, #{pageSize}
+        </if>
+        ORDER BY a.`gmt_modify`
+    </select>
+    <select id="queryCountByTerms" parameterType="java.util.Map" resultType="java.lang.Integer">
+        SELECT
+        COUNT(DISTINCT a.`id`)
+        FROM
+        `causerie_content` AS a
+        LEFT JOIN `causerie_content_like` AS b ON a.`id` = b.`content_id`
+        <where>
+            <if test="user != null">
+                a.`user` = #{user}
+            </if>
+            <if test="name != null">
+                AND a.`name` = #{name}
+            </if>
+        </where>
+    </select>
+</mapper>

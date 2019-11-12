@@ -1,5 +1,6 @@
 package com.pph.demo.service;
 
+import com.pph.demo.vo.request.causerie.LikeCauserieReq;
 import com.pph.demo.vo.response.causerie.QueryCauserieRes;
 
 import java.util.List;
@@ -26,4 +27,12 @@ public interface CauserieService {
      * @return 结果
      */
     Integer queryCountByTerms(Map<String, Object> filter);
+
+    /**
+     * 用户点赞
+     *
+     * @param req 入参
+     * @return 结果
+     */
+    String likeCauserie(LikeCauserieReq req);
 }

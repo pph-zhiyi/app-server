@@ -1,8 +1,11 @@
 package com.pph.demo.mapper;
 
 import com.pph.demo.model.CauserieContent;
+import com.pph.demo.model.CauserieContentLike;
+import com.pph.demo.vo.request.causerie.LikeCauserieReq;
 import com.pph.demo.vo.response.causerie.QueryCauserieRes;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -39,4 +42,36 @@ public interface CauserieContentMapper {
      * @return 结果
      */
     Integer queryCountByTerms(Map<String, Object> filter);
+
+    /**
+     * 根据 contentId & user 查询 like 记录
+     *
+     * @param req 入参
+     * @return 结果
+     */
+    CauserieContentLike queryLikeByUser(LikeCauserieReq req);
+
+    /**
+     * 根据 contentId & user 查询 like 记录
+     *
+     * @param req 入参
+     * @return 结果
+     */
+    Integer deleteLikeByUser(LikeCauserieReq req);
+
+    /**
+     * 根据 contentId & user 修改 like 记录
+     *
+     * @param req 入参
+     * @return 结果
+     */
+    Integer updateLikeByUser(LikeCauserieReq req);
+
+    /**
+     * 新增点赞
+     *
+     * @param req 入参
+     * @return 结果
+     */
+    Integer addLikeByUser(LikeCauserieReq req);
 }

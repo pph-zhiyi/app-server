@@ -1,10 +1,13 @@
 package com.pph.demo.effective.builder.user;
 
+import lombok.Data;
+
 /**
  * @Author: PPH
  * @Date: 2019-05-30 15:52
  * @Description:
  */
+@Data
 public class User {
 
     private final Integer id;

@@ -175,7 +175,7 @@
         <if test="isPage != null and isPage == true">
             LIMIT #{offSet}, #{pageSize}
         </if>
-        ORDER BY a.`gmt_modify`
+        ORDER BY a.`gmt_modify` DESC
     </select>
     <select id="queryCountByTerms" parameterType="java.util.Map" resultType="java.lang.Integer">
         SELECT
@@ -192,4 +192,30 @@
             </if>
         </where>
     </select>
+
+    <select id="queryLikeByUser" parameterType="com.pph.demo.vo.request.causerie.LikeCauserieReq"
+            resultType="com.pph.demo.model.CauserieContentLike">
+        SELECT *
+        FROM `causerie_content_like`
+        WHERE `content_id` = #{contentId}
+        AND `like_user` = #{user}
+    </select>
+
+    <delete id="deleteLikeByUser" parameterType="com.pph.demo.vo.request.causerie.LikeCauserieReq">
+        DELETE FROM `causerie_content_like`
+        WHERE `content_id` = #{contentId}
+        AND `like_user` = #{user}
+    </delete>
+
+    <update id="updateLikeByUser" parameterType="com.pph.demo.vo.request.causerie.LikeCauserieReq">
+        UPDATE `causerie_content_like`
+        SET `is_like` = #{like}
+        WHERE `content_id` = #{contentId}
+        AND `like_user` = #{user}
+    </update>
+
+    <insert id="addLikeByUser" parameterType="com.pph.demo.vo.request.causerie.LikeCauserieReq">
+        INSERT INTO `causerie_content_like`(`content_id`, `like_user`, `like_name`, `is_like`)
+        VALUES (#{contentId}, #{user}, #{name}, #{like});
+    </insert>
 </mapper>

@@ -1,8 +1,9 @@
 package com.pph.demo.controller;
 
-import com.pph.demo.annotation.SkipToken;
 import com.pph.demo.service.CauserieService;
 import com.pph.demo.utils.PageResult;
+import com.pph.demo.utils.oval.OvalVerify;
+import com.pph.demo.vo.request.causerie.LikeCauserieReq;
 import com.pph.demo.vo.response.causerie.QueryCauserieRes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,11 +30,28 @@ public class CauserieController {
 
     private final CauserieService causerieService;
 
-    @SkipToken
+    /**
+     * 获取记录列表
+     *
+     * @param filter 过滤入参
+     * @return 结果
+     */
     @RequestMapping(value = "/query", method = RequestMethod.POST)
-    public Object queryCauserie(@RequestBody Map<String, Object> filter) {
+    public PageResult<QueryCauserieRes> queryCauserie(@RequestBody Map<String, Object> filter) {
         List<QueryCauserieRes> result = causerieService.queryCauserieByTerms(filter);
         Integer total = causerieService.queryCountByTerms(filter);
         return PageResult.make(result, total, filter);
+    }
+
+    /**
+     * 用户点赞
+     *
+     * @param req 入参
+     * @return 结果
+     */
+    @RequestMapping(value = "/like", method = RequestMethod.POST)
+    public Object likeCauserie(@RequestBody LikeCauserieReq req) {
+        OvalVerify.verifyObj(req);
+        return causerieService.likeCauserie(req);
     }
 }

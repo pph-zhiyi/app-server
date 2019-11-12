@@ -2,8 +2,6 @@ package com.pph.demo.utils.oval;
 
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
-import net.sf.oval.constraint.CheckWithCheck;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Objects;
@@ -16,13 +14,12 @@ import java.util.stream.Collectors;
  */
 public final class OvalVerify {
     private OvalVerify() {
-
     }
 
     /**
      * 校验对象参数是否合法
      *
-     * @param o
+     * @param o 校验对象
      */
     public static void verifyObj(Object o) {
         Validator v = new Validator();

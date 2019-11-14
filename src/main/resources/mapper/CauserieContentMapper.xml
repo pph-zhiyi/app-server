@@ -147,13 +147,13 @@
     <sql id="queryCauserieByTermsColumn">
         a.`id`,
         a.`user`,
-        a.`name`,
+        c.`name`,
         a.`content`,
         a.`gmt_create` AS `commit_time`,
         b.`id` AS `like_id`,
         b.`content_id`,
         b.`like_user`,
-        b.`like_name`,
+        d.`name` AS `like_name`,
         b.`is_like`,
         b.`gmt_create`,
         b.`gmt_modify`
@@ -164,6 +164,8 @@
         FROM
         `causerie_content` AS a
         LEFT JOIN `causerie_content_like` AS b ON a.`id` = b.`content_id`
+        LEFT JOIN `user` AS c ON a.`user` = c.`user`
+        LEFT JOIN `user` AS d ON b.`like_user` = d.`user`
         <where>
             <if test="user != null">
                 a.`user` = #{user}
@@ -183,6 +185,8 @@
         FROM
         `causerie_content` AS a
         LEFT JOIN `causerie_content_like` AS b ON a.`id` = b.`content_id`
+        LEFT JOIN `user` AS c ON a.`user` = c.`user`
+        LEFT JOIN `user` AS d ON b.`like_user` = d.`user`
         <where>
             <if test="user != null">
                 a.`user` = #{user}
@@ -215,7 +219,18 @@
     </update>
 
     <insert id="addLikeByUser" parameterType="com.pph.demo.vo.request.causerie.LikeCauserieReq">
-        INSERT INTO `causerie_content_like`(`content_id`, `like_user`, `like_name`, `is_like`)
-        VALUES (#{contentId}, #{user}, #{name}, #{like});
+        INSERT INTO `causerie_content_like`(`content_id`, `like_user`, `is_like`)
+        VALUES (#{contentId}, #{user}, #{like});
     </insert>
+
+    <insert id="addCauserie" parameterType="com.pph.demo.vo.request.causerie.AddCauserieReq">
+        INSERT INTO `causerie_content`(`user`, `content`)
+        VALUES (#{user}, #{content});
+    </insert>
+
+    <delete id="deleteCauserie" parameterType="com.pph.demo.vo.request.causerie.DeleteCauserieReq">
+        DELETE FROM `causerie_content`
+        WHERE `id` = #{id}
+        AND `user` = #{user}
+    </delete>
 </mapper>

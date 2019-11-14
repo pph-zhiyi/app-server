@@ -19,8 +19,6 @@ public class LikeCauserieReq {
     @NotBlank(message = "user ca not be blank!")
     private String user;
 
-    private String name;
-
     private Integer like;
 
     public static final class Builder {
@@ -28,8 +26,6 @@ public class LikeCauserieReq {
         private Integer contentId;
 
         private String user;
-
-        private String name;
 
         private Integer like;
 
@@ -47,11 +43,6 @@ public class LikeCauserieReq {
             return this;
         }
 
-        public Builder name(String name) {
-            this.name = name;
-            return this;
-        }
-
         public Builder like(Integer like) {
             this.like = like;
             return this;
@@ -61,7 +52,6 @@ public class LikeCauserieReq {
             LikeCauserieReq result = new LikeCauserieReq();
             result.setContentId(this.contentId);
             result.setUser(this.user);
-            result.setName(this.name);
             result.setLike(this.like);
             return result;
         }

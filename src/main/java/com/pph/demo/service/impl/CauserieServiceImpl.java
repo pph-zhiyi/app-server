@@ -3,9 +3,10 @@ package com.pph.demo.service.impl;
 import com.pph.demo.mapper.CauserieContentMapper;
 import com.pph.demo.mapper.UserMapper;
 import com.pph.demo.model.CauserieContentLike;
-import com.pph.demo.model.User;
 import com.pph.demo.service.CauserieService;
 import com.pph.demo.utils.common.Params;
+import com.pph.demo.vo.request.causerie.AddCauserieReq;
+import com.pph.demo.vo.request.causerie.DeleteCauserieReq;
 import com.pph.demo.vo.request.causerie.LikeCauserieReq;
 import com.pph.demo.vo.response.causerie.QueryCauserieRes;
 import org.slf4j.Logger;
@@ -71,11 +72,24 @@ public class CauserieServiceImpl implements CauserieService {
                         : String.format("%s失败", lk);
             }
         } else {
-            User user = userMapper.queryUserByUser(req.getUser());
-            req.setName(user.getName());
             return causerieContentMapper.addLikeByUser(req) > 0
                     ? String.format("%s成功", lk)
                     : String.format("%s失败", lk);
         }
+    }
+
+    @Override
+    public String addCauserie(AddCauserieReq req) {
+        LOGGER.info("^^^addCauserie params: {}", req);
+        return causerieContentMapper.addCauserie(req) > 0 ? "发布成功" : "发布失败";
+    }
+
+    @Override
+    public String deleteCauserie(DeleteCauserieReq req) {
+        LOGGER.info("^^^deleteCauserie params: {}", req);
+        if (Objects.isNull(causerieContentMapper.queryContentByIdUser(req.getId(), req.getUser()))) {
+            throw new IllegalArgumentException("仅创建人课删除");
+        }
+        return causerieContentMapper.deleteCauserie(req) > 0 ? "删除成功" : "删除失败";
     }
 }

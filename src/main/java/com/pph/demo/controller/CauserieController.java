@@ -3,6 +3,8 @@ package com.pph.demo.controller;
 import com.pph.demo.service.CauserieService;
 import com.pph.demo.utils.PageResult;
 import com.pph.demo.utils.oval.OvalVerify;
+import com.pph.demo.vo.request.causerie.AddCauserieReq;
+import com.pph.demo.vo.request.causerie.DeleteCauserieReq;
 import com.pph.demo.vo.request.causerie.LikeCauserieReq;
 import com.pph.demo.vo.response.causerie.QueryCauserieRes;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,5 +55,27 @@ public class CauserieController {
     public Object likeCauserie(@RequestBody LikeCauserieReq req) {
         OvalVerify.verifyObj(req);
         return causerieService.likeCauserie(req);
+    }
+
+    /**
+     * 新增记录
+     *
+     * @param req 入参
+     * @return 结果
+     */
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public Object addCauserie(@RequestBody AddCauserieReq req) {
+        return causerieService.addCauserie(req);
+    }
+
+    /**
+     * 删除记录
+     *
+     * @param req 入参
+     * @return 结果
+     */
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public Object deleteCauserie(@RequestBody DeleteCauserieReq req) {
+        return causerieService.deleteCauserie(req);
     }
 }

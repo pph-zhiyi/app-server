@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
@@ -85,11 +86,17 @@ public class CauserieServiceImpl implements CauserieService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public String deleteCauserie(DeleteCauserieReq req) {
         LOGGER.info("^^^deleteCauserie params: {}", req);
         if (Objects.isNull(causerieContentMapper.queryContentByIdUser(req.getId(), req.getUser()))) {
             throw new IllegalArgumentException("仅创建人课删除");
+        } else {
+            int count;
+            if ((count = causerieContentMapper.deleteCauserie(req)) > 0) {
+                causerieContentMapper.deleteCauserieLike(req);
+            }
+            return count > 0 ? "删除成功" : "删除失败";
         }
-        return causerieContentMapper.deleteCauserie(req) > 0 ? "删除成功" : "删除失败";
     }
 }

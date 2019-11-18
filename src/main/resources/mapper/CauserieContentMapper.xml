@@ -167,16 +167,23 @@
         LEFT JOIN `user` AS c ON a.`user` = c.`user`
         LEFT JOIN `user` AS d ON b.`like_user` = d.`user`
         <where>
-            <if test="user != null">
-                a.`user` = #{user}
-            </if>
-            <if test="name != null">
-                AND a.`name` = #{name}
+            <if test="isPage != null and isPage == true">
+                a.`id` IN ( SELECT INSTALL.`id` FROM ( SELECT `id` FROM `causerie_content`
+                <where>
+                    <if test="id != null">
+                        `id` = #{id}
+                    </if>
+                    <if test="user != null">
+                        AND `user` = #{user}
+                    </if>
+                    <if test="name != null">
+                        AND `name` = #{name}
+                    </if>
+                </where>
+                ORDER BY `gmt_modify` DESC
+                LIMIT #{offSet}, #{pageSize} ) AS INSTALL )
             </if>
         </where>
-        <if test="isPage != null and isPage == true">
-            LIMIT #{offSet}, #{pageSize}
-        </if>
         ORDER BY a.`gmt_modify` DESC
     </select>
     <select id="queryCountByTerms" parameterType="java.util.Map" resultType="java.lang.Integer">
@@ -189,7 +196,10 @@
         LEFT JOIN `user` AS d ON b.`like_user` = d.`user`
         <where>
             <if test="user != null">
-                a.`user` = #{user}
+                a.`id` = #{id}
+            </if>
+            <if test="user != null">
+                AND a.`user` = #{user}
             </if>
             <if test="name != null">
                 AND a.`name` = #{name}
@@ -232,5 +242,10 @@
         DELETE FROM `causerie_content`
         WHERE `id` = #{id}
         AND `user` = #{user}
+    </delete>
+
+    <delete id="deleteCauserieLike" parameterType="com.pph.demo.vo.request.causerie.DeleteCauserieReq">
+        DELETE FROM `causerie_content_like`
+        WHERE `id` = #{content_id}
     </delete>
 </mapper>

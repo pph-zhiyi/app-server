@@ -104,4 +104,12 @@ public interface CauserieContentMapper {
     @Select("SELECT * FROM `causerie_content` WHERE `id` = #{id} AND `user` = #{user}")
     CauserieContent queryContentByIdUser(@Param(value = "id") Long id,
                                          @Param(value = "user") String user);
+
+    /**
+     * 删除记录 Like
+     *
+     * @param req 入参
+     * @return 结果
+     */
+    Integer deleteCauserieLike(DeleteCauserieReq req);
 }

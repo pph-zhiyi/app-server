@@ -246,6 +246,6 @@
 
     <delete id="deleteCauserieLike" parameterType="com.pph.demo.vo.request.causerie.DeleteCauserieReq">
         DELETE FROM `causerie_content_like`
-        WHERE `id` = #{content_id}
+        WHERE `id` = #{id}
     </delete>
 </mapper>

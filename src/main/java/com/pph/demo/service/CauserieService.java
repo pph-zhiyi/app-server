@@ -1,5 +1,6 @@
 package com.pph.demo.service;
 
+import com.pph.demo.vo.request.causerie.AddCauserieCommentReq;
 import com.pph.demo.vo.request.causerie.AddCauserieReq;
 import com.pph.demo.vo.request.causerie.DeleteCauserieReq;
 import com.pph.demo.vo.request.causerie.LikeCauserieReq;
@@ -53,4 +54,12 @@ public interface CauserieService {
      * @return 结果
      */
     String deleteCauserie(DeleteCauserieReq req);
+
+    /**
+     * 新增评论
+     *
+     * @param req 入参
+     * @return 结果
+     */
+    String addCauserieComment(AddCauserieCommentReq req);
 }

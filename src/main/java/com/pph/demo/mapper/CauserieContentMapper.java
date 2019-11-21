@@ -2,6 +2,7 @@ package com.pph.demo.mapper;
 
 import com.pph.demo.model.CauserieContent;
 import com.pph.demo.model.CauserieContentLike;
+import com.pph.demo.vo.request.causerie.AddCauserieCommentReq;
 import com.pph.demo.vo.request.causerie.AddCauserieReq;
 import com.pph.demo.vo.request.causerie.DeleteCauserieReq;
 import com.pph.demo.vo.request.causerie.LikeCauserieReq;
@@ -112,4 +113,12 @@ public interface CauserieContentMapper {
      * @return 结果
      */
     Integer deleteCauserieLike(DeleteCauserieReq req);
+
+    /**
+     * 新增评论
+     *
+     * @param req 入参
+     * @return 结果
+     */
+    Integer addCauserieComment(AddCauserieCommentReq req);
 }

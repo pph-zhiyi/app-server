@@ -1,5 +1,6 @@
 package com.pph.demo.vo.response.causerie;
 
+import com.pph.demo.model.CauserieContentComment;
 import com.pph.demo.model.CauserieContentLike;
 import lombok.Data;
 
@@ -25,4 +26,6 @@ public class QueryCauserieRes {
     private Date commitTime;
 
     private List<CauserieContentLike> likes;
+
+    private List<CauserieContentComment> comments;
 }

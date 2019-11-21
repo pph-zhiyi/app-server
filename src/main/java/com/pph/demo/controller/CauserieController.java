@@ -3,6 +3,7 @@ package com.pph.demo.controller;
 import com.pph.demo.service.CauserieService;
 import com.pph.demo.utils.PageResult;
 import com.pph.demo.utils.oval.OvalVerify;
+import com.pph.demo.vo.request.causerie.AddCauserieCommentReq;
 import com.pph.demo.vo.request.causerie.AddCauserieReq;
 import com.pph.demo.vo.request.causerie.DeleteCauserieReq;
 import com.pph.demo.vo.request.causerie.LikeCauserieReq;
@@ -65,6 +66,7 @@ public class CauserieController {
      */
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public Object addCauserie(@RequestBody AddCauserieReq req) {
+        OvalVerify.verifyObj(req);
         return causerieService.addCauserie(req);
     }
 
@@ -76,6 +78,19 @@ public class CauserieController {
      */
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public Object deleteCauserie(@RequestBody DeleteCauserieReq req) {
+        OvalVerify.verifyObj(req);
         return causerieService.deleteCauserie(req);
+    }
+
+    /**
+     * 新增评论
+     *
+     * @param req 入参
+     * @return 结果
+     */
+    @RequestMapping(value = "/add/comment", method = RequestMethod.POST)
+    public Object addCauserieComment(@RequestBody AddCauserieCommentReq req) {
+        OvalVerify.verifyObj(req);
+        return causerieService.addCauserieComment(req);
     }
 }

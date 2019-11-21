@@ -5,6 +5,7 @@ import com.pph.demo.mapper.UserMapper;
 import com.pph.demo.model.CauserieContentLike;
 import com.pph.demo.service.CauserieService;
 import com.pph.demo.utils.common.Params;
+import com.pph.demo.vo.request.causerie.AddCauserieCommentReq;
 import com.pph.demo.vo.request.causerie.AddCauserieReq;
 import com.pph.demo.vo.request.causerie.DeleteCauserieReq;
 import com.pph.demo.vo.request.causerie.LikeCauserieReq;
@@ -98,5 +99,11 @@ public class CauserieServiceImpl implements CauserieService {
             }
             return count > 0 ? "删除成功" : "删除失败";
         }
+    }
+
+    @Override
+    public String addCauserieComment(AddCauserieCommentReq req) {
+        LOGGER.info("^^^addCauserieComment params: {}", req);
+        return causerieContentMapper.addCauserieComment(req) > 0 ? "发表评论成功" : "发表评论失败";
     }
 }

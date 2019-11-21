@@ -143,6 +143,19 @@
             <result column="gmt_create" jdbcType="TIMESTAMP" javaType="java.util.Date" property="gmtCreate"/>
             <result column="gmt_modify" jdbcType="TIMESTAMP" javaType="java.util.Date" property="gmtModify"/>
         </collection>
+        <collection property="comments" ofType="com.pph.demo.model.CauserieContentComment">
+            <id column="comment_id" jdbcType="BIGINT" javaType="java.lang.Long" property="id"/>
+            <result column="comment_content_id" jdbcType="BIGINT" javaType="java.lang.Long" property="contentId"/>
+            <result column="author_user" jdbcType="VARCHAR" javaType="java.lang.String" property="authorUser"/>
+            <result column="author_name" jdbcType="VARCHAR" javaType="java.lang.String" property="authorName"/>
+            <result column="comment_user" jdbcType="VARCHAR" javaType="java.lang.String" property="commentUser"/>
+            <result column="comment_name" jdbcType="VARCHAR" javaType="java.lang.String" property="commentName"/>
+            <result column="old_content" jdbcType="VARCHAR" javaType="java.lang.String" property="oldContent"/>
+            <result column="comment_content" jdbcType="VARCHAR" javaType="java.lang.String" property="commentContent"/>
+            <result column="is_content_author" javaType="java.lang.Boolean" property="isContentAuthor"/>
+            <result column="comment_create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" property="gmtCreate"/>
+            <result column="comment_gmt_modify" jdbcType="TIMESTAMP" javaType="java.util.Date" property="gmtModify"/>
+        </collection>
     </resultMap>
     <sql id="queryCauserieByTermsColumn">
         a.`id`,
@@ -156,7 +169,18 @@
         d.`name` AS `like_name`,
         b.`is_like`,
         b.`gmt_create`,
-        b.`gmt_modify`
+        b.`gmt_modify`,
+        ccc.`id` AS `comment_id`,
+        ccc.`content_id` AS `comment_content_id`,
+        ccc.`author_user`,
+        e.`name` AS `author_name`,
+        ccc.`comment_user`,
+        f.`name` AS `comment_name`,
+        `ccc`.`comment_content`,
+        `ccc`.`old_content`,
+        `ccc`.`is_content_author`,
+        `ccc`.`gmt_create` AS `comment_create_time`,
+        `ccc`.`gmt_modify` AS `comment_gmt_modify`
     </sql>
     <select id="queryCauserieByTerms" parameterType="java.util.Map" resultMap="queryCauserieByTermsRM">
         SELECT
@@ -164,8 +188,11 @@
         FROM
         `causerie_content` AS a
         LEFT JOIN `causerie_content_like` AS b ON a.`id` = b.`content_id`
+        LEFT JOIN `causerie_content_comment` AS `ccc` ON a.`id` = ccc.`content_id`
         LEFT JOIN `user` AS c ON a.`user` = c.`user`
         LEFT JOIN `user` AS d ON b.`like_user` = d.`user`
+        LEFT JOIN `user` AS e ON ccc.`author_user` = e.`user`
+        LEFT JOIN `user` AS f ON ccc.`comment_user` = f.`user`
         <where>
             <if test="isPage != null and isPage == true">
                 a.`id` IN ( SELECT INSTALL.`id` FROM ( SELECT `id` FROM `causerie_content`
@@ -188,21 +215,18 @@
     </select>
     <select id="queryCountByTerms" parameterType="java.util.Map" resultType="java.lang.Integer">
         SELECT
-        COUNT(DISTINCT a.`id`)
+        COUNT(*)
         FROM
-        `causerie_content` AS a
-        LEFT JOIN `causerie_content_like` AS b ON a.`id` = b.`content_id`
-        LEFT JOIN `user` AS c ON a.`user` = c.`user`
-        LEFT JOIN `user` AS d ON b.`like_user` = d.`user`
+        `causerie_content`
         <where>
             <if test="user != null">
-                a.`id` = #{id}
+                `id` = #{id}
             </if>
             <if test="user != null">
-                AND a.`user` = #{user}
+                AND `user` = #{user}
             </if>
             <if test="name != null">
-                AND a.`name` = #{name}
+                AND `name` = #{name}
             </if>
         </where>
     </select>
@@ -248,4 +272,52 @@
         DELETE FROM `causerie_content_like`
         WHERE `id` = #{id}
     </delete>
+
+    <insert id="addCauserieComment" parameterType="com.pph.demo.vo.request.causerie.AddCauserieCommentReq"
+            useGeneratedKeys="true" keyProperty="id">
+        <selectKey>
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO `causerie_content_comment`
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="contentId != null">
+                `content_id`,
+            </if>
+            <if test="authorUser != null">
+                `author_user`,
+            </if>
+            <if test="commentUser != null">
+                `comment_user`,
+            </if>
+            <if test="commentContent != null">
+                `comment_content`,
+            </if>
+            <if test="oldContent != null">
+                `old_content`,
+            </if>
+            <if test="isContentAuthor != null">
+                `is_content_author`,
+            </if>
+        </trim>
+        <trim prefix="VALUES(" suffix=")" suffixOverrides=",">
+            <if test="contentId != null">
+                #{contentId},
+            </if>
+            <if test="authorUser != null">
+                #{authorUser},
+            </if>
+            <if test="commentUser != null">
+                #{commentUser},
+            </if>
+            <if test="commentContent != null">
+                #{commentContent},
+            </if>
+            <if test="oldContent != null">
+                #{oldContent},
+            </if>
+            <if test="isContentAuthor != null">
+                #{isContentAuthor},
+            </if>
+        </trim>
+    </insert>
 </mapper>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pph.demo.mapper.CauserieContentCommentMapper" >
+  <resultMap id="BaseResultMap" type="com.pph.demo.model.CauserieContentComment" >
+    <constructor >
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="content_id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="author_user" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="comment_user" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="is_content_author" jdbcType="TINYINT" javaType="java.lang.Byte" />
+      <arg column="gmt_create" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="gmt_modify" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.pph.demo.model.CauserieContentComment" >
+    <constructor >
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="content_id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="author_user" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="comment_user" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="is_content_author" jdbcType="TINYINT" javaType="java.lang.Byte" />
+      <arg column="gmt_create" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="gmt_modify" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="comment_content" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, content_id, author_user, comment_user, is_content_author, gmt_create, gmt_modify
+  </sql>
+  <sql id="Blob_Column_List" >
+    comment_content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from causerie_content_comment
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from causerie_content_comment
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.pph.demo.model.CauserieContentComment" >
+    insert into causerie_content_comment (id, content_id, author_user, 
+      comment_user, is_content_author, gmt_create, 
+      gmt_modify, comment_content)
+    values (#{id,jdbcType=BIGINT}, #{contentId,jdbcType=BIGINT}, #{authorUser,jdbcType=VARCHAR}, 
+      #{commentUser,jdbcType=VARCHAR}, #{isContentAuthor,jdbcType=TINYINT}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{gmtModify,jdbcType=TIMESTAMP}, #{commentContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pph.demo.model.CauserieContentComment" >
+    insert into causerie_content_comment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="contentId != null" >
+        content_id,
+      </if>
+      <if test="authorUser != null" >
+        author_user,
+      </if>
+      <if test="commentUser != null" >
+        comment_user,
+      </if>
+      <if test="isContentAuthor != null" >
+        is_content_author,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModify != null" >
+        gmt_modify,
+      </if>
+      <if test="commentContent != null" >
+        comment_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="contentId != null" >
+        #{contentId,jdbcType=BIGINT},
+      </if>
+      <if test="authorUser != null" >
+        #{authorUser,jdbcType=VARCHAR},
+      </if>
+      <if test="commentUser != null" >
+        #{commentUser,jdbcType=VARCHAR},
+      </if>
+      <if test="isContentAuthor != null" >
+        #{isContentAuthor,jdbcType=TINYINT},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModify != null" >
+        #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commentContent != null" >
+        #{commentContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pph.demo.model.CauserieContentComment" >
+    update causerie_content_comment
+    <set >
+      <if test="contentId != null" >
+        content_id = #{contentId,jdbcType=BIGINT},
+      </if>
+      <if test="authorUser != null" >
+        author_user = #{authorUser,jdbcType=VARCHAR},
+      </if>
+      <if test="commentUser != null" >
+        comment_user = #{commentUser,jdbcType=VARCHAR},
+      </if>
+      <if test="isContentAuthor != null" >
+        is_content_author = #{isContentAuthor,jdbcType=TINYINT},
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModify != null" >
+        gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commentContent != null" >
+        comment_content = #{commentContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.pph.demo.model.CauserieContentComment" >
+    update causerie_content_comment
+    set content_id = #{contentId,jdbcType=BIGINT},
+      author_user = #{authorUser,jdbcType=VARCHAR},
+      comment_user = #{commentUser,jdbcType=VARCHAR},
+      is_content_author = #{isContentAuthor,jdbcType=TINYINT},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+      comment_content = #{commentContent,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pph.demo.model.CauserieContentComment" >
+    update causerie_content_comment
+    set content_id = #{contentId,jdbcType=BIGINT},
+      author_user = #{authorUser,jdbcType=VARCHAR},
+      comment_user = #{commentUser,jdbcType=VARCHAR},
+      is_content_author = #{isContentAuthor,jdbcType=TINYINT},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modify = #{gmtModify,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

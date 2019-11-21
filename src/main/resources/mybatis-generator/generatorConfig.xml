@@ -57,10 +57,15 @@
         </javaClientGenerator>
 
         <!--表名 & 实体类名-->
+        <!--
         <table tableName="causerie_content" domainObjectName="CauserieContent"
                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false"/>
         <table tableName="causerie_content_like" domainObjectName="CauserieContentLike"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false"/>
+        -->
+        <table tableName="causerie_content_comment" domainObjectName="CauserieContentComment"
                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false"/>
     </context>

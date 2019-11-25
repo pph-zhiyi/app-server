@@ -84,4 +84,15 @@ public class UserController {
         OvalVerify.verifyObj(req);
         return userService.deleteUserById(req);
     }
+
+    /**
+     * 获取所有用户名
+     *
+     * @return 结果
+     */
+    @RequestMapping(value = "/query/users", method = RequestMethod.GET)
+    public List<String> queryUsers() {
+        return userService.queryUsers();
+    }
+
 }

@@ -17,16 +17,16 @@ public interface UserService {
     /**
      * 根据条件过滤查询
      *
-     * @param filter
-     * @return
+     * @param filter 过滤条件
+     * @return 结果
      */
     List<User> queryUserByTerms(Map<String, Object> filter);
 
     /**
      * 总条数
      *
-     * @param filter
-     * @return
+     * @param filter 过滤条件
+     * @return 结果
      */
     Integer queryCountByTerms(Map<String, Object> filter);
 
@@ -41,34 +41,41 @@ public interface UserService {
     /**
      * 根据 id 修改用户
      *
-     * @param user
-     * @return
+     * @param user 用户
+     * @return 结果
      */
     Integer updateUserById(UpdateUserVo user);
 
     /**
      * 根据 id 删除用户
      *
-     * @param user
-     * @return
+     * @param user 用户
+     * @return 结果
      */
     Integer deleteUserById(DeleteUserVo user);
 
     /**
      * 根据用户名与密码查询用户
      *
-     * @param user
-     * @param password
-     * @return
+     * @param user     用户
+     * @param password 密码
+     * @return 结果
      */
     User queryUserByUserPwd(String user, String password);
 
     /**
      * 注册
      *
-     * @param user
-     * @param password
-     * @return
+     * @param user     用户
+     * @param password 密码
+     * @return 结果
      */
     Integer register(String user, String password);
+
+    /**
+     * 获取所有用户名
+     *
+     * @return 结果
+     */
+    List<String> queryUsers();
 }

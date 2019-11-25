@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * @Author: PPH
@@ -88,5 +87,10 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException("当前用户名已被注册！");
         }
         return userMapper.register(user, password);
+    }
+
+    @Override
+    public List<String> queryUsers() {
+        return userMapper.queryUsers();
     }
 }

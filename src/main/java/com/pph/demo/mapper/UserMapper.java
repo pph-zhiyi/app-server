@@ -16,49 +16,49 @@ public interface UserMapper {
     /**
      * 根据条件过滤查询
      *
-     * @param filter
-     * @return
+     * @param filter 过滤条件
+     * @return 结果
      */
     List<User> queryUserByTerms(Map<String, Object> filter);
 
     /**
      * 总条数
      *
-     * @param filter
-     * @return
+     * @param filter 过滤条件
+     * @return 结果
      */
     Integer queryCountByTerms(Map<String, Object> filter);
 
     /**
      * 新增用户
      *
-     * @param user
-     * @return
+     * @param user 用户
+     * @return 结果
      */
     Integer createUser(CreateUserVo user);
 
     /**
      * 根据 id 修改用户
      *
-     * @param user
-     * @return
+     * @param user 用户
+     * @return 结果
      */
     Integer updateUserById(UpdateUserVo user);
 
     /**
      * 根据 id 删除用户
      *
-     * @param user
-     * @return
+     * @param user 用户
+     * @return 结果
      */
     Integer deleteUserById(DeleteUserVo user);
 
     /**
      * 根据用户名与密码查询用户
      *
-     * @param user
-     * @param password
-     * @return
+     * @param user     用户
+     * @param password 密码
+     * @return 结果
      */
     User queryUserByUserPwd(@Param(value = "user") String user,
                             @Param(value = "password") String password);
@@ -66,9 +66,9 @@ public interface UserMapper {
     /**
      * 简单注册
      *
-     * @param user
-     * @param password
-     * @return
+     * @param user     用户
+     * @param password 密码
+     * @return 结果
      */
     Integer register(@Param(value = "user") String user,
                      @Param(value = "password") String password);
@@ -76,9 +76,12 @@ public interface UserMapper {
     /**
      * 根据用户名查询用户
      *
-     * @param user
-     * @return
+     * @param user 用户
+     * @return 结果
      */
     @Select("SELECT * FROM `user` WHERE `user` = #{user}")
     User queryUserByUser(@Param(value = "user") String user);
+
+    @Select("SELECT DISTINCT `user` FROM `user`")
+    List<String> queryUsers();
 }

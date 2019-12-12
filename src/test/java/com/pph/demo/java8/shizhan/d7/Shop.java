@@ -8,6 +8,8 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
+import static com.pph.demo.java8.shizhan.d7.Demo2.randomDelay;
+
 /**
  * @author: pph
  * @date: 2019/12/10 19:19
@@ -52,7 +54,8 @@ public class Shop {
     }
 
     private double calculatePrice(String product) {
-        delay();
+//        delay();
+        randomDelay();
         return random.nextDouble() * product.charAt(0) + product.charAt(1);
     }
 

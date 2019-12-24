@@ -1,194 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.pph.demo.mapper.TopProductDataMapper">
-    <resultMap id="BaseResultMap" type="com.pph.demo.model.TopProductData">
-        <constructor>
-            <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer"/>
-            <arg column="model" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="status" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="manufacturer" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="standard_type" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="function" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="form_factor" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="power_type" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="plug" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="input_voltage" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="acceptable_input_voltage" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="frequency" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="phase" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="maximum_input_current" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="maximum_line_current" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="derated_input_current" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="kVA" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="output_voltage" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="maximum_total_current_draw" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="outlet_number" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="C13" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="C19" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="universal" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="GB10A" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="GB16A" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="GB_small_five" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="BS_EN" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="DIN" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="NEMA_5_15R" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="NEMA_5_20R" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="NEMA_L6_20R" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="NEMA_L5_30R" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="NEMA_L6_30R" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="outlet_details" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="shell_material" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="color" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="inletLocation" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="connection_specification" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="junction_box" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="industrial_connector" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="accessory" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="cable_type" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="cable_length" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="perphase_light" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="outlet_light" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="meter_display" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="hot_replacement" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="work_temperature" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="work_humidity" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="elevation" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="storage_temperature" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="storage_humidity" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="storage_elevation" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="unit_dimensions" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="unit_weight" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="PDU_metering" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="bank" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="outlet_metering" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="outlet_switching" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="interface_485" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="interface_232" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="USB_A_interface" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="USB_B_interface" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="sensor_interface" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="wire_communication" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="breaker_monitoring" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="RCM" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="neutral_conductor_monitoring" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="network_bandwidth" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="screen_display" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="selfLock" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="SPD" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="fuse" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="perphase_breaker" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="outlet_breaker" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="conformance" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="RoHS" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="REACH" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="PEP" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="EOLI" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="EC_2006_66" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="proposition_65_warning" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="other_environmental_protection" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="LOGO" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="shipping_dimensions" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="shipping_weigh" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="special_instruction" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="warranty" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="market_classification" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="gmt_create" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
-            <arg column="gmt_modify" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
-        </constructor>
-    </resultMap>
-    <sql id="Base_Column_List">
-    id, model, status, manufacturer, standard_type, function, form_factor, power_type, 
-    plug, input_voltage, acceptable_input_voltage, frequency, phase, maximum_input_current, 
-    maximum_line_current, derated_input_current, kVA, output_voltage, maximum_total_current_draw, 
-    outlet_number, C13, C19, universal, GB10A, GB16A, GB_small_five, BS_EN, DIN, NEMA_5_15R, 
-    NEMA_5_20R, NEMA_L6_20R, NEMA_L5_30R, NEMA_L6_30R, outlet_details, shell_material, 
-    color, inletLocation, connection_specification, junction_box, industrial_connector, 
-    accessory, cable_type, cable_length, perphase_light, outlet_light, meter_display, 
-    hot_replacement, work_temperature, work_humidity, elevation, storage_temperature, 
-    storage_humidity, storage_elevation, unit_dimensions, unit_weight, PDU_metering, 
-    bank, outlet_metering, outlet_switching, interface_485, interface_232, USB_A_interface, 
-    USB_B_interface, sensor_interface, wire_communication, breaker_monitoring, RCM, neutral_conductor_monitoring, 
-    network_bandwidth, screen_display, selfLock, SPD, fuse, perphase_breaker, outlet_breaker, 
-    conformance, RoHS, REACH, PEP, EOLI, EC_2006_66, proposition_65_warning, other_environmental_protection, 
-    LOGO, shipping_dimensions, shipping_weigh, special_instruction, warranty, market_classification, 
-    gmt_create, gmt_modify
-  </sql>
-    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
-        select
-        <include refid="Base_Column_List"/>
-        from top_product_data
-        where id = #{id,jdbcType=INTEGER}
-    </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from top_product_data
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-    <insert id="insert" parameterType="com.pph.demo.model.TopProductData">
-    insert into top_product_data (id, model, status, 
-      manufacturer, standard_type, function, 
-      form_factor, power_type, plug, 
-      input_voltage, acceptable_input_voltage, frequency, 
-      phase, maximum_input_current, maximum_line_current, 
-      derated_input_current, kVA, output_voltage, 
-      maximum_total_current_draw, outlet_number, 
-      C13, C19, universal, 
-      GB10A, GB16A, GB_small_five, 
-      BS_EN, DIN, NEMA_5_15R, 
-      NEMA_5_20R, NEMA_L6_20R, NEMA_L5_30R, 
-      NEMA_L6_30R, outlet_details, shell_material, 
-      color, inletLocation, connection_specification, 
-      junction_box, industrial_connector, accessory, 
-      cable_type, cable_length, perphase_light, 
-      outlet_light, meter_display, hot_replacement, 
-      work_temperature, work_humidity, elevation, 
-      storage_temperature, storage_humidity, storage_elevation, 
-      unit_dimensions, unit_weight, PDU_metering, 
-      bank, outlet_metering, outlet_switching, 
-      interface_485, interface_232, USB_A_interface, 
-      USB_B_interface, sensor_interface, wire_communication, 
-      breaker_monitoring, RCM, neutral_conductor_monitoring, 
-      network_bandwidth, screen_display, selfLock, 
-      SPD, fuse, perphase_breaker, 
-      outlet_breaker, conformance, RoHS, 
-      REACH, PEP, EOLI, EC_2006_66, 
-      proposition_65_warning, other_environmental_protection, 
-      LOGO, shipping_dimensions, shipping_weigh, 
-      special_instruction, warranty, market_classification, 
-      gmt_create, gmt_modify)
-    values (#{id,jdbcType=INTEGER}, #{model,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
-      #{manufacturer,jdbcType=VARCHAR}, #{standardType,jdbcType=VARCHAR}, #{function,jdbcType=VARCHAR}, 
-      #{formFactor,jdbcType=VARCHAR}, #{powerType,jdbcType=VARCHAR}, #{plug,jdbcType=VARCHAR}, 
-      #{inputVoltage,jdbcType=VARCHAR}, #{acceptableInputVoltage,jdbcType=VARCHAR}, #{frequency,jdbcType=VARCHAR}, 
-      #{phase,jdbcType=VARCHAR}, #{maximumInputCurrent,jdbcType=VARCHAR}, #{maximumLineCurrent,jdbcType=VARCHAR}, 
-      #{deratedInputCurrent,jdbcType=VARCHAR}, #{kva,jdbcType=VARCHAR}, #{outputVoltage,jdbcType=VARCHAR}, 
-      #{maximumTotalCurrentDraw,jdbcType=VARCHAR}, #{outletNumber,jdbcType=VARCHAR}, 
-      #{c13,jdbcType=VARCHAR}, #{c19,jdbcType=VARCHAR}, #{universal,jdbcType=VARCHAR}, 
-      #{gb10a,jdbcType=VARCHAR}, #{gb16a,jdbcType=VARCHAR}, #{gbSmallFive,jdbcType=VARCHAR}, 
-      #{bsEn,jdbcType=VARCHAR}, #{din,jdbcType=VARCHAR}, #{nema515r,jdbcType=VARCHAR}, 
-      #{nema520r,jdbcType=VARCHAR}, #{nemaL620r,jdbcType=VARCHAR}, #{nemaL530r,jdbcType=VARCHAR}, 
-      #{nemaL630r,jdbcType=VARCHAR}, #{outletDetails,jdbcType=VARCHAR}, #{shellMaterial,jdbcType=VARCHAR}, 
-      #{color,jdbcType=VARCHAR}, #{inletlocation,jdbcType=VARCHAR}, #{connectionSpecification,jdbcType=VARCHAR}, 
-      #{junctionBox,jdbcType=VARCHAR}, #{industrialConnector,jdbcType=VARCHAR}, #{accessory,jdbcType=VARCHAR}, 
-      #{cableType,jdbcType=VARCHAR}, #{cableLength,jdbcType=VARCHAR}, #{perphaseLight,jdbcType=VARCHAR}, 
-      #{outletLight,jdbcType=VARCHAR}, #{meterDisplay,jdbcType=VARCHAR}, #{hotReplacement,jdbcType=VARCHAR}, 
-      #{workTemperature,jdbcType=VARCHAR}, #{workHumidity,jdbcType=VARCHAR}, #{elevation,jdbcType=VARCHAR}, 
-      #{storageTemperature,jdbcType=VARCHAR}, #{storageHumidity,jdbcType=VARCHAR}, #{storageElevation,jdbcType=VARCHAR}, 
-      #{unitDimensions,jdbcType=VARCHAR}, #{unitWeight,jdbcType=VARCHAR}, #{pduMetering,jdbcType=VARCHAR}, 
-      #{bank,jdbcType=VARCHAR}, #{outletMetering,jdbcType=VARCHAR}, #{outletSwitching,jdbcType=VARCHAR}, 
-      #{interface485,jdbcType=VARCHAR}, #{interface232,jdbcType=VARCHAR}, #{usbAInterface,jdbcType=VARCHAR}, 
-      #{usbBInterface,jdbcType=VARCHAR}, #{sensorInterface,jdbcType=VARCHAR}, #{wireCommunication,jdbcType=VARCHAR}, 
-      #{breakerMonitoring,jdbcType=VARCHAR}, #{rcm,jdbcType=VARCHAR}, #{neutralConductorMonitoring,jdbcType=VARCHAR}, 
-      #{networkBandwidth,jdbcType=VARCHAR}, #{screenDisplay,jdbcType=VARCHAR}, #{selflock,jdbcType=VARCHAR}, 
-      #{spd,jdbcType=VARCHAR}, #{fuse,jdbcType=VARCHAR}, #{perphaseBreaker,jdbcType=VARCHAR}, 
-      #{outletBreaker,jdbcType=VARCHAR}, #{conformance,jdbcType=VARCHAR}, #{rohs,jdbcType=VARCHAR}, 
-      #{reach,jdbcType=VARCHAR}, #{pep,jdbcType=VARCHAR}, #{eoli,jdbcType=VARCHAR}, #{ec200666,jdbcType=VARCHAR}, 
-      #{proposition65Warning,jdbcType=VARCHAR}, #{otherEnvironmentalProtection,jdbcType=VARCHAR}, 
-      #{logo,jdbcType=VARCHAR}, #{shippingDimensions,jdbcType=VARCHAR}, #{shippingWeigh,jdbcType=VARCHAR}, 
-      #{specialInstruction,jdbcType=VARCHAR}, #{warranty,jdbcType=VARCHAR}, #{marketClassification,jdbcType=VARCHAR}, 
-      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModify,jdbcType=TIMESTAMP})
-  </insert>
+
     <insert id="insertSelective" parameterType="com.pph.demo.model.TopProductData">
-        insert into top_product_data
+        INSERT INTO `top_product_data`
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
                 id,
@@ -740,8 +555,9 @@
             </if>
         </trim>
     </insert>
+
     <update id="updateByPrimaryKeySelective" parameterType="com.pph.demo.model.TopProductData">
-        update top_product_data
+        UPDATE `top_product_data`
         <set>
             <if test="model != null">
                 model = #{model,jdbcType=VARCHAR},
@@ -1016,102 +832,8 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.pph.demo.model.TopProductData">
-    update top_product_data
-    set model = #{model,jdbcType=VARCHAR},
-      status = #{status,jdbcType=VARCHAR},
-      manufacturer = #{manufacturer,jdbcType=VARCHAR},
-      standard_type = #{standardType,jdbcType=VARCHAR},
-      function = #{function,jdbcType=VARCHAR},
-      form_factor = #{formFactor,jdbcType=VARCHAR},
-      power_type = #{powerType,jdbcType=VARCHAR},
-      plug = #{plug,jdbcType=VARCHAR},
-      input_voltage = #{inputVoltage,jdbcType=VARCHAR},
-      acceptable_input_voltage = #{acceptableInputVoltage,jdbcType=VARCHAR},
-      frequency = #{frequency,jdbcType=VARCHAR},
-      phase = #{phase,jdbcType=VARCHAR},
-      maximum_input_current = #{maximumInputCurrent,jdbcType=VARCHAR},
-      maximum_line_current = #{maximumLineCurrent,jdbcType=VARCHAR},
-      derated_input_current = #{deratedInputCurrent,jdbcType=VARCHAR},
-      kVA = #{kva,jdbcType=VARCHAR},
-      output_voltage = #{outputVoltage,jdbcType=VARCHAR},
-      maximum_total_current_draw = #{maximumTotalCurrentDraw,jdbcType=VARCHAR},
-      outlet_number = #{outletNumber,jdbcType=VARCHAR},
-      C13 = #{c13,jdbcType=VARCHAR},
-      C19 = #{c19,jdbcType=VARCHAR},
-      universal = #{universal,jdbcType=VARCHAR},
-      GB10A = #{gb10a,jdbcType=VARCHAR},
-      GB16A = #{gb16a,jdbcType=VARCHAR},
-      GB_small_five = #{gbSmallFive,jdbcType=VARCHAR},
-      BS_EN = #{bsEn,jdbcType=VARCHAR},
-      DIN = #{din,jdbcType=VARCHAR},
-      NEMA_5_15R = #{nema515r,jdbcType=VARCHAR},
-      NEMA_5_20R = #{nema520r,jdbcType=VARCHAR},
-      NEMA_L6_20R = #{nemaL620r,jdbcType=VARCHAR},
-      NEMA_L5_30R = #{nemaL530r,jdbcType=VARCHAR},
-      NEMA_L6_30R = #{nemaL630r,jdbcType=VARCHAR},
-      outlet_details = #{outletDetails,jdbcType=VARCHAR},
-      shell_material = #{shellMaterial,jdbcType=VARCHAR},
-      color = #{color,jdbcType=VARCHAR},
-      inletLocation = #{inletlocation,jdbcType=VARCHAR},
-      connection_specification = #{connectionSpecification,jdbcType=VARCHAR},
-      junction_box = #{junctionBox,jdbcType=VARCHAR},
-      industrial_connector = #{industrialConnector,jdbcType=VARCHAR},
-      accessory = #{accessory,jdbcType=VARCHAR},
-      cable_type = #{cableType,jdbcType=VARCHAR},
-      cable_length = #{cableLength,jdbcType=VARCHAR},
-      perphase_light = #{perphaseLight,jdbcType=VARCHAR},
-      outlet_light = #{outletLight,jdbcType=VARCHAR},
-      meter_display = #{meterDisplay,jdbcType=VARCHAR},
-      hot_replacement = #{hotReplacement,jdbcType=VARCHAR},
-      work_temperature = #{workTemperature,jdbcType=VARCHAR},
-      work_humidity = #{workHumidity,jdbcType=VARCHAR},
-      elevation = #{elevation,jdbcType=VARCHAR},
-      storage_temperature = #{storageTemperature,jdbcType=VARCHAR},
-      storage_humidity = #{storageHumidity,jdbcType=VARCHAR},
-      storage_elevation = #{storageElevation,jdbcType=VARCHAR},
-      unit_dimensions = #{unitDimensions,jdbcType=VARCHAR},
-      unit_weight = #{unitWeight,jdbcType=VARCHAR},
-      PDU_metering = #{pduMetering,jdbcType=VARCHAR},
-      bank = #{bank,jdbcType=VARCHAR},
-      outlet_metering = #{outletMetering,jdbcType=VARCHAR},
-      outlet_switching = #{outletSwitching,jdbcType=VARCHAR},
-      interface_485 = #{interface485,jdbcType=VARCHAR},
-      interface_232 = #{interface232,jdbcType=VARCHAR},
-      USB_A_interface = #{usbAInterface,jdbcType=VARCHAR},
-      USB_B_interface = #{usbBInterface,jdbcType=VARCHAR},
-      sensor_interface = #{sensorInterface,jdbcType=VARCHAR},
-      wire_communication = #{wireCommunication,jdbcType=VARCHAR},
-      breaker_monitoring = #{breakerMonitoring,jdbcType=VARCHAR},
-      RCM = #{rcm,jdbcType=VARCHAR},
-      neutral_conductor_monitoring = #{neutralConductorMonitoring,jdbcType=VARCHAR},
-      network_bandwidth = #{networkBandwidth,jdbcType=VARCHAR},
-      screen_display = #{screenDisplay,jdbcType=VARCHAR},
-      selfLock = #{selflock,jdbcType=VARCHAR},
-      SPD = #{spd,jdbcType=VARCHAR},
-      fuse = #{fuse,jdbcType=VARCHAR},
-      perphase_breaker = #{perphaseBreaker,jdbcType=VARCHAR},
-      outlet_breaker = #{outletBreaker,jdbcType=VARCHAR},
-      conformance = #{conformance,jdbcType=VARCHAR},
-      RoHS = #{rohs,jdbcType=VARCHAR},
-      REACH = #{reach,jdbcType=VARCHAR},
-      PEP = #{pep,jdbcType=VARCHAR},
-      EOLI = #{eoli,jdbcType=VARCHAR},
-      EC_2006_66 = #{ec200666,jdbcType=VARCHAR},
-      proposition_65_warning = #{proposition65Warning,jdbcType=VARCHAR},
-      other_environmental_protection = #{otherEnvironmentalProtection,jdbcType=VARCHAR},
-      LOGO = #{logo,jdbcType=VARCHAR},
-      shipping_dimensions = #{shippingDimensions,jdbcType=VARCHAR},
-      shipping_weigh = #{shippingWeigh,jdbcType=VARCHAR},
-      special_instruction = #{specialInstruction,jdbcType=VARCHAR},
-      warranty = #{warranty,jdbcType=VARCHAR},
-      market_classification = #{marketClassification,jdbcType=VARCHAR},
-      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
-      gmt_modify = #{gmtModify,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
 
-    <insert id="inserts" parameterType="java.util.List">
+    <insert id="adds" parameterType="java.util.List">
         INSERT INTO `top_product_data` (
         `model`,
         `status`,
@@ -1385,4 +1107,63 @@
         `warranty` = VALUES(`warranty`),
         `market_classification` = VALUES(`market_classification`)
     </insert>
+
+    <select id="queryProductByTerms" resultType="com.pph.demo.model.TopProductData"
+            parameterType="java.util.Map">
+        SELECT * FROM `top_product_data`
+        <where>
+            <if test="model != null">
+                `model` LIKE CONCAT('%', #{model}, '%')
+            </if>
+            <if test="function != null and function.size() > 0">
+                AND `function`
+                <foreach item="item" collection="function" separator="," open="IN (" close=")" index="">
+                    #{item, jdbcType=VARCHAR}
+                </foreach>
+            </if>
+            <if test="manufacturer != null and manufacturer.size() > 0">
+                AND `manufacturer`
+                <foreach item="item" collection="manufacturer" separator="," open="IN (" close=")" index="">
+                    #{item, jdbcType=VARCHAR}
+                </foreach>
+            </if>
+            <if test="standardType != null and standardType.size() > 0">
+                AND `standard_type`
+                <foreach item="item" collection="standardType" separator="," open="IN (" close=")" index="">
+                    #{item, jdbcType=VARCHAR}
+                </foreach>
+            </if>
+        </where>
+        ORDER BY `gmt_modify` DESC
+        <if test="isPage != null and isPage == true">
+            LIMIT #{offSet}, #{pageSize}
+        </if>
+    </select>
+
+    <select id="queryTotalByTerms" resultType="java.lang.Integer" parameterType="java.util.Map">
+        SELECT COUNT(*) FROM `top_product_data`
+        <where>
+            <if test="model != null">
+                `model` LIKE CONCAT('%', #{model}, '%')
+            </if>
+            <if test="function != null and function.size() > 0">
+                AND `function`
+                <foreach item="item" collection="function" separator="," open="IN (" close=")" index="">
+                    #{item, jdbcType=VARCHAR}
+                </foreach>
+            </if>
+            <if test="manufacturer != null and manufacturer.size() > 0">
+                AND `manufacturer`
+                <foreach item="item" collection="manufacturer" separator="," open="IN (" close=")" index="">
+                    #{item, jdbcType=VARCHAR}
+                </foreach>
+            </if>
+            <if test="standardType != null and standardType.size() > 0">
+                AND `standard_type`
+                <foreach item="item" collection="standardType" separator="," open="IN (" close=")" index="">
+                    #{item, jdbcType=VARCHAR}
+                </foreach>
+            </if>
+        </where>
+    </select>
 </mapper>

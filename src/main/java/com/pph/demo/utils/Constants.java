@@ -54,6 +54,10 @@ public final class Constants {
      */
     public static final String SIGN_5 = ".";
     /**
+     * Excel 后缀 1
+     */
+    public static final String EXCEL_SUFFIX_1 = "xlsx";
+    /**
      * 测试读取文件初始化
      */
     public static final String YML_TEST;

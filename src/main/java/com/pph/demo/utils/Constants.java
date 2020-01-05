@@ -16,7 +16,6 @@ import java.util.Properties;
  */
 public final class Constants {
     private Constants() {
-
     }
 
     /**
@@ -90,10 +89,19 @@ public final class Constants {
     /**
      * 读文件值
      *
+     * @return
+     */
+    public static Properties defProperties() {
+        return loadProperties(CONFIG_FILE);
+    }
+
+    /**
+     * 读文件值
+     *
      * @param path
      * @return
      */
-    private static Properties loadProperties(String path) {
+    public static Properties loadProperties(String path) {
         InputStream is = Constants.class.getResourceAsStream(Params.notBlank(path, "path can not be blank!"));
         Properties properties = new Properties();
 

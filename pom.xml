@@ -130,6 +130,13 @@
             <artifactId>poi-excelant</artifactId>
             <version>3.16</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.yaml/snakeyaml -->
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>1.25</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>

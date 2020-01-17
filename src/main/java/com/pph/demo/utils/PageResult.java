@@ -1,5 +1,6 @@
 package com.pph.demo.utils;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.Map;
  * @Description:
  */
 @Data
+@AllArgsConstructor
 public class PageResult<E> {
     /**
      * 数据
@@ -28,13 +30,6 @@ public class PageResult<E> {
      * 分页条数
      */
     private Integer pageSize;
-
-    public PageResult(List<E> data, Integer total, Integer pageNo, Integer pageSize) {
-        this.data = data;
-        this.total = total;
-        this.pageNo = pageNo;
-        this.pageSize = pageSize;
-    }
 
     public PageResult(List<E> data, Integer total, Map<String, Object> filter) {
         this.data = data;

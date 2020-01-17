@@ -19,7 +19,6 @@ public class D1 {
 
     private static ThreadLocal<Connection> connectionHolder = ThreadLocal.withInitial(() -> {
         try {
-
             return DriverManager.getConnection(URL, USERNAME, PASSWORD);
         } catch (SQLException e) {
             throw new IllegalArgumentException(e);

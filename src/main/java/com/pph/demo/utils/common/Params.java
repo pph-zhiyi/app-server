@@ -1,5 +1,6 @@
 package com.pph.demo.utils.common;
 
+import com.alibaba.fastjson.JSON;
 import com.pph.demo.utils.Constants;
 import org.apache.commons.lang.StringUtils;
 
@@ -16,7 +17,6 @@ import java.util.Optional;
  */
 public final class Params {
     private Params() {
-
     }
 
     /**
@@ -182,5 +182,17 @@ public final class Params {
 
         filter.put(offSet, (Integer.parseInt(String.valueOf(filter.get(pageNo))) - 1)
                 * Integer.parseInt(String.valueOf(filter.get(pageSize))));
+    }
+
+    /**
+     * 对象转 JSON 字符串
+     *
+     * @param o 对象
+     * @return JSON 字符串
+     */
+    public static String toJsonStr(Object o) {
+        return Optional.ofNullable(o)
+                .map(JSON::toJSONString)
+                .orElse("{}");
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * @Author: pph
@@ -25,28 +26,39 @@ public class ExceptionHandlers {
     /**
      * 处理登录 Exception
      *
-     * @param request
-     * @param e
-     * @return
+     * @param request  入
+     * @param response 出
+     * @param e        异常
+     * @return 结果
      */
     @ExceptionHandler(value = UnauthorizedException.class)
-    public Result<Object> loginException(HttpServletRequest request, Exception e) {
+    public Result<Object> loginException(HttpServletRequest request, HttpServletResponse response, Exception e) {
         LOGGER.error("^^^ loginException params: {}, error: {}", request.getParameterMap(), e);
+
+//        解决跨域访问报错
+        response.setHeader("Access-Control-Allow-Origin", "*");
+
         return ApiResult.error(401, null, e.getMessage());
     }
 
     /**
      * 处理所有 Exception
      *
-     * @param request
-     * @param e
-     * @return
+     * @param request  入
+     * @param response 出
+     * @param e        异常
+     * @return 结果
      */
     @ExceptionHandler(value = Exception.class)
-    public Result<Object> globalException(HttpServletRequest request, Exception e) {
+    public Result<Object> globalException(HttpServletRequest request, HttpServletResponse response, Exception e) {
         LOGGER.error("^^^ globalException params: {}, error: {}", request.getParameterMap(), e);
+
+//        解决跨域访问报错
+        response.setHeader("Access-Control-Allow-Origin", "*");
+
         int code = 500;
-        if (e instanceof UnauthorizedException || e instanceof com.auth0.jwt.exceptions.TokenExpiredException) {
+        if (e instanceof UnauthorizedException
+                || e instanceof com.auth0.jwt.exceptions.TokenExpiredException) {
             code = 401;
         }
         return ApiResult.error(code, e);

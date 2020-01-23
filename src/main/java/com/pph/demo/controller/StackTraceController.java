@@ -20,7 +20,7 @@ import static java.util.stream.Collectors.toList;
 @RequestMapping("/stack")
 public class StackTraceController {
 
-    @SkipToken
+    @SkipToken(required = false)
     @RequestMapping(value = "/get", method = RequestMethod.GET)
     public List<Stack> get() {
         return Thread.getAllStackTraces().entrySet().stream()

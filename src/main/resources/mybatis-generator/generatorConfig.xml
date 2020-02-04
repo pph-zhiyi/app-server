@@ -67,8 +67,11 @@
         <table tableName="causerie_content_comment" domainObjectName="CauserieContentComment"
                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false"/>
-        -->
         <table tableName="top_product_data" domainObjectName="TopProductData"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false"/>
+        -->
+        <table tableName="user_img" domainObjectName="UserImg"
                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false"/>
     </context>

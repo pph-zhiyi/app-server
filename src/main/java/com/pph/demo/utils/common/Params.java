@@ -1,7 +1,6 @@
 package com.pph.demo.utils.common;
 
 import com.alibaba.fastjson.JSON;
-import com.pph.demo.model.User;
 import com.pph.demo.utils.Constants;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;

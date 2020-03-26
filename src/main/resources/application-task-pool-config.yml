@@ -1,0 +1,11 @@
+task:
+  pool:
+    config:
+      # 核心线程数
+      corePoolSize: 50
+      # 最大线程数
+      maxPoolSize: 100
+      # 活跃时间
+      keepAliveSeconds: 300
+      # 队列大小
+      queueCapacity: 5000

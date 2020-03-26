@@ -1,12 +1,14 @@
 package com.pph.demo.controller;
 
+import com.pph.demo.annotation.SkipResultProcessing;
+import com.pph.demo.annotation.SkipToken;
 import com.pph.demo.model.User;
 import com.pph.demo.service.UserService;
+import com.pph.demo.utils.PageResult;
 import com.pph.demo.utils.common.ApiResult;
 import com.pph.demo.utils.common.Result;
 import com.pph.demo.utils.oval.OvalVerify;
 import com.pph.demo.vo.request.user.CreateUserVo;
-import com.pph.demo.utils.PageResult;
 import com.pph.demo.vo.request.user.DeleteUserVo;
 import com.pph.demo.vo.request.user.UpdateUserVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,4 +97,11 @@ public class UserController {
         return userService.queryUsers();
     }
 
+    @SkipToken
+    @SkipResultProcessing
+    @RequestMapping(value = "/test/async", method = RequestMethod.GET)
+    public String async() {
+        userService.asyncTest();
+        return "async";
+    }
 }

@@ -1,5 +1,6 @@
 package com.pph.demo.configs.base;
 
+import com.pph.demo.annotation.SkipResultProcessing;
 import com.pph.demo.utils.common.ApiResult;
 import com.pph.demo.utils.common.Result;
 import com.pph.demo.utils.yml.SkipUniformResultProcessingUri;
@@ -12,13 +13,15 @@ import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
+import java.util.Objects;
+
 /**
  * @Author: pph
  * @Date: 2019/9/12 17:13
  * @Description:
  */
 @ControllerAdvice
-public class ResponseAdvisor implements ResponseBodyAdvice<Object> {
+public class ResponseAdvice implements ResponseBodyAdvice<Object> {
 
     @Autowired
     private SkipUniformResultProcessingUri uriList;
@@ -37,6 +40,13 @@ public class ResponseAdvisor implements ResponseBodyAdvice<Object> {
          */
         if (body instanceof Result
                 || uriList.getList().stream().anyMatch(request.getURI().getPath()::equals)) {
+            return body;
+        }
+        /*
+         * 如果该 Controller 上有 SkipResultProcessing 注解并且 required = true 统一不走后置处理，直接返回原始值
+         */
+        SkipResultProcessing skip = returnType.getMethodAnnotation(SkipResultProcessing.class);
+        if (Objects.nonNull(skip) && skip.required()) {
             return body;
         }
 

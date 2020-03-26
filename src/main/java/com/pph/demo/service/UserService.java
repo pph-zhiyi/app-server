@@ -78,4 +78,9 @@ public interface UserService {
      * @return 结果
      */
     List<String> queryUsers();
+
+    /**
+     * 异步测试
+     */
+    void asyncTest();
 }

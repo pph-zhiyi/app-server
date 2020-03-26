@@ -1,5 +1,6 @@
 package com.pph.demo.service.impl;
 
+import com.pph.demo.async.AsyncService;
 import com.pph.demo.mapper.UserMapper;
 import com.pph.demo.model.User;
 import com.pph.demo.service.UserService;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 
 /**
  * @Author: PPH
@@ -33,6 +35,11 @@ public class UserServiceImpl implements UserService {
      */
     @Autowired
     private UserMapper userMapper;
+    /**
+     * 异步任务
+     */
+    @Autowired
+    private Map<String, AsyncService> asyncService;
 
     @Override
     public List<User> queryUserByTerms(Map<String, Object> filter) {
@@ -92,5 +99,18 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<String> queryUsers() {
         return userMapper.queryUsers();
+    }
+
+    @Override
+    public void asyncTest() {
+        AsyncService asyncService = this.asyncService.get("asyncServiceImpl");
+        AsyncService pphAsyncService = this.asyncService.get("pphAsyncServiceImpl");
+
+        Stream.iterate(1, n -> n + 1)
+                .limit(10)
+                .forEach(i -> {
+                    asyncService.executeAsync(i);
+                    pphAsyncService.executeAsync(i);
+                });
     }
 }

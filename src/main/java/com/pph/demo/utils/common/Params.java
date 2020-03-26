@@ -8,6 +8,12 @@ import org.springframework.beans.BeanUtils;
 import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ForkJoinPool;
+import java.util.function.Function;
+
+import static java.util.stream.Collectors.toList;
 
 /**
  * @Author: PPH
@@ -316,5 +322,20 @@ public final class Params {
                 notNull(source, "Source must not be null"),
                 notNull(target, "Target must not be null"),
                 objNonNullFieldsArr(target));
+    }
+
+    public static <T, R> List<CompletableFuture<R>> taskRun(List<T> list, Function<T, R> mapper, Executor executor) {
+        return list.stream()
+                .map(t -> CompletableFuture.supplyAsync(() -> mapper.apply(t),
+                        Objects.nonNull(executor)
+                                ? executor
+                                : ForkJoinPool.commonPool()))
+                .collect(toList());
+    }
+
+    public static <R> List<R> taskResult(List<CompletableFuture<R>> task) {
+        return task.stream()
+                .map(CompletableFuture::join)
+                .collect(toList());
     }
 }

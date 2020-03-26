@@ -14,9 +14,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
 
 /**
@@ -102,9 +104,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void asyncTest() {
+    public List<String> asyncTest() {
         AsyncService asyncService = this.asyncService.get("asyncServiceImpl");
         AsyncService pphAsyncService = this.asyncService.get("pphAsyncServiceImpl");
+        List<Integer> list = new ArrayList<Integer>() {{
+            add(111);
+            add(222);
+            add(333);
+        }};
+
+        List<CompletableFuture<String>> tasks = Params.taskRun(list, i -> String.format("我是字符串: %d", i), null);
 
         Stream.iterate(1, n -> n + 1)
                 .limit(10)
@@ -112,5 +121,7 @@ public class UserServiceImpl implements UserService {
                     asyncService.executeAsync(i);
                     pphAsyncService.executeAsync(i);
                 });
+
+        return Params.taskResult(tasks);
     }
 }

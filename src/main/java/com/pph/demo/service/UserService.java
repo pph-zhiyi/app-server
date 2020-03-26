@@ -81,6 +81,7 @@ public interface UserService {
 
     /**
      * 异步测试
+     * @return
      */
-    void asyncTest();
+    List<String> asyncTest();
 }

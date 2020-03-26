@@ -98,10 +98,9 @@ public class UserController {
     }
 
     @SkipToken
-    @SkipResultProcessing
+    @SkipResultProcessing(required = false)
     @RequestMapping(value = "/test/async", method = RequestMethod.GET)
-    public String async() {
-        userService.asyncTest();
-        return "async";
+    public Object async() {
+        return userService.asyncTest();
     }
 }

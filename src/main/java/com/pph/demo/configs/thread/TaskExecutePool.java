@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
-import java.util.concurrent.Executor;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
@@ -22,7 +21,7 @@ public class TaskExecutePool {
     private TaskPoolConfig taskPoolConfig;
 
     @Bean("pphTaskAsyncPool")
-    public Executor pphTaskAsyncPool() {
+    public ThreadPoolTaskExecutor pphTaskAsyncPool() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
 //        线程名称前缀
         executor.setThreadNamePrefix("pph_task_async-");

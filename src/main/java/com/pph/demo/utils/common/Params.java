@@ -4,13 +4,18 @@ import com.alibaba.fastjson.JSON;
 import com.pph.demo.utils.Constants;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
+import org.springframework.util.CollectionUtils;
 
 import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
-import java.util.concurrent.ForkJoinPool;
 import java.util.function.Function;
 
 import static java.util.stream.Collectors.toList;
@@ -20,8 +25,20 @@ import static java.util.stream.Collectors.toList;
  * @Date: 2019-07-30 15:02
  * @Description:
  */
+@Component
 public final class Params {
     private Params() {
+    }
+
+    /**
+     * 线程池
+     */
+    private static ThreadPoolTaskExecutor taskExecutor;
+
+    @Autowired
+    @Qualifier("pphTaskAsyncPool")
+    public void setTaskExecutor(ThreadPoolTaskExecutor taskExecutor) {
+        Params.taskExecutor = taskExecutor;
     }
 
     /**
@@ -306,8 +323,8 @@ public final class Params {
      */
     public static void copySourceNonNullFields(Object source, Object target) {
         BeanUtils.copyProperties(
-                notNull(source, "Source must not be null"),
-                notNull(target, "Target must not be null"),
+                notNull(source, "Source must not be null!"),
+                notNull(target, "Target must not be null!"),
                 objIsNullFieldsArr(source));
     }
 
@@ -319,21 +336,54 @@ public final class Params {
      */
     public static void copyTargetIsNullFields(Object source, Object target) {
         BeanUtils.copyProperties(
-                notNull(source, "Source must not be null"),
-                notNull(target, "Target must not be null"),
+                notNull(source, "Source must not be null!"),
+                notNull(target, "Target must not be null!"),
                 objNonNullFieldsArr(target));
     }
 
+    /**
+     * 执行异步并行任务
+     *
+     * @param list   参数集合
+     * @param mapper 任务
+     * @param <T>    入参范型
+     * @param <R>    结果范型
+     * @return 任务结果集合
+     */
+    public static <T, R> List<CompletableFuture<R>> taskRun(List<T> list, Function<T, R> mapper) {
+        return taskRun(list, mapper, null);
+    }
+
+    /**
+     * 执行异步并行任务
+     *
+     * @param list     参数集合
+     * @param mapper   任务
+     * @param executor 线程池
+     * @param <T>      入参范型
+     * @param <R>      结果范型
+     * @return 任务结果集合
+     */
     public static <T, R> List<CompletableFuture<R>> taskRun(List<T> list, Function<T, R> mapper, Executor executor) {
+        Assert.isTrue(!CollectionUtils.isEmpty(list), "List must not be empty!");
+        Assert.notNull(mapper, "Mapper must not be null!");
         return list.stream()
                 .map(t -> CompletableFuture.supplyAsync(() -> mapper.apply(t),
                         Objects.nonNull(executor)
                                 ? executor
-                                : ForkJoinPool.commonPool()))
+                                : taskExecutor))
                 .collect(toList());
     }
 
+    /**
+     * 堵塞获取异步任务执行结果
+     *
+     * @param task 任务结果集合
+     * @param <R>  结果范型
+     * @return 结果集合
+     */
     public static <R> List<R> taskResult(List<CompletableFuture<R>> task) {
+        Assert.isTrue(!CollectionUtils.isEmpty(task), "Task must not be empty!");
         return task.stream()
                 .map(CompletableFuture::join)
                 .collect(toList());

@@ -113,7 +113,7 @@ public class UserServiceImpl implements UserService {
             add(333);
         }};
 
-        List<CompletableFuture<String>> tasks = Params.taskRun(list, i -> String.format("我是字符串: %d", i), null);
+        List<CompletableFuture<String>> tasks = Params.taskRun(list, i -> String.format("我是字符串: %d", i));
 
         Stream.iterate(1, n -> n + 1)
                 .limit(10)

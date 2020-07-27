@@ -7,9 +7,9 @@ import java.util.concurrent.BlockingQueue;
 import java.util.function.Consumer;
 
 /**
- * @author: pph
- * @date: 2019/12/16 08:46
- * @description:
+ * @author pph
+ * @date 2019/12/16 08:46
+ * @description
  */
 @AllArgsConstructor
 public class BlockingQueueSpliterator<T> implements Spliterator<T> {

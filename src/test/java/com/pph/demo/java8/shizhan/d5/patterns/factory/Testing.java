@@ -5,9 +5,9 @@ import org.junit.Test;
 import java.util.function.Supplier;
 
 /**
- * @author: pph
- * @date: 2019/12/9 19:22
- * @description:
+ * @author pph
+ * @date 2019/12/9 19:22
+ * @description
  */
 public class Testing {
 

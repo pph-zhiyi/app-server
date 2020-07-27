@@ -3,9 +3,9 @@ package com.pph.demo.java8.shizhan.d5.patterns.template;
 import java.util.function.Consumer;
 
 /**
- * @author: pph
- * @date: 2019/12/9 12:41
- * @description:
+ * @author pph
+ * @date 2019/12/9 12:41
+ * @description
  */
 public class OnlineBankingLambda {
 

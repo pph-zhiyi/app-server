@@ -17,9 +17,9 @@ import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Function;
 
 /**
- * @author: pph
+ * @author pph
  * @date: 2020/2/7 16:13
- * @description: 本地缓存提供者服务（Guava Cache）
+ * @description 本地缓存提供者服务（Guava Cache）
  */
 @Configuration
 @ComponentScan(basePackages = AppConst.BASE_PACKAGE_NAME)

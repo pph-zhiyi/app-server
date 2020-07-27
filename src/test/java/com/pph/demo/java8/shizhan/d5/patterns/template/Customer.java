@@ -5,9 +5,9 @@ import lombok.Data;
 import lombok.ToString;
 
 /**
- * @author: pph
- * @date: 2019/12/9 09:32
- * @description:
+ * @author pph
+ * @date 2019/12/9 09:32
+ * @description
  */
 @Data
 @AllArgsConstructor

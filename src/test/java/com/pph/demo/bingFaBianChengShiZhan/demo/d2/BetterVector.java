@@ -4,8 +4,8 @@ import java.util.Vector;
 
 /**
  * @author: pph
- * @date: 2020/1/9 17:24
- * @description:
+ * @date 2020/1/9 17:24
+ * @description
  */
 public class BetterVector<E> extends Vector<E> {
 

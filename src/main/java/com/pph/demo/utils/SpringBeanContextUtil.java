@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 import java.util.Objects;
 
 /**
- * @Author: PPH
- * @Date: 2019-07-29 17:48
+ * @author PPH
+ * @date 2019-07-29 17:48
  * @Description:
  */
 @Component

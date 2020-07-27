@@ -14,8 +14,8 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @Author: PPH
- * @Date: 2019-08-06 10:48
+ * @author PPH
+ * @date 2019-08-06 10:48
  * @Description:
  */
 @Aspect

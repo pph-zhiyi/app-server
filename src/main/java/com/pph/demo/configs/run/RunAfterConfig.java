@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @Author: pph
- * @Date: 2019/9/17 16:26
+ * @date: 2019/9/17 16:26
  * @Description: 项目启动后执行
  */
 @Configuration

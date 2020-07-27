@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @author: pph
- * @date: 2020/1/31 15:27
+ * @author pph
+ * @date 2020/1/31 15:27
  * @description:
  */
 @RestController

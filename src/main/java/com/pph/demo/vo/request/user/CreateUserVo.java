@@ -10,9 +10,9 @@ import net.sf.oval.constraint.NotNull;
 import java.util.Date;
 
 /**
- * @Author: PPH
- * @Date: 2019-05-24 10:10
- * @Description:
+ * @author PPH
+ * @date 2019-05-24 10:10
+ * @description
  */
 @Data
 public class CreateUserVo {

@@ -8,9 +8,9 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
- * @Author: PPH
- * @Date: 2019-05-24 10:29
- * @Description:
+ * @author PPH
+ * @date 2019-05-24 10:29
+ * @description
  */
 public final class OvalVerify {
     private OvalVerify() {

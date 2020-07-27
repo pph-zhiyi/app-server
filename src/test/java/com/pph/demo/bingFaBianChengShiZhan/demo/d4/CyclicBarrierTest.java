@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @author: pph
- * @date: 2020/1/13 09:25
+ * @date 2020/1/13 09:25
  * @description:
  */
 public class CyclicBarrierTest {

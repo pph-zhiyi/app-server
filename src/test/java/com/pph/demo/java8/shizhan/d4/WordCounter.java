@@ -4,8 +4,8 @@ import lombok.AllArgsConstructor;
 
 /**
  * @author: pph
- * @date: 2019/12/9 08:35
- * @description:
+ * @date 2019/12/9 08:35
+ * @description
  */
 @AllArgsConstructor
 public class WordCounter {

@@ -3,9 +3,9 @@ package com.pph.demo.utils.common;
 import lombok.Data;
 
 /**
- * @Author: PPH
- * @Date: 2019-08-06 11:01
- * @Description:
+ * @author PPH
+ * @date 2019-08-06 11:01
+ * @description
  */
 @Data
 public class Result<T> {

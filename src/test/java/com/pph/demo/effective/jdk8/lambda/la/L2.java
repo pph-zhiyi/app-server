@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 
 /**
  * @Author: PPH
- * @Date: 2019-07-09 17:19
+ * @date: 2019-07-09 17:19
  * @Description: lambda 表达式优于匿名类
  */
 public class L2 {

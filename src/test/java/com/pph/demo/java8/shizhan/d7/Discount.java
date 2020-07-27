@@ -5,9 +5,9 @@ import lombok.AllArgsConstructor;
 import static com.pph.demo.java8.shizhan.d7.Shop.delay;
 
 /**
- * @author: pph
- * @date: 2019/12/11 09:07
- * @description:
+ * @author pph
+ * @date 2019/12/11 09:07
+ * @description
  */
 public class Discount {
 

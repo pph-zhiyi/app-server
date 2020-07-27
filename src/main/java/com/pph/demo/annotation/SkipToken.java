@@ -6,9 +6,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @Author: pph
- * @Date: 2019/9/19 19:58
- * @Description: 作用在 Controller 的 API 上，默认跳过 Token 校验
+ * @author pph
+ * @date 2019/9/19 19:58
+ * @description 作用在 Controller 的 API 上，默认跳过 Token 校验
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

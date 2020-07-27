@@ -9,8 +9,8 @@ import java.util.stream.LongStream;
 
 /**
  * @author: pph
- * @date: 2019/12/6 08:55
- * @description:
+ * @date 2019/12/6 08:55
+ * @description
  */
 @AllArgsConstructor
 public class ForkJoinSumCalculator extends RecursiveTask<Long> {

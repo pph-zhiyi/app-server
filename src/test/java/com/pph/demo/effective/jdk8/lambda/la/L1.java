@@ -4,7 +4,7 @@ import java.util.function.Supplier;
 
 /**
  * @Author: PPH
- * @Date: 2019-06-09 12:28
+ * @date: 2019-06-09 12:28
  * @Description:
  */
 public class L1 {

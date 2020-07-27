@@ -5,8 +5,8 @@ import java.util.List;
 
 /**
  * @author: pph
- * @date: 2020/1/7 09:14
- * @description:
+ * @date 2020/1/7 09:14
+ * @description
  */
 public class PrivateLock {
 

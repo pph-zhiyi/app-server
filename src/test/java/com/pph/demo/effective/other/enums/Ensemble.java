@@ -2,7 +2,7 @@ package com.pph.demo.effective.other.enums;
 
 /**
  * @Author: PPH
- * @Date: 2019-07-05 09:12
+ * @date: 2019-07-05 09:12
  * @Description: 使用实例属性替代序数
  */
 public enum Ensemble {

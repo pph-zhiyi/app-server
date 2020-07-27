@@ -4,9 +4,9 @@ import org.apache.commons.lang.StringUtils;
 import org.junit.Test;
 
 /**
- * @author: pph
- * @date: 2019/12/9 18:48
- * @description:
+ * @author pph
+ * @date 2019/12/9 18:48
+ * @description
  */
 public class Testing {
 

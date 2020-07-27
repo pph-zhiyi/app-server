@@ -9,7 +9,7 @@ import java.util.*;
 
 /**
  * @author: pph
- * @date: 2019/12/31 09:31
+ * @date 2019/12/31 09:31
  * @description:
  */
 public class YmlConfig {

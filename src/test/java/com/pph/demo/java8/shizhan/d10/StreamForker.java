@@ -12,9 +12,9 @@ import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 /**
- * @author: pph
- * @date: 2019/12/16 08:21
- * @description:
+ * @author pph
+ * @date 2019/12/16 08:21
+ * @description
  */
 @AllArgsConstructor
 public class StreamForker<T> {

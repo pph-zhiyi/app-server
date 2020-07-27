@@ -6,8 +6,8 @@ import java.util.List;
 
 /**
  * @author: pph
- * @date: 2020/1/9 17:27
- * @description:
+ * @date 2020/1/9 17:27
+ * @description
  */
 public class ListHelper<E> {
 

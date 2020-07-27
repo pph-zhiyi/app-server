@@ -10,8 +10,8 @@ import java.util.Objects;
 import java.util.Properties;
 
 /**
- * @Author: PPH
- * @Date: 2019-07-02 15:42
+ * @author PPH
+ * @date 2019-07-02 15:42
  * @Description:
  */
 public final class Constants {

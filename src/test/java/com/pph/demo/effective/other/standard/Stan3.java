@@ -10,9 +10,9 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @Author: PPH
- * @Date: 2019-07-24 09:03
- * @Description: executor 、task 和 stream 优先于线程
+ * @author PPH
+ * @date 2019-07-24 09:03
+ * @description executor 、task 和 stream 优先于线程
  * <p>
  * 《Java Concurrency in Practice》一书[Goetz06] 。
  */

@@ -2,7 +2,7 @@ package com.pph.demo.effective.builder.user;
 
 /**
  * @Author: PPH
- * @Date: 2019-05-30 15:51
+ * @date 2019-05-30 15:51
  * @Description:
  */
 public class Test {

@@ -14,7 +14,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 /**
  * @Author: PPH
- * @Date: 2019-06-15 18:45
+ * @date: 2019-06-15 18:45
  * @Description:
  */
 @EnableCaching

@@ -5,7 +5,7 @@ import java.util.Map;
 
 /**
  * @Author: PPH
- * @Date: 2019-07-09 17:40
+ * @date: 2019-07-09 17:40
  * @Description: 方法引用优于 lambda 表达式
  */
 public class L3 {

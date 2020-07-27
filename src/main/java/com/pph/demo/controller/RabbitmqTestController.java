@@ -22,9 +22,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @Author: pph
- * @Date: 2019/9/4 19:17
- * @Description:
+ * @author pph
+ * @date 2019/9/4 19:17
+ * @description
  */
 @RestController
 @RequestMapping("/rabbitmq/test")

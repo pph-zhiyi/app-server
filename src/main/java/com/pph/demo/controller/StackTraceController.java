@@ -12,9 +12,9 @@ import java.util.List;
 import static java.util.stream.Collectors.toList;
 
 /**
- * @author: pph
- * @date: 2019/12/19 19:59
- * @description:
+ * @author pph
+ * @date 2019/12/19 19:59
+ * @description
  */
 @RestController
 @RequestMapping("/stack")

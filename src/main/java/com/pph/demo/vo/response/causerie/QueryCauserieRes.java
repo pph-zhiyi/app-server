@@ -8,9 +8,9 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @Author: pph
- * @Date: 2019/11/11 18:06
- * @Description:
+ * @author pph
+ * @date 2019/11/11 18:06
+ * @description
  */
 @Data
 public class QueryCauserieRes {

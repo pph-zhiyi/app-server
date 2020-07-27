@@ -3,8 +3,8 @@ package com.pph.demo.utils;
 import org.springframework.stereotype.Component;
 
 /**
- * @Author: PPH
- * @Date: 2019-06-15 19:13
+ * @author PPH
+ * @date 2019-06-15 19:13
  * @Description:
  */
 @Component

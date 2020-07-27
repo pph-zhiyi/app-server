@@ -5,8 +5,8 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- * @Author: pph
- * @Date: 2019/10/30 14:30
+ * @author pph
+ * @date 2019/10/30 14:30
  * @Description:
  */
 @Data

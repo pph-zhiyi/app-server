@@ -9,9 +9,9 @@ import java.util.concurrent.*;
 import static java.util.stream.Collectors.toList;
 
 /**
- * @author: pph
- * @date: 2019/12/10 12:56
- * @description:
+ * @author pph
+ * @date 2019/12/10 12:56
+ * @description
  */
 public class Demo {
 

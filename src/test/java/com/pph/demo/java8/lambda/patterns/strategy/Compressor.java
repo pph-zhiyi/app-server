@@ -2,8 +2,8 @@ package com.pph.demo.java8.lambda.patterns.strategy;
 
 /**
  * @author: pph
- * @date: 2019/11/28 16:37
- * @description:
+ * @date 2019/11/28 16:37
+ * @description
  */
 public class Compressor {
 

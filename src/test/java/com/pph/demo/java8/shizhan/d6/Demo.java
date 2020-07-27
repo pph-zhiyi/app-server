@@ -4,9 +4,9 @@ import lombok.Data;
 import org.junit.Test;
 
 /**
- * @author: pph
- * @date: 2019/12/10 08:09
- * @description:
+ * @author pph
+ * @date 2019/12/10 08:09
+ * @description
  */
 public class Demo {
 

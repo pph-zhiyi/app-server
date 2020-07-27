@@ -6,9 +6,9 @@ import java.util.Objects;
 import java.util.function.Supplier;
 
 /**
- * @author: pph
- * @date: 2019/12/9 19:16
- * @description:
+ * @author pph
+ * @date 2019/12/9 19:16
+ * @description
  */
 public class ProductFactory {
 

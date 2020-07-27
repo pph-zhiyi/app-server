@@ -21,9 +21,9 @@ import java.util.function.Function;
 import static java.util.stream.Collectors.toList;
 
 /**
- * @Author: PPH
- * @Date: 2019-07-30 15:02
- * @Description:
+ * @author PPH
+ * @date 2019-07-30 15:02
+ * @description
  */
 @Component
 public final class Params {

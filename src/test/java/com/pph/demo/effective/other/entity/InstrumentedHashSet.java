@@ -6,9 +6,9 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * @Author: PPH
- * @Date: 2019-06-12 22:22
- * @Description:
+ * @author PPH
+ * @date 2019-06-12 22:22
+ * @description
  */
 public class InstrumentedHashSet<E> extends HashSet<E> {
 

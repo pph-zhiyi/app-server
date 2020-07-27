@@ -2,7 +2,7 @@ package com.pph.demo.effective.sigleton;
 
 /**
  * @Author: PPH
- * @Date: 2019-06-06 17:19
+ * @date 2019-06-06 17:19
  * @Description:
  */
 public class NonNew {

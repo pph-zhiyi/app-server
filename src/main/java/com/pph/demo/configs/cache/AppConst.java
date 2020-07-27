@@ -5,7 +5,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author: pph
  * @date: 2020/2/7 16:22
- * @description:
+ * @description
  */
 class AppConst {
 

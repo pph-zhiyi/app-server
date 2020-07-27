@@ -9,9 +9,9 @@ import java.util.concurrent.Future;
 import java.util.function.Consumer;
 
 /**
- * @author: pph
- * @date: 2019/12/16 08:27
- * @description:
+ * @author pph
+ * @date 2019/12/16 08:27
+ * @description
  */
 @AllArgsConstructor
 public class ForkingStreamConsumer<T> implements Consumer<T>, Results {

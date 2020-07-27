@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Objects;
 
 /**
- * @Author: pph
- * @Date: 2019/9/19 19:15
- * @Description:
+ * @author pph
+ * @date 2019/9/19 19:15
+ * @description
  */
 @RestController
 @RequestMapping("/jwt")

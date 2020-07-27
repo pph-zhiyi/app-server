@@ -6,9 +6,9 @@ import java.util.EmptyStackException;
 import java.util.List;
 
 /**
- * @Author: PPH
- * @Date: 2019-06-10 18:21
- * @Description:
+ * @author PPH
+ * @date 2019-06-10 18:21
+ * @description
  */
 public class Stack {
 

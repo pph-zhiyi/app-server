@@ -3,9 +3,9 @@ package com.pph.demo.utils.oval;
 import net.sf.oval.constraint.CheckWithCheck;
 
 /**
- * @Author: PPH
- * @Date: 2019-05-24 10:56
- * @Description:
+ * @author PPH
+ * @date 2019-05-24 10:56
+ * @description
  */
 public class CheckBeanUtil {
 

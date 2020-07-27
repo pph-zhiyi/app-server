@@ -15,8 +15,8 @@ import java.util.*;
 import java.util.Date;
 
 /**
- * @Author: PPH
- * @Date: 2019-07-30 10:46
+ * @author PPH
+ * @date 2019-07-30 10:46
  * @Description:
  */
 public final class JdbcUtil {

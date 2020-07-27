@@ -3,9 +3,9 @@ package com.pph.demo.java8.shizhan.d5.patterns.template;
 import org.junit.Test;
 
 /**
- * @author: pph
- * @date: 2019/12/9 12:39
- * @description:
+ * @author pph
+ * @date 2019/12/9 12:39
+ * @description
  */
 public class Testing {
 

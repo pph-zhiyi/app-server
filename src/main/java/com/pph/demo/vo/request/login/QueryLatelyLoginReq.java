@@ -5,9 +5,9 @@ import net.sf.oval.constraint.NotBlank;
 import net.sf.oval.constraint.NotNull;
 
 /**
- * @Author: pph
- * @Date: 2019/10/30 14:34
- * @Description:
+ * @author pph
+ * @date 2019/10/30 14:34
+ * @description
  */
 @Data
 public class QueryLatelyLoginReq {

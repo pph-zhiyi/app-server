@@ -6,9 +6,9 @@ import java.util.Arrays;
 import java.util.EmptyStackException;
 
 /**
- * @Author: PPH
- * @Date: 2019-06-21 17:59
- * @Description:
+ * @author PPH
+ * @date 2019-06-21 17:59
+ * @description
  */
 public class Stack2<E> {
 

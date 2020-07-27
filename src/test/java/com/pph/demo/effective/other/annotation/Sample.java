@@ -2,7 +2,7 @@ package com.pph.demo.effective.other.annotation;
 
 /**
  * @Author: PPH
- * @Date: 2019-07-09 09:32
+ * @date 2019-07-09 09:32
  * @Description:
  */
 public class Sample {

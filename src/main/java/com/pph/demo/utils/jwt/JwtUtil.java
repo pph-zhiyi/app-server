@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @Author: pph
- * @Date: 2019/9/19 18:59
+ * @date 2019/9/19 18:59
  * @Description:
  */
 public final class JwtUtil {

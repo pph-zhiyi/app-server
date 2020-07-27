@@ -22,7 +22,7 @@ import java.util.Map;
 
 /**
  * @Author: PPH
- * @Date: 2019-07-11 12:44
+ * @date: 2019-07-11 12:44
  * @Description: 优先使用标准的函数式接口
  */
 @FunctionalInterface

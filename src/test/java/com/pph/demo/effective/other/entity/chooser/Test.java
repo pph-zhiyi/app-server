@@ -5,9 +5,9 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * @Author: PPH
- * @Date: 2019-06-21 17:42
- * @Description:
+ * @author PPH
+ * @date 2019-06-21 17:42
+ * @description
  */
 public class Test {
 

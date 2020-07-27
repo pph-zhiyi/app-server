@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * @Author: PPH
- * @Date: 2019-08-20 10:43
+ * @date: 2019-08-20 10:43
  * @Description:
  */
 public final class DateGranularity {

@@ -4,7 +4,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author: pph
- * @date: 2020/1/8 09:30
+ * @date 2020/1/8 09:30
  * @description: 不变性条件 lower <= upper
  */
 public class NumberRange {

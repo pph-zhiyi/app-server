@@ -7,9 +7,9 @@ import net.sf.oval.constraint.NotBlank;
 import net.sf.oval.constraint.NotNull;
 
 /**
- * @author: pph
- * @date: 2020/1/31 15:33
- * @description:
+ * @author pph
+ * @date 2020/1/31 15:33
+ * @description
  */
 @Data
 public class GetNowPlayingReq {

@@ -10,9 +10,9 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * @Author: PPH
- * @Date: 2019-07-02 14:43
- * @Description:
+ * @author PPH
+ * @date 2019-07-02 14:43
+ * @description
  */
 public class Favorites {
 

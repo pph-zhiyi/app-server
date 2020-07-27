@@ -5,9 +5,9 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 /**
- * @author: pph
- * @date: 2019/12/9 09:30
- * @description:
+ * @author pph
+ * @date 2019/12/9 09:30
+ * @description
  */
 public abstract class OnlineBanking {
 

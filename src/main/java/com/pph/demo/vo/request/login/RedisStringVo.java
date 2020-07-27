@@ -4,8 +4,8 @@ import lombok.Data;
 import net.sf.oval.constraint.NotBlank;
 
 /**
- * @Author: PPH
- * @Date: 2019-06-21 16:12
+ * @author PPH
+ * @date 2019-06-21 16:12
  * @Description:
  */
 @Data

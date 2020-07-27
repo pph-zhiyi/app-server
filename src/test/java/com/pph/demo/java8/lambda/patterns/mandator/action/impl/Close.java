@@ -5,7 +5,7 @@ import com.pph.demo.java8.lambda.patterns.mandator.action.Action;
 
 /**
  * @author: pph
- * @date: 2019/11/28 15:37
+ * @date 2019/11/28 15:37
  * @description:
  */
 public class Close implements Action {

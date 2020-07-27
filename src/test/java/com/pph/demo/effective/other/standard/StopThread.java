@@ -3,8 +3,8 @@ package com.pph.demo.effective.other.standard;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @Author: PPH
- * @Date: 2019-07-23 18:29
+ * @author PPH
+ * @date 2019-07-23 18:29
  * @Description:
  */
 public class StopThread {

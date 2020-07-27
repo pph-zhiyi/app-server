@@ -13,7 +13,7 @@ import static java.util.stream.Collector.Characteristics.IDENTITY_FINISH;
 /**
  * @author: pph
  * @date: 2019/12/5 18:50
- * @description:
+ * @description
  */
 public class ToListCollector<T> implements Collector<T, List<T>, List<T>> {
 

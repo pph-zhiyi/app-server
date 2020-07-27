@@ -2,7 +2,7 @@ package com.pph.demo.effective.other.entity;
 
 /**
  * @Author: PPH
- * @Date: 2019-06-12 21:37
+ * @date 2019-06-12 21:37
  * @Description:
  */
 public final class Time {

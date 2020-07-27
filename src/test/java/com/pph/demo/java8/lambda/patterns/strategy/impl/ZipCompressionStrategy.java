@@ -4,8 +4,8 @@ import com.pph.demo.java8.lambda.patterns.strategy.CompressionStrategy;
 
 /**
  * @author: pph
- * @date: 2019/11/28 16:36
- * @description:
+ * @date 2019/11/28 16:36
+ * @description
  */
 public class ZipCompressionStrategy implements CompressionStrategy {
 

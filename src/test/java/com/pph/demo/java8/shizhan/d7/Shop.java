@@ -12,7 +12,7 @@ import static com.pph.demo.java8.shizhan.d7.Demo2.randomDelay;
 
 /**
  * @author: pph
- * @date: 2019/12/10 19:19
+ * @date 2019/12/10 19:19
  * @description:
  */
 @Getter

@@ -3,9 +3,9 @@ package com.pph.demo.utils.common;
 import org.springframework.http.HttpStatus;
 
 /**
- * @Author: PPH
- * @Date: 2019-08-06 12:41
- * @Description:
+ * @author PPH
+ * @date 2019-08-06 12:41
+ * @description
  */
 public final class ApiResult {
     private ApiResult() {

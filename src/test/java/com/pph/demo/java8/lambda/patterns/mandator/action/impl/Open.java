@@ -5,7 +5,7 @@ import com.pph.demo.java8.lambda.patterns.mandator.action.Action;
 
 /**
  * @author: pph
- * @date: 2019/11/28 15:36
+ * @date 2019/11/28 15:36
  * @description:
  */
 public class Open implements Action {

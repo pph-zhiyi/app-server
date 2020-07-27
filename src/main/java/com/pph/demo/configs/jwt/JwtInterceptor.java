@@ -20,7 +20,7 @@ import java.util.HashMap;
 
 /**
  * @Author: pph
- * @Date: 2019/9/19 19:23
+ * @date: 2019/9/19 19:23
  * @Description:
  */
 public class JwtInterceptor implements HandlerInterceptor {

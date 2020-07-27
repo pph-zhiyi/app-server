@@ -6,7 +6,7 @@ import java.util.stream.Stream;
 
 /**
  * @Author: PPH
- * @Date: 2019-07-05 09:35
+ * @date: 2019-07-05 09:35
  * @Description: 使用 EnumSet 替代位属性
  */
 public class Text {

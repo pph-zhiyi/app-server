@@ -10,9 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @Author: pph
- * @Date: 2019/10/3 10:56
- * @Description:
+ * @author pph
+ * @date 2019/10/3 10:56
+ * @description
  */
 @RestController
 @RequestMapping(value = "/react/demo")

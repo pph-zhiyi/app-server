@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @author: pph
- * @date: 2020/1/10 09:35
+ * @date 2020/1/10 09:35
  * @description:
  */
 public class Preloader {

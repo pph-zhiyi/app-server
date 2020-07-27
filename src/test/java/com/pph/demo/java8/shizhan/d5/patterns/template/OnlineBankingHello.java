@@ -1,9 +1,9 @@
 package com.pph.demo.java8.shizhan.d5.patterns.template;
 
 /**
- * @author: pph
- * @date: 2019/12/9 12:50
- * @description:
+ * @author pph
+ * @date 2019/12/9 12:50
+ * @description
  */
 public class OnlineBankingHello extends OnlineBanking {
 

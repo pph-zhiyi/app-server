@@ -10,9 +10,9 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author: pph
- * @date: 2020/3/26 20:32
- * @description:
+ * @author pph
+ * @datetime 2020/3/26 20:32
+ * @description
  */
 @Service
 public class PphAsyncServiceImpl implements AsyncService {

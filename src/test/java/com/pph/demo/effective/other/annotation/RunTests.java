@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 
 /**
  * @Author: PPH
- * @Date: 2019-07-09 09:33
+ * @date 2019-07-09 09:33
  * @Description: 注解优于命名模式
  */
 public class RunTests {

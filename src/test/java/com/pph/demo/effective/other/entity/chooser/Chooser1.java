@@ -5,9 +5,9 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * @Author: PPH
- * @Date: 2019-06-21 17:30
- * @Description:
+ * @author PPH
+ * @date 2019-06-21 17:30
+ * @description
  */
 public class Chooser1 {
 

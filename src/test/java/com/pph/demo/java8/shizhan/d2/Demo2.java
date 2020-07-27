@@ -14,7 +14,7 @@ import static java.util.stream.Collectors.partitioningBy;
 /**
  * @author: pph
  * @date: 2019/12/5 19:14
- * @description:
+ * @description
  */
 public class Demo2 {
 

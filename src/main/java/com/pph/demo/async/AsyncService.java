@@ -1,9 +1,9 @@
 package com.pph.demo.async;
 
 /**
- * @author: pph
- * @date: 2020/3/26 20:16
- * @description:
+ * @author pph
+ * @datetime 2020/3/26 20:16
+ * @description
  */
 public interface AsyncService {
     /**

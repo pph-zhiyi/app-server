@@ -12,9 +12,9 @@ import java.util.function.DoubleUnaryOperator;
 import static java.util.stream.Collectors.toList;
 
 /**
- * @author: pph
- * @date: 2019/12/12 15:25
- * @description:
+ * @author pph
+ * @date 2019/12/12 15:25
+ * @description
  */
 public class Demo {
 

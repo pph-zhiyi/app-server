@@ -9,8 +9,8 @@ import java.util.function.Supplier;
 
 /**
  * @author: pph
- * @date: 2019/12/11 14:58
- * @description: CompletableFuture 学习
+ * @date 2019/12/11 14:58
+ * @description CompletableFuture 学习
  */
 public class Demo {
 

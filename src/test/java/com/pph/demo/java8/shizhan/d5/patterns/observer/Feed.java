@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author: pph
- * @date: 2019/12/9 18:46
- * @description:
+ * @author pph
+ * @date 2019/12/9 18:46
+ * @description
  */
 public class Feed implements Subject {
 

@@ -2,7 +2,7 @@ package com.pph.demo.java8.lambda.patterns.template;
 
 /**
  * @author: pph
- * @date: 2019/11/28 17:23
+ * @date 2019/11/28 17:23
  * @description:
  */
 public abstract class LoanApplication {

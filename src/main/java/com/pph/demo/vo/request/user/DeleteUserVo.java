@@ -4,9 +4,9 @@ import lombok.Data;
 import net.sf.oval.constraint.NotNull;
 
 /**
- * @Author: PPH
- * @Date: 2019-08-02 10:48
- * @Description:
+ * @author PPH
+ * @date 2019-08-02 10:48
+ * @description
  */
 @Data
 public class DeleteUserVo {

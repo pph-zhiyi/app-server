@@ -6,9 +6,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @author: pph
- * @date: 2020/3/26 21:43
- * @description: 作用于 Controller 的 API 上，默认跳过结果格式化处理
+ * @author pph
+ * @date 2020/3/26 21:43
+ * @description 作用于 Controller 的 API 上，默认跳过结果格式化处理
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

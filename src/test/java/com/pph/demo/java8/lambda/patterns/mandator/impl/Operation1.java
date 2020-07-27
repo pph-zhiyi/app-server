@@ -4,7 +4,7 @@ import com.pph.demo.java8.lambda.patterns.mandator.Editor;
 
 /**
  * @author: pph
- * @date: 2019/11/28 15:42
+ * @date 2019/11/28 15:42
  * @description:
  */
 public class Operation1 implements Editor {

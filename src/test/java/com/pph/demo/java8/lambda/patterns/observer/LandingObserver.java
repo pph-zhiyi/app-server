@@ -2,7 +2,7 @@ package com.pph.demo.java8.lambda.patterns.observer;
 
 /**
  * @author: pph
- * @date: 2019/11/28 17:01
+ * @date 2019/11/28 17:01
  * @description:
  */
 public interface LandingObserver {

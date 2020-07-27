@@ -11,9 +11,9 @@ import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.joining;
 
 /**
- * @author: pph
- * @date: 2019/12/16 08:21
- * @description:
+ * @author pph
+ * @date 2019/12/16 08:21
+ * @description
  */
 public class Demo {
 

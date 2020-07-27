@@ -5,8 +5,8 @@ import net.sf.oval.constraint.NotBlank;
 import net.sf.oval.constraint.NotNull;
 
 /**
- * @Author: pph
- * @Date: 2019/11/12 09:16
+ * @author pph
+ * @date 2019/11/12 09:16
  * @Description:
  */
 @Data

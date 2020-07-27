@@ -2,7 +2,7 @@ package com.pph.demo.effective.other.enums;
 
 /**
  * @Author: PPH
- * @Date: 2019-07-04 09:09
+ * @date: 2019-07-04 09:09
  * @Description:
  */
 public enum PayrollDay {

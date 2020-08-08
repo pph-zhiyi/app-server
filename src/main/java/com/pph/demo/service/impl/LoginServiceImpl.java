@@ -96,22 +96,22 @@ public class LoginServiceImpl implements LoginService {
             login.setIsLogin(0);
         }
 
-        try {
-            objectMapper.writeValueAsString(login);
-            rabbitTemplate.setMessageConverter(new Jackson2JsonMessageConverter());
-            rabbitTemplate.setExchange(exchangeName);
-            rabbitTemplate.setRoutingKey(routingName);
-
-            Message message = MessageBuilder.withBody(objectMapper.writeValueAsBytes(login))
-                    .setDeliveryMode(MessageDeliveryMode.PERSISTENT)
-                    .build();
-            message.getMessageProperties().setHeader(AbstractJavaTypeMapper.DEFAULT_CONTENT_CLASSID_FIELD_NAME,
-                    MessageProperties.CONTENT_TYPE_JSON);
-
-            rabbitTemplate.convertAndSend(message);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+//        try {
+//            objectMapper.writeValueAsString(login);
+//            rabbitTemplate.setMessageConverter(new Jackson2JsonMessageConverter());
+//            rabbitTemplate.setExchange(exchangeName);
+//            rabbitTemplate.setRoutingKey(routingName);
+//
+//            Message message = MessageBuilder.withBody(objectMapper.writeValueAsBytes(login))
+//                    .setDeliveryMode(MessageDeliveryMode.PERSISTENT)
+//                    .build();
+//            message.getMessageProperties().setHeader(AbstractJavaTypeMapper.DEFAULT_CONTENT_CLASSID_FIELD_NAME,
+//                    MessageProperties.CONTENT_TYPE_JSON);
+//
+//            rabbitTemplate.convertAndSend(message);
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
 
         return new HashMap<String, Object>(4) {
             {

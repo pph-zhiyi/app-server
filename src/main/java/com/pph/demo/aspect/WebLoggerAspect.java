@@ -47,18 +47,21 @@ public class WebLoggerAspect {
         /*
          * 记录请求内容
          */
-        LOGGER.info("\n" +
-                        "^^^^^ \n" +
-                        "\t DATE: {} \n" +
-                        "\t URL: {} \n" +
-                        "\t HTTP_METHOD: {} \n" +
-                        "\t IP: {} \n" +
-                        "\t REQUEST_PARAMS: {} \n" +
-                        "^^^^^ \n",
-                Params.dateToStr(System.currentTimeMillis()),
-                request.getRequestURL(),
-                request.getMethod(),
-                request.getRemoteAddr(),
-                JSON.toJSONString(joinPoint.getArgs()));
+        try {
+            LOGGER.info("\n" +
+                            "^^^^^ \n" +
+                            "\t DATE: {} \n" +
+                            "\t URL: {} \n" +
+                            "\t HTTP_METHOD: {} \n" +
+                            "\t IP: {} \n" +
+                            "\t REQUEST_PARAMS: {} \n" +
+                            "^^^^^ \n",
+                    Params.dateToStr(System.currentTimeMillis()),
+                    request.getRequestURL(),
+                    request.getMethod(),
+                    request.getRemoteAddr(),
+                    JSON.toJSONString(joinPoint.getArgs()));
+        } catch (Throwable ignored) {
+        }
     }
 }

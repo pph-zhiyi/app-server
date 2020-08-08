@@ -8,9 +8,12 @@
         <version>2.1.5.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>com.pph.demo</groupId>
     <artifactId>app-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+<!--    <packaging>war</packaging>-->
+
     <name>app-server</name>
     <description>Demo project for Spring Boot</description>
 
@@ -155,6 +158,13 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>28.1-jre</version>
+        </dependency>
+
+        <!-- com.aliyun.oss -->
+        <dependency>
+            <groupId>com.aliyun.oss</groupId>
+            <artifactId>aliyun-sdk-oss</artifactId>
+            <version>3.10.2</version>
         </dependency>
     </dependencies>
 

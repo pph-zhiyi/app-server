@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pph.demo.mapper.GzdImgMapper">
+    <resultMap id="BaseResultMap" type="com.pph.demo.model.GzdImg">
+        <constructor>
+            <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long"/>
+            <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="group" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="index" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+            <arg column="url" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="description" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="gmt_create" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+            <arg column="gmt_modify" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, name, group, index, url, description, gmt_create, gmt_modify
+    </sql>
+
+    <insert id="add" parameterType="com.pph.demo.model.GzdImg">
+        INSERT INTO `gzd_img`
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null">
+                `name`,
+            </if>
+            <if test="group != null">
+                `group`,
+            </if>
+            <if test="index != null">
+                `index`,
+            </if>
+            <if test="url != null">
+                `url`,
+            </if>
+            <if test="description != null">
+                `description`,
+            </if>
+        </trim>
+        <trim prefix="VALUES(" suffix=")" suffixOverrides=",">
+            <if test="name != null">
+                #{name},
+            </if>
+            <if test="group != null">
+                #{group},
+            </if>
+            <if test="index != null">
+                #{index},
+            </if>
+            <if test="url != null">
+                #{url},
+            </if>
+            <if test="description != null">
+                #{description},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="queryImg" parameterType="com.pph.demo.vo.request.gzd.UploadImgReq"
+            resultType="com.pph.demo.model.GzdImg">
+        SELECT *
+        FROM `gzd_img`
+        <where>
+            <if test="name != null">AND `name` = #{name}</if>
+            <if test="group != null">AND `group` = #{group}</if>
+            <if test="index != null">AND `index` = #{index}</if>
+            <if test="url != null">AND `url` = #{url}</if>
+        </where>
+        ORDER BY `group`, `index`
+    </select>
+</mapper>

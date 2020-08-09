@@ -2,6 +2,7 @@ package com.pph.demo.controller;
 
 import com.pph.demo.annotation.SkipToken;
 import com.pph.demo.service.GzdService;
+import com.pph.demo.utils.common.ApiResult;
 import com.pph.demo.vo.request.gzd.UploadImgReq;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,13 +26,18 @@ public class GzdController {
 
     private final GzdService gzdService;
 
-    @SkipToken
+    @RequestMapping(value = "/login")
+    public Object login() {
+        return ApiResult.success("ok");
+    }
+
     @RequestMapping(value = "/img/add")
     public Object addImg(@RequestParam(value = "file") MultipartFile file, UploadImgReq req) {
 
         return gzdService.addImg(file, req);
     }
 
+    @SkipToken
     @RequestMapping(value = "/img/query")
     public Object queryImg(UploadImgReq req) {
 

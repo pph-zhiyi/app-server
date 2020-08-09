@@ -32,21 +32,18 @@ public class GzdController {
         return gzdService.addImg(file, req);
     }
 
-    @SkipToken
     @RequestMapping(value = "/img/query")
     public Object queryImg(UploadImgReq req) {
 
         return gzdService.queryImg(req);
     }
 
-    @SkipToken
     @RequestMapping(value = "/img/delete/by/id")
     public Object deleteImgById(@RequestParam(name = "id") Long id) {
 
         return gzdService.deleteImgById(id);
     }
 
-    @SkipToken
     @RequestMapping(value = "/img/update/url/by/id")
     public Object updateImgUrlById(@RequestParam(value = "file") MultipartFile file, UploadImgReq req) {
 

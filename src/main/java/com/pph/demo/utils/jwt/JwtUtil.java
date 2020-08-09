@@ -25,9 +25,9 @@ public final class JwtUtil {
     private static final String ISS = "echisan";
 
     /**
-     * 过期时间：1 HOURS
+     * 过期时间：6 HOURS
      */
-    private static final long EXPIRATION = TimeUnit.MILLISECONDS.convert(1, TimeUnit.HOURS);
+    private static final long EXPIRATION = TimeUnit.MILLISECONDS.convert(6, TimeUnit.HOURS);
 
     /**
      * 加密 jwt token

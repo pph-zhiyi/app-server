@@ -40,7 +40,11 @@ public class JwtInterceptor implements HandlerInterceptor {
         }
 
         final String[] keys = new String[]{"token"};
-        checkUser(request.getHeader(keys[0]));
+        try {
+            checkUser(request.getHeader(keys[0]));
+        } catch (Exception e) {
+            throw new UnauthorizedException("token error!");
+        }
 
         return true;
     }
